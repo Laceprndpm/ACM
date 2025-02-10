@@ -3,15 +3,18 @@ using namespace std;
 using LL = long long;
 
 // 4 * (1^2 + 2 ^ 2 + ...)
-LL MathWork1(LL n) {
+LL MathWork1(LL n)
+{
     return 4 * n * (n + 1) * (2 * n + 1) / 6;
 }
 
-LL MathWork15(LL n) {
+LL MathWork15(LL n)
+{
     return 2 * n * n;
 }
 
-LL BinSearch1(LL x) {
+LL BinSearch1(LL x)
+{
     int l = -1;
     int r = 93592;
     while (l < r) {
@@ -26,7 +29,8 @@ LL BinSearch1(LL x) {
     return l;
 }
 
-LL BinSearch2(LL x) {
+LL BinSearch2(LL x)
+{
     int l = -1;
     int r = 93592;
     while (l < r) {
@@ -41,7 +45,8 @@ LL BinSearch2(LL x) {
     return l;
 }
 
-void Str(int k) {
+void Str(int k)
+{
     // 输出字典序第 k 个字母
     const char str1[] = {'s', 'p', 'd', 'f'};
     if (k <= 4) {
@@ -93,7 +98,8 @@ void Str(int k) {
     return;
 }
 
-void solve(void) {
+void solve(void)
+{
     LL n;
     cin >> n;
     int blocks = BinSearch1(n);
@@ -129,7 +135,8 @@ void solve(void) {
     cout << n << '\n';
 }
 
-signed main(int argc, char **argv) {
+signed main(int argc, char **argv)
+{
     // ios::sync_with_stdio(false);
     // cin.tie(0);
     // cout.tie(0);
