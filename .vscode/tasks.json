@@ -9,9 +9,11 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
+                "-D",
+                "DEBUG",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}.test",
-                "-std=c++17",
+                "-std=c++23",
                 "-Wall"
             ],
             "options": {

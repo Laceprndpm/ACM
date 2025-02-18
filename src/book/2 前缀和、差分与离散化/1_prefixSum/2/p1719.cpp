@@ -1,42 +1,52 @@
 #include <bits/stdc++.h>
 using namespace std;
-using LL = long long;
+#define int long long
 
-constexpr int N = 125;
-
-int input[N][N];
-int presum[N][N];
-
-int query(int x2, int y2, int x1, int y1) {
-    int ans = 0;
-    ans += presum[y1][x1];
-    ans -= presum[y2 - 1][x1];
-    ans -= presum[y1][x2 - 1];
-    ans += presum[y2 - 1][x2 - 1];
-    return ans;
+inline int lowbit(int x)
+{
+    return x & -x;
 }
 
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-    int n;
-    cin >> n;
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= n; j++) {
-            cin >> presum[i][j];
-            presum[i][j] += presum[i - 1][j] + presum[i][j - 1] - presum[i - 1][j - 1];
-        }
+void update(vector<int> &bit, int x, int v)
+{
+    for (int i = x; i < bit.size(); i += lowbit(i)) {
+        bit[i] += v;
     }
-    int ans = INT32_MIN;
-    for (int x1 = 1; x1 <= n; x1++) {
-        for (int y1 = 1; y1 <= n; y1++) {
-            for (int x2 = 1; x2 <= x1; x2++) {
-                for (int y2 = 1; y2 <= y1; y2++) {
-                    ans = max(ans, query(x2, y2, x1, y1));
-                }
-            }
-        }
+}
+
+int query(vector<int> &bit, int x)
+{
+    int res = 0;
+    for (int i = x; i; i -= lowbit(i)) {
+        res += bit[i];
+    }
+    return res;
+}
+
+int n, m;
+
+signed main()
+{
+    cin >> n;
+    vector<int>            bit(n + 1, 0);
+    vector<pair<int, int>> ai(n + 1);
+    for (int i = 1; i <= n; i++) {
+        cin >> ai[i].first;
+        ai[i].second = i;
+    }
+    vector<int> bi(n + 1);
+    for (int i = 1; i <= n; i++) {
+        cin >> bi[i];
+        update(bit, i, bi[i]);
+    }
+    sort(ai.begin() + 1, ai.end());
+    int ans = 0;
+    for (int i = 1; i <= n; i++) {
+        // 当前所在位置，需要移到i处。。。
+        int place = ai[i].second;
+        int value = bi[place];
+        update(bit, place, -value);
+        ans += query(bit, place) * value;
     }
     cout << ans;
     return 0;

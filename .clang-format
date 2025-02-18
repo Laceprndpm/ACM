@@ -2,7 +2,7 @@
 BasedOnStyle: Google
 Language: Cpp
 # 标准: Cpp03, Cpp11, Auto
-Standard: c++17
+Standard: Latest
 ColumnLimit: 120
 BraceWrapping:
   # case标签后面
