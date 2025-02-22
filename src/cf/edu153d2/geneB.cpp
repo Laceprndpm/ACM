@@ -43,13 +43,11 @@ signed main(int argc, char** argv)
     freopen(argv[2], "w", stdout);
 #endif
     int t = 1;
-    // cout << t << '\n';
+    cout << t << '\n';
+
     while (t--) {
-        int n = rdInt(1, 5);
-        cout << n << '\n';
-        for (int i = 1; i <= n; i++) {
-            cout << rdInt(0, 3) << ' ';
-        }
+        int m = rdInt(7, 8), k = rdInt(2, 5), a1 = rdInt(1, 5), a2 = rdInt(1, 5);
+        cout << m << ' ' << k << ' ' << a1 << ' ' << a2;
         cout << '\n';
     }
     return 0;

@@ -6,6 +6,16 @@
 	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
 	// Placeholders with the same ids are connected.
 	// Example:
+	"BATCH": {
+		"prefix": "TemplateBATCH",
+		"body": [
+			"#ifdef BATCH",
+			"    freopen(argv[1], \"r\", stdin);",
+			"    freopen(argv[2], \"w\", stdout);",
+			"#endif"
+		],
+		"description": "BATCH"
+	},
 	"codeforce": {
 		"scope": "cpp",
 		"prefix": "codeforce",

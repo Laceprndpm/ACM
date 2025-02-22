@@ -43,12 +43,24 @@ signed main(int argc, char** argv)
     freopen(argv[2], "w", stdout);
 #endif
     int t = 1;
-    // cout << t << '\n';
+    cout << t << '\n';
     while (t--) {
-        int n = rdInt(1, 5);
-        cout << n << '\n';
+        int n = rdInt(1, 15);
+        // cout << n << '\n';
+        int cnt = 0;
         for (int i = 1; i <= n; i++) {
-            cout << rdInt(0, 3) << ' ';
+            int cmd = rdInt(0, 4);
+            if (cmd == 0) {
+                cout << '+';
+                cnt++;
+            } else if (cmd == 1 && cnt > 0) {
+                cout << '-';
+                cnt--;
+            } else if (cmd == 2) {
+                cout << '1';
+            } else {
+                cout << '0';
+            }
         }
         cout << '\n';
     }

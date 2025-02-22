@@ -4,9 +4,9 @@ namespace fs = std::filesystem;
 
 using LL = long long;
 
-const std::vector<std::string> process_paths = {"/home/laceprndpm/acm/src/cf/r154d2/C_friend.cpp",
-                                                "/home/laceprndpm/acm/src/cf/r154d2/C.cpp"};
-const fs::path                 gene_path     = "/home/laceprndpm/acm/src/cf/r154d2/gene.cpp";
+const std::vector<std::string> process_paths = {"/home/laceprndpm/acm/src/cf/todo/D_zly.cpp",
+                                                "/home/laceprndpm/acm/src/cf/todo/D.cpp"};
+const fs::path                 gene_path     = "/home/laceprndpm/acm/src/cf/todo/gene.cpp";
 constexpr int                  num_processes = 2;
 
 std::optional<std::string> compile_program(const fs::path &output_path, const fs::path &source_path,
