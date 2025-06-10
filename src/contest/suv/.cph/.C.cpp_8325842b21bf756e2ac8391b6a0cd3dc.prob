@@ -1,0 +1,1 @@
+{"name":"Local: C","url":"/home/laceprndpm/acm/src/contest/suv/C.cpp","tests":[{"id":1744524331981,"input":"2\n4 3\n4 7\n3 4\n5 8\n1 3\n2 1000\n100 200\n300 400\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/laceprndpm/acm/src/contest/suv/C.cpp","group":"local","local":true}

@@ -1,0 +1,103 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "DEBUG",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                // "-fsanitize=address",
+                "-fsanitize=undefined",
+                "-fsanitize=null",
+                "-fno-omit-frame-pointer",
+                // "-Og",
+                // "-O0",
+                "-g",
+                "${file}",
+                "-D",
+                "DEBUG",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.test",
+                "-std=c++23",
+                "-Wall"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "编译器: /usr/bin/g++"
+        },
+        {
+            "type": "cppbuild",
+            "label": "build with g++ -Og",
+            "command": "g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-fsanitize=address",
+                "-fsanitize=undefined",
+                "-fsanitize=null",
+                "-fno-omit-frame-pointer",
+                "-Og",
+                "-g",
+                "${file}",
+                "-D",
+                "DEBUG",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.Og",
+                "-std=c++23",
+                "-Wall"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "cppbuild",
+            "label": "build with g++ -O2",
+            "command": "g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-fsanitize=address",
+                "-fsanitize=undefined",
+                "-fsanitize=null",
+                "-fno-omit-frame-pointer",
+                "-O2",
+                "-g",
+                "${file}",
+                "-D",
+                "DEBUG",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.O2",
+                "-std=c++23",
+                "-Wall"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "run O2",
+            "command": "${fileDirname}/${fileBasenameNoExtension}.O2",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+    ]
+}
