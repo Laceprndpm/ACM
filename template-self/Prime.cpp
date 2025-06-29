@@ -88,3 +88,28 @@ struct Prime {
         }
     }
 };
+
+struct Phi {
+    vector<int> phi;
+    vector<int> p;
+
+    void init(int n)
+    {
+        int total = 0;
+        phi[1]    = 1;
+        for (int i = 2; i <= n; i++) {
+            if (!phi[i]) {
+                p[total++] = i;
+                phi[i]     = i - 1;
+            }
+            for (int j = 0; j < total && i * p[j] <= n; j++) {
+                if (i % p[j] == 0) {
+                    phi[i * p[j]] = phi[i] * p[j];
+                    break;
+                } else {
+                    phi[i * p[j]] = phi[i] * (p[j] - 1);
+                }
+            }
+        }
+    }
+};

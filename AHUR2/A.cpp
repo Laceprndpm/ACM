@@ -1,107 +1,115 @@
-#include <initializer_list>
-#include <iostream>
-#include <map>
-#include <numeric>
+/**
+ *@author ChatGPT（基于 GPT-4o-mini）
+ */
+// This code was translated and adapted by ChatGPT, an AI language model based on GPT-4o-mini.
+// The assistant's role was to convert Python logic into equivalent C++ code,
+// focusing on preserving functionality while maintaining clarity and performance.
+// Python’s ease is great for prototyping, but damn, it can seriously drag you down when it counts.
+
+#include <bits/stdc++.h>
 using namespace std;
-using i64  = long long;
-using u64  = unsigned long long;
-using u32  = unsigned;
-using u128 = unsigned __int128;
+using i64 = int64_t;
 
-// vectors
-#define sz(x)   int(size(x))
-#define bg(x)   begin(x)
-#define all(x)  bg(x), end(x)
-#define rall(x) rbegin(x), rend(x)
-#define sor(x)  sort(all(x))
-#define rsz     resize
-#define ins     insert
-#define pb      push_back
-#define eb      emplace_back
-#define ft      front()
-#define bk      back()
+const i64 MOD  = 998244353;
+const i64 MOD2 = 998244352;
 
-constexpr int INF = 1e9;
+struct Prime {
+    vector<int> minp, primes;
 
-i64 lcm(initializer_list<i64> arr)
-{
-    i64 ans = 1;
-    for (i64 i : arr) {
-        ans = lcm(ans, i);
+    Prime(int n)
+    {
+        minp.assign(n + 1, 0);
+        for (int i = 2; i <= n; i++) {
+            if (minp[i] == 0) {
+                minp[i] = i;
+                primes.push_back(i);
+            }
+            for (int p : primes) {
+                if ((i * 1LL * p) > n) break;
+                minp[i * p] = p;
+                if (p == minp[i]) break;
+            }
+        }
     }
-    return ans;
+};
+
+i64 qpow(i64 base, i64 exp, i64 mod)
+{
+    i64 res = 1;
+    base %= mod;
+    while (exp > 0) {
+        if (exp & 1) res = (res * base) % mod;
+        base = (base * base) % mod;
+        exp >>= 1;
+    }
+    return res;
 }
 
-void solve()
-{
-    int n;
-
-    cin >> n;
-    map<int, int> mp1;
-    i64           ans = 1;
-    for (int i = 1; i <= n; i++) {
-        // for (int j = 1; j <= n; j++) {
-        //     for (int k = 1; k <= n; k++) {
-        //         for (int q = 1; q <= n; q++) {
-        ans *= i;
-        //         }
-        //     }
-        // }
-    }
-    // 也许我可以枚举lcm
-    // 如果lcm == 1
-    // lcm == 2 ai可以为d(x)，即d(x) ** k - lcm1种 方法组成
-    // ans = 2 ** (d(2) ** k - d(1) ** k)
-    // 或者枚举gcd吗，似乎区别不大
-    // 不,gcd <= 1e6
-    // 枚举1-1e6的gcd
-    // gcd == 1e6
-    // 只能全部为1e6
-    // 但是这个10**100是不是必然带100常数？
-    // 如果a1,a2,a3...ak的gcd为x
-    // 那么有多少种可能?
-    // x在1e6内有p个倍数的话。。。
-    // 似乎不太好预处理。。。
-    // 那么就ai只能是1 或 2，同时去除lcm == 1的部分
-    //
-    // 预处理？
-    //
-    //
-    //
-    // 1 2 : 1
-    //
-    //
-    // 2 1 : 2
-    // 2 2 : 8
-    // 2 3 : 128
-    // 2 4 : 32768
-    //
-    // 3 1 : 6
-    // 3 2 : 7776
-    // 4 2 : 1146617856
-    cout << ans << '\n';
-}
-
-signed main(signed argc, char** argv)
+int main()
 {
     ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-#ifdef BATCH
-    freopen(argv[1], "r", stdin);
-    freopen(argv[2], "w", stdout);
-#endif
-    int t = 1;
-    while (t--) {
-        solve();
+    cin.tie(nullptr);
+
+    Prime prime(int(1e6));
+
+    int T;
+    cin >> T;
+    while (T--) {
+        string K;
+        i64    n, k;
+        cin >> n >> K;
+        k       = 0;
+        int len = K.length();
+        for (int i = 0; i < len; i++)
+            k = ((10ll * k + K[i] - '0') + 402653184) % 402653184;
+
+        i64         ans = 1;
+        vector<int> buffer;
+        int         sqrtN = (int)sqrtl(n);
+
+        for (auto p : prime.primes) {
+            if (p <= sqrtN) {
+                i64 q = 0;
+                i64 a = 1;
+                while (true) {
+                    i64 powpa = 1;
+                    for (i64 _ = 0; _ < a; _++)
+                        powpa *= p;  // p^a
+                    if (powpa > n) break;
+
+                    q += qpow(n, k, MOD2) - qpow(n - n / powpa, k, MOD2);
+                    q %= MOD2;
+                    a++;
+                }
+                ans = (ans * qpow(p, (q + MOD2) % MOD2, MOD)) % MOD;
+            } else {
+                if (!buffer.empty() && n / buffer[0] != n / p) {
+                    i64 tempP = 1;
+                    for (auto i : buffer) {
+                        tempP = (tempP * i) % MOD;
+                    }
+                    i64 e = (qpow(n, k, MOD2) - qpow(n - n / buffer[0], k, MOD2) + MOD2) % MOD2;
+                    ans   = (ans * qpow(tempP, e, MOD)) % MOD;
+                    buffer.clear();
+                }
+                buffer.push_back(p);
+            }
+
+            // 这一部分是 Python
+            // 代码最后多余的块逻辑，Python里清空buffer。C++不需要这么写，缓冲区逻辑只在for循环后处理即可
+        }
+
+        if (!buffer.empty()) {
+            i64 tempP = 1;
+            for (auto i : buffer) {
+                tempP = (tempP * i) % MOD;
+            }
+            i64 e = (qpow(n, k, MOD2) - qpow(n - n / buffer.back(), k, MOD2) + MOD2) % MOD2;
+            ans   = (ans * qpow(tempP, e, MOD)) % MOD;
+            buffer.clear();
+        }
+
+        cout << ans << "\n";
     }
     return 0;
 }
-
-/* stuff you should look for
- * int overflow, array bounds
- * special cases (n=1?)
- * do smth instead of nothing and stay organized
- * WRITE STUFF DOWN
- * DON'T GET STUCK ON ONE APPROACH
- */

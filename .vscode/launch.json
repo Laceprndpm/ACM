@@ -38,22 +38,22 @@
                     "text": "-gdb-set disassembly-flavor intel",
                     "ignoreFailures": false
                 },
-                {
-                    "description": "Add source path for glibc",
-                    "text": "directory /usr/src/glibc/glibc-2.39",
-                    "ignoreFailures": false
-                },
+                // {
+                //     "description": "Add source path for glibc",
+                //     "text": "directory /usr/src/glibc/glibc-2.39",
+                //     "ignoreFailures": false
+                // },
                 {
                     "description": "防止 gdb 打开标准库函数",
                     "text": "-interpreter-exec console \"skip -rfu std::.*\"",
                     "ignoreFailures": false
                 },
             ],
-            "presentation": {
-                "hidden": false,
-                "group": "C++",
-                "order": 2
-            },
+            // "presentation": {
+            //     "hidden": false,
+            //     "group": "C++",
+            //     "order": 2
+            // },
             "preLaunchTask": "DEBUG",
         }
     ]
