@@ -57,10 +57,10 @@ public:
     }
 };
 
-struct Solve {
+struct Prime {
     vector<int> minp, primes;
 
-    Solve(int n)
+    Prime(int n)
     {
         sieve(n);
     }
