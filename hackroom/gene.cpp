@@ -45,10 +45,16 @@ signed main(int argc, char** argv)
 #endif
     // freopen("test.in", "w", stdout);
     int t = 1;
-    // cout << t << '\n';
+    cout << t << '\n';
     while (t--) {
-        int l = rdInt(0, 5000), r = rdInt(l + 1, 5001);
-        cout << l << ' ' << r << '\n';
+        // int l = rdInt(0, 5000), r = rdInt(l + 1, 5001);
+        // cout << l << ' ' << r << '\n';
+        int n = rdInt(1, 10), k = rdInt(1, n);
+        cout << n << ' ' << k << '\n';
+        for (int i = 0; i < n; i++) {
+            cout << rdInt(0, 2);
+        }
+        cout << '\n';
         // i64 n = rdInt(5, 10), m = rdInt(10, 15), k = rdInt(1, 3);  // 分成5块
         // cout << n << ' ' << m << ' ' << k << '\n';
         // for (int i = 1; i <= n; i++) {

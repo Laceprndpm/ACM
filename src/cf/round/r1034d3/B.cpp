@@ -1,5 +1,6 @@
+#include <algorithm>
 #include <iostream>
-#include <set>
+#include <vector>
 using namespace std;
 using i64  = long long;
 using u64  = unsigned long long;
@@ -23,45 +24,24 @@ constexpr int INF = 1e9;
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    string s;
-    cin >> s;
-    int cnt = 0;
-    for (int i = 0 + k; i < n; i++) {
-        if (s[i] == '1') {
-            cnt++;
-            s[i] = '0';
-        }
+    int n, j, k;
+    cin >> n >> j >> k;
+    vector<int> arr(n);
+    for (int& i : arr) {
+        cin >> i;
     }
-    for (int i = 0; i < n - k; i++) {
-        if (s[i] == '1') {
-            cnt++;
-            s[i] = '0';
-        }
+    if (k > 1) {
+        cout << "Yes\n";
+        return;
     }
-    if (cnt <= k || 2 * k > n) {
-        cout << "Alice\n";
+    if (arr[j - 1] == *max_element(all(arr))) {
+        cout << "Yes\n";
     } else {
-        cout << "Bob\n";
+        cout << "No\n";
     }
+    return;
 }
 
-// k * 2 <= n
-//
-// xxx0xxx
-// 1111000
-//
-// k * 2 > n
-// 000 1 000
-// 111 1 111
-// n = 7
-// k = 4
-// 000 1 000
-// 001 1 100
-//
-// 11111111
-// 10000000
 signed main(signed argc, char** argv)
 {
     ios::sync_with_stdio(false);

@@ -4,9 +4,9 @@ namespace fs = std::filesystem;
 
 using LL = long long;
 
-const std::vector<std::string> process_paths = {"/home/laceprndpm/acm/hackroom/target.cpp",
-                                                "/home/laceprndpm/acm/hackroom/my.cpp"};
-const fs::path                 gene_path     = "/home/laceprndpm/acm/hackroom/gene.cpp";
+const std::vector<std::string> process_paths = {"/home/patchouli/Code/ACM/hackroom/target.cpp",
+                                                "/home/patchouli/Code/ACM/hackroom/my.cpp"};
+const fs::path                 gene_path     = "/home/patchouli/Code/ACM/hackroom/gene.cpp";
 constexpr int                  num_processes = 2;
 
 constexpr std::string timelimit = "2s";
