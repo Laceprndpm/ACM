@@ -30,7 +30,7 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": false
+                "isDefault": true
             },
             "detail": "编译器: /usr/bin/g++"
         },
