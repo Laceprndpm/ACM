@@ -26,47 +26,40 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> arr(n);
+    vector<i64> arr(n);
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
-    int         mx = *max_element(all(arr));
-    vector<i64> ans(mx + 1);
-    for (int i = 0; i < n; i++) {
-        i64 ci = 0;
-        if (i == 0 || arr[i] > arr[i - 1]) {
-            ci++;
+    sort(all(arr), [&](int a, int b) {
+        return abs(a) < abs(b);
+    });
+    // a2 / a1 = ai + 1 / ai
+    bool flag = 1;
+    for (int i = 1; i < n - 1; i++) {
+        if (1ll * arr[i] * arr[1] != 1ll * arr[i + 1] * arr[0]) {
+            flag = 0;
         }
-        if (i + 1 < n && arr[i] < arr[i + 1]) {
-            ci--;
-        }
-        int l = 1;
-        while (l <= mx) {
-            int val = (arr[i] - 1) / l;
-            int r;
-            if (val)
-                r = (arr[i] - 1) / val + 1;
-            else
-                r = mx + 1;
-            ans[l - 1] += (val + 1) * ci;
-            ans[r - 1] -= (val + 1) * ci;
-            l = r;
-        }
-        // int r = arr[i];
-        // ans[r] += ci;
-        // while (r > 0) {
-        //     int val = (arr[i] - 1) / r + 1;
-        //     int l   = (arr[i] - 1) / val + 1;
-        //     ans[l - 1] += ci * val;
-        //     ans[r] -= ci * val;
-        //     r = l - 1;
-        // }
     }
-    for (int i = 0; i < mx; i++) {
-        ans[i + 1] += ans[i];
+    if (!flag) {
+        bool allsame = 1;
+        int  cnt1    = 0;
+        for (int i = 0; i < n; i++) {
+            if (abs(arr[0]) != abs(arr[i])) {
+                allsame = 0;
+            }
+            if (arr[i] > 0) {
+                cnt1++;
+            }
+        }
+        if (allsame && ((cnt1 == n / 2) || (n - cnt1 == n / 2))) {
+            cout << "Yes\n";
+            return;
+        }
     }
-    for (int i = 0; i < mx; i++) {
-        cout << ans[i] << " \n"[i == mx];
+    if (flag) {
+        cout << "Yes\n";
+    } else {
+        cout << "No\n";
     }
 }
 
@@ -79,7 +72,8 @@ signed main(signed argc, char** argv)
     freopen(argv[1], "r", stdin);
     freopen(argv[2], "w", stdout);
 #endif
-    int t = 1;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }

@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cmath>
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -26,47 +27,27 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> arr(n);
+    i64 px, py, qx, qy;
+    cin >> px >> py >> qx >> qy;
+    vector<i64> arr(n);
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
-    int         mx = *max_element(all(arr));
-    vector<i64> ans(mx + 1);
+    i64 mxIdx = max_element(all(arr)) - bg(arr);
+    i64 sum   = 0;
     for (int i = 0; i < n; i++) {
-        i64 ci = 0;
-        if (i == 0 || arr[i] > arr[i - 1]) {
-            ci++;
+        if (i == mxIdx) {
+            continue;
         }
-        if (i + 1 < n && arr[i] < arr[i + 1]) {
-            ci--;
-        }
-        int l = 1;
-        while (l <= mx) {
-            int val = (arr[i] - 1) / l;
-            int r;
-            if (val)
-                r = (arr[i] - 1) / val + 1;
-            else
-                r = mx + 1;
-            ans[l - 1] += (val + 1) * ci;
-            ans[r - 1] -= (val + 1) * ci;
-            l = r;
-        }
-        // int r = arr[i];
-        // ans[r] += ci;
-        // while (r > 0) {
-        //     int val = (arr[i] - 1) / r + 1;
-        //     int l   = (arr[i] - 1) / val + 1;
-        //     ans[l - 1] += ci * val;
-        //     ans[r] -= ci * val;
-        //     r = l - 1;
-        // }
+        sum += arr[i];
     }
-    for (int i = 0; i < mx; i++) {
-        ans[i + 1] += ans[i];
-    }
-    for (int i = 0; i < mx; i++) {
-        cout << ans[i] << " \n"[i == mx];
+    i64 r   = sum + arr[mxIdx];
+    i64 l   = max(0ll, arr[mxIdx] - sum);
+    i64 res = (px - qx) * (px - qx) + (py - qy) * (py - qy);
+    if (res <= r * r && res >= l * l) {
+        cout << "Yes\n";
+    } else {
+        cout << "No\n";
     }
 }
 
@@ -79,7 +60,8 @@ signed main(signed argc, char** argv)
     freopen(argv[1], "r", stdin);
     freopen(argv[2], "w", stdout);
 #endif
-    int t = 1;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
