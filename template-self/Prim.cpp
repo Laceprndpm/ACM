@@ -78,3 +78,39 @@ public:
     }
 };
 
+// OI-wiki的最小生成树疑似有误，重构后给出新的代码
+/**
+ * @version 1.0
+ * @author laceprndpm
+ * @date 2025/7/11
+ */
+
+vector<vector<pair<int, int>>> primMST(const vector<vector<pair<int, int>>>& graph)
+{
+    int                                                          n = graph.size() - 1;
+    vector<vector<pair<int, int>>>                               treegraph(n + 1);
+    vector<bool>                                                 vis(n + 1);
+    priority_queue<array<int, 3>, vector<array<int, 3>>, less<>> pq;
+
+    for (int u_i = 1; u_i <= n; ++u_i) {
+        if (vis[u_i]) continue;
+        vis[u_i] = true;
+        for (auto [v, w] : graph[u_i]) {
+            pq.push({w, u_i, v});
+        }
+        while (!pq.empty()) {
+            auto [d, u, v] = pq.top();
+            pq.pop();
+            if (vis[v]) continue;
+            vis[v] = true;
+            dsu[v] = u_i;
+            treegraph[u].eb(v, d);
+            treegraph[v].eb(u, d);
+            for (auto [vv, w] : graph[v]) {
+                pq.push({w, v, vv});
+            }
+        }
+    }
+
+    return treegraph;
+}
