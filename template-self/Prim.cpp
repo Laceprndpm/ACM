@@ -1,10 +1,3 @@
-#ifndef REMOVE_ME
-#include <bits/stdc++.h>
-using namespace std;
-using i64         = long long;
-constexpr int INF = 1e9;
-#endif
-
 class Prim {
 private:
     const vector<vector<pair<int, int>>>& originGraph;
@@ -79,18 +72,21 @@ public:
 };
 
 // OI-wiki的最小生成树疑似有误，重构后给出新的代码
+// 只需要将greater<>改为less<>即是最大生成树
+
 /**
- * @version 1.0
+ * @version 2.0
  * @author laceprndpm
  * @date 2025/7/11
  */
 
-vector<vector<pair<int, int>>> primMST(const vector<vector<pair<int, int>>>& graph)
+pair<vector<vector<pair<int, int>>>, i64> primMST(const vector<vector<pair<int, int>>>& graph)
 {
-    int                                                          n = graph.size() - 1;
-    vector<vector<pair<int, int>>>                               treegraph(n + 1);
-    vector<bool>                                                 vis(n + 1);
-    priority_queue<array<int, 3>, vector<array<int, 3>>, less<>> pq;
+    i64                                                             len = 0;
+    int                                                             n   = graph.size() - 1;
+    vector<vector<pair<int, int>>>                                  treegraph(n + 1);
+    vector<bool>                                                    vis(n + 1);
+    priority_queue<array<int, 3>, vector<array<int, 3>>, greater<>> pq;
 
     for (int u_i = 1; u_i <= n; ++u_i) {
         if (vis[u_i]) continue;
@@ -103,14 +99,14 @@ vector<vector<pair<int, int>>> primMST(const vector<vector<pair<int, int>>>& gra
             pq.pop();
             if (vis[v]) continue;
             vis[v] = true;
-            dsu[v] = u_i;
-            treegraph[u].eb(v, d);
-            treegraph[v].eb(u, d);
+            len += d;
+            treegraph[u].emplace_back(v, d);
+            treegraph[v].emplace_back(u, d);
             for (auto [vv, w] : graph[v]) {
                 pq.push({w, v, vv});
             }
         }
     }
 
-    return treegraph;
+    return {treegraph, len};
 }

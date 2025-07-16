@@ -1,3 +1,27 @@
+#include <cassert>
+#include <iostream>
+#include <vector>
+using namespace std;
+using i64  = long long;
+using u64  = unsigned long long;
+using u32  = unsigned;
+using u128 = unsigned __int128;
+
+// vectors
+#define sz(x)   int(size(x))
+#define bg(x)   begin(x)
+#define all(x)  bg(x), end(x)
+#define rall(x) rbegin(x), rend(x)
+#define sor(x)  sort(all(x))
+#define rsz     resize
+#define ins     insert
+#define pb      push_back
+#define eb      emplace_back
+#define ft      front()
+#define bk      back()
+
+constexpr int INF = 1e9;
+
 template <class T>
 constexpr T power(T a, u64 b, T res = 1)
 {
@@ -347,7 +371,7 @@ private:
 template <u32 Id>
 Barrett DynModInt<Id>::bt = 998244353;
 
-using Z = ModInt<>;
+using Z = ModInt<998244353>;
 
 struct Comb {
     int            n;
@@ -404,3 +428,68 @@ struct Comb {
         return fac(n) * invfac(m) * invfac(n - m);
     }
 } comb;
+
+signed main(signed argc, char **argv)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+#ifdef BATCH
+    freopen(argv[1], "r", stdin);
+    freopen(argv[2], "w", stdout);
+#endif
+    // |101010xxxx...|
+    // |1x01010
+    // |10x10
+    // |1x01x010
+    // | xxx0xx10xx1
+    // 是不是只要我和它的操作完全一致，就可以至少不输？
+    // 此时0必败
+    // 0x10x1 | 0必败？true
+    // 0xx10x1x| 1必败
+    // 莫非不存在平局？
+    // guess:如果总间距是偶数则必败
+    // try:
+    // 间距分别为 1 3 5 6 7
+    // 0 3 5 6 6
+    // 是的
+    // 假设先手人在左，若所有sum(ri - li + 1) 为偶，则必败
+    // 可以有间距来唯一确定，似乎与l_i+1 - ri没有关系
+    // 首先可以先减去所有格子本身的
+    // l -= 2 * n
+    // 剩下的空间，提取出n个空间
+    // sample: l = 3, n = 1
+    // l -= 2 * n, l == 1
+    // C(l, 2 * n) * 2
+    // 1, 2 / 1, 3 / 2, 3，共6种
+    // 当gap == 0时会输，即1,2 / 2,3
+    // 莫非当l % 2 == 0可以对称？
+    // l = 4, n = 1
+    // C(4,2) = 6
+    // 共12
+    // gap = 2, 0会输
+    // (1 + 3) * 2 = 8
+    //
+    int t;
+    cin >> t;
+    while (t--) {
+        int l, n;
+        cin >> l >> n;
+        int gaps = l - 2 * n;
+        Z   ans  = comb.binom(l, 2 * n);
+        for (int gap = 0; gap <= gaps; gap += 2) {
+            Z tmp = comb.binom(gap / 2 + n - 1, n - 1) * comb.binom(gaps - gap + n, n);
+            ans -= tmp;
+        }
+        cout << ans * 2 << '\n';
+    }
+    return 0;
+}
+
+/* stuff you should look for
+ * int overflow, array bounds
+ * special cases (n=1?)
+ * do smth instead of nothing and stay organized
+ * WRITE STUFF DOWN
+ * DON'T GET STUCK ON ONE APPROACH
+ */

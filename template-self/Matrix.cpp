@@ -12,7 +12,7 @@ struct Matrix {
         assert(lhs.data[0].size() == rhs.data.size());
         int               n = lhs.data.size(), p = lhs.data[0].size(), m = rhs.data[0].size();
         vector<vector<T>> res(n, vector<T>(m));
-        for (int i = 0; i < lhs.data.size(); i++) {
+        for (int i = 0; i < n; i++) {
             for (int k = 0; k < p; k++) {
                 for (int j = 0; j < m; j++) {
                     res[i][j] += lhs.data[i][k] * rhs.data[k][j];

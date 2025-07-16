@@ -1,3 +1,33 @@
+#include <array>
+#include <cassert>
+#include <iostream>
+#include <utility>
+#include <vector>
+using namespace std;
+using i64  = long long;
+using u64  = unsigned long long;
+using u32  = unsigned;
+using u128 = unsigned __int128;
+
+// vectors
+#define sz(x)   int(size(x))
+#define bg(x)   begin(x)
+#define all(x)  bg(x), end(x)
+#define rall(x) rbegin(x), rend(x)
+#define sor(x)  sort(all(x))
+#define rsz     resize
+#define ins     insert
+#define pb      push_back
+#define eb      emplace_back
+#define ft      front()
+#define bk      back()
+
+constexpr int INF = 1e9;
+using i64         = long long;
+using u64         = unsigned long long;
+using u32         = unsigned;
+using u128        = unsigned __int128;
+
 template <class T>
 constexpr T power(T a, u64 b, T res = 1)
 {
@@ -347,7 +377,7 @@ private:
 template <u32 Id>
 Barrett DynModInt<Id>::bt = 998244353;
 
-using Z = ModInt<>;
+using Z = ModInt<998244353>;
 
 struct Comb {
     int            n;
@@ -401,6 +431,82 @@ struct Comb {
     Z binom(int n, int m)
     {
         if (n < m || m < 0) return 0;
+        Z tmp = 1;
+        for (i64 i = n; i > n - m; i--) {
+            tmp *= i;
+        }
+        tmp *= invfac(m);
+        return tmp;
         return fac(n) * invfac(m) * invfac(n - m);
     }
 } comb;
+
+struct _ {
+    vector<array<i64, 20>> dp;
+    static constexpr i64   MAXN = 5e5;
+
+    _()
+    {
+        vector<array<i64, 20>> tmp(MAXN + 1);
+        dp.resize(MAXN + 1);
+        tmp[1][0] = 1;
+        for (int i = 1; i <= MAXN; i++) {
+            for (int j = 0; j < 19; j++) {
+                for (i64 k = 2; k * i <= MAXN; k++) {
+                    tmp[i * k][j + 1] += tmp[i][j];
+                }
+            }
+        }
+        dp = std::move(tmp);
+    }
+} dp_;
+
+void solve()
+{
+    i64 k, n;
+    cin >> k >> n;
+    auto &dp = dp_.dp;
+    for (int i = 1; i <= k; i++) {
+        Z ans = 0;
+        // for (int j = 0; j < 20; j++)
+        //{
+        // for (int k = j; k <= n; k++)
+        //     comb(k, j) * dp[i][j]
+        // }
+        // C(k, k) + C(k + 1, k) + C(k + 2, k)...C(n, k) = C(n + 1, k + 1)
+        //
+        if (i == 1) {
+            ans -= 1;
+        }
+        for (int j = 0; j < 20; j++) {
+            ans += comb.binom(n + 1, j + 1) * dp[i][j];
+        }
+        cout << ans << ' ';
+    }
+    cout << '\n';
+}
+
+signed main(signed argc, char **argv)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+#ifdef BATCH
+    freopen(argv[1], "r", stdin);
+    freopen(argv[2], "w", stdout);
+#endif
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}
+
+/* stuff you should look for
+ * int overflow, array bounds
+ * special cases (n=1?)
+ * do smth instead of nothing and stay organized
+ * WRITE STUFF DOWN
+ * DON'T GET STUCK ON ONE APPROACH
+ */
