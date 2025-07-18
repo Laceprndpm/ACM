@@ -1,8 +1,0 @@
-adpyke.codesnap
-llvm-vs-code-extensions.vscode-clangd
-ms-python.black-formatter
-ms-python.debugpy
-ms-python.python
-ms-vscode.cpptools
-ms-vscode.hexeditor
-shalldie.background
