@@ -47,7 +47,6 @@
 			"#define eb      emplace_back",
 			"#define ft      front()",
 			"#define bk      back()",
-			"#define mp      make_pair",
 			"#define mt      make_tuple",
 			"#define fi      first",
 			"#define se      second",

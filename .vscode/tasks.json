@@ -12,7 +12,7 @@
                 "-fsanitize=null",
                 "-fno-omit-frame-pointer",
                 // "-Og",
-                // "-O0",
+                "-O0",
                 "-g",
                 "${file}",
                 "-D",
@@ -34,70 +34,92 @@
             },
             "detail": "编译器: /usr/bin/g++"
         },
-        {
-            "type": "cppbuild",
-            "label": "build with g++ -Og",
-            "command": "g++",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-fsanitize=address",
-                "-fsanitize=undefined",
-                "-fsanitize=null",
-                "-fno-omit-frame-pointer",
-                "-Og",
-                "-g",
-                "${file}",
-                "-D",
-                "DEBUG",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.Og",
-                "-std=c++23",
-                "-Wall"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": [
-                "$gcc"
-            ]
-        },
-        {
-            "type": "cppbuild",
-            "label": "build with g++ -O2",
-            "command": "g++",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-fsanitize=address",
-                "-fsanitize=undefined",
-                "-fsanitize=null",
-                "-fno-omit-frame-pointer",
-                "-O2",
-                "-g",
-                "${file}",
-                "-D",
-                "DEBUG",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.O2",
-                "-std=c++23",
-                "-Wall"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": [
-                "$gcc"
-            ]
-        },
-        {
-            "type": "shell",
-            "label": "run O2",
-            "command": "${fileDirname}/${fileBasenameNoExtension}.O2",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
+        // {
+        //     "type": "shell",
+        //     "label": "rustc compile",
+        //     "command": "rustc",
+        //     "args": [
+        //         "${file}",
+        //         "-o",
+        //         "${fileDirname}/${fileBasenameNoExtension}",
+        //         "--edition",
+        //         "2021",
+        //         "-C",
+        //         "opt-level=2"
+        //     ],
+        //     "group": {
+        //         "kind": "build",
+        //         "isDefault": true
+        //     },
+        //     "options": {
+        //         "cwd": "${fileDirname}"
+        //     },
+        //     "problemMatcher": []
+        // },
+        // {
+        //     "type": "cppbuild",
+        //     "label": "build with g++ -Og",
+        //     "command": "g++",
+        //     "args": [
+        //         "-fdiagnostics-color=always",
+        //         "-fsanitize=address",
+        //         "-fsanitize=undefined",
+        //         "-fsanitize=null",
+        //         "-fno-omit-frame-pointer",
+        //         "-Og",
+        //         "-g",
+        //         "${file}",
+        //         "-D",
+        //         "DEBUG",
+        //         "-o",
+        //         "${fileDirname}/${fileBasenameNoExtension}.Og",
+        //         "-std=c++23",
+        //         "-Wall"
+        //     ],
+        //     "group": {
+        //         "kind": "build",
+        //         "isDefault": true
+        //     },
+        //     "problemMatcher": [
+        //         "$gcc"
+        //     ]
+        // },
+        // {
+        //     "type": "cppbuild",
+        //     "label": "build with g++ -O2",
+        //     "command": "g++",
+        //     "args": [
+        //         "-fdiagnostics-color=always",
+        //         "-fsanitize=address",
+        //         "-fsanitize=undefined",
+        //         "-fsanitize=null",
+        //         "-fno-omit-frame-pointer",
+        //         "-O2",
+        //         "-g",
+        //         "${file}",
+        //         "-D",
+        //         "DEBUG",
+        //         "-o",
+        //         "${fileDirname}/${fileBasenameNoExtension}.O2",
+        //         "-std=c++23",
+        //         "-Wall"
+        //     ],
+        //     "group": {
+        //         "kind": "build",
+        //         "isDefault": true
+        //     },
+        //     "problemMatcher": [
+        //         "$gcc"
+        //     ]
+        // },
+        // {
+        //     "type": "shell",
+        //     "label": "run O2",
+        //     "command": "${fileDirname}/${fileBasenameNoExtension}.O2",
+        //     "group": {
+        //         "kind": "build",
+        //         "isDefault": true
+        //     }
+        // },
     ]
 }

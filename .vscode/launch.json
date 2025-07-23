@@ -55,6 +55,6 @@
             //     "order": 2
             // },
             "preLaunchTask": "DEBUG",
-        }
+        },
     ]
 }

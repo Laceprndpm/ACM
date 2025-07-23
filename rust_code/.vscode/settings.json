@@ -1,0 +1,8 @@
+{
+    // 开启粘贴保存自动格式化
+    "editor.parameterHints.enabled": false,
+    "editor.parameterHints.cycle": true,
+    "editor.hover.delay": 500, // 设置 hover 显示的延迟
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+}

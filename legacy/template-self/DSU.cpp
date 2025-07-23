@@ -54,12 +54,12 @@ struct DSU {
     std::vector<std::vector<int>> getGroups(void)
     {
         std::vector<std::vector<int>>   res;
-        std::map<int, std::vector<int>> mp;
+        std::map<int, std::vector<int>> groups;
         for (int i = 0; i < f.size(); i++) {
-            mp[find(i)].emplace_back(i);
+            groups[find(i)].emplace_back(i);
         }
-        res.reserve(mp.size());
-        for (auto &[_, group] : mp) {
+        res.reserve(groups.size());
+        for (auto &[_, group] : groups) {
             res.emplace_back(std::move(group));
         }
         return res;
