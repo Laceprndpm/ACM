@@ -50,5 +50,7 @@ fn solve(lines: &mut impl Iterator<Item = Result<String, io::Error>>) {
         ans = (ans + contrib) % MOD;
     }
 
+    let ans = ans;
+
     println!("{}", ans);
 }
