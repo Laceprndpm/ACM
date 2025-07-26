@@ -1,11 +1,7 @@
-#include <algorithm>
-#include <array>
+#include <bits/stdc++.h>
+
 #include <cassert>
-#include <cstdint>
-#include <exception>
-#include <functional>
 #include <iostream>
-#include <queue>
 #include <vector>
 
 using namespace std;
@@ -81,6 +77,18 @@ void smart_print(std::ostream& os, const T& val, int indent = 0)
         os << val;  // 基础类型直接输出
     }
 }
+
+template <>
+void smart_print<vector<vector<int>>>(std::ostream& os, const vector<vector<int>>& val, int indent)
+{
+    cout << '\n';
+    for (int i = 0; i < sz(val); i++) {
+        for (int j = 0; j < sz(val); j++) {
+            cout << val[i][j] << ' ';
+        }
+        cout << '\n';
+    }
+}
 }  // namespace detail
 
 #define GREEN "\033[32m"
@@ -129,127 +137,62 @@ void print(Head&& head, Tail&&... tail)
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    // 最大的问题，即不同长度间，性价比无法比较
-    // abc
-    // abcaa
-    // 后者明显优于前者，而这又取决于其他字符串是否有aaa。。。
-    // 哦，长度最多为10,感觉lcm() = 2520 + 某种dp，a + b 对比 c + d
-    // 无穷背包？
-    //
-    // 贪心：
-    // 先按照顺序排序，选择最短的哪个，检查，直到字典序>的位置
-    // 此时，就获得了10个长度不同开头的，对于每个长度，都可以再来一次？把所有上面的字符串前缀加入后
-    // 或者也许精确地说，我们只需要每个长度中最小的？
-    //
-    vector<string> s_vec(n);
-    for (int i = 0; i < n; i++) {
-        cin >> s_vec[i];
-    }
-    sort(all(s_vec));
-    array<string, 11> candi({});
-    for (int i = 0; i < n; i++) {
-        if (candi[len(s_vec[i])].empty()) {
-            candi[len(s_vec[i])] = ' ' + s_vec[i];
-        }
-    }
-    for (int i = 1; i <= 10; i++) {
-        if (candi[i].empty()) {
-            continue;
-        }
-        for (int j = 1; j <= 10; j++) {
-            if (i == j) continue;
-            if (candi[j].empty()) continue;
-            for (int kk = 1; kk <= min(i, j); kk++) {
-                if (candi[i][kk] < candi[j][kk]) {  // 必须删掉劣的字符串哦。。。否则后面添加到pq时会错误初始化取不到的
-                    candi[j] = "";
-                    break;
-                } else if (candi[i][kk] > candi[j][kk]) {  // 如果这里已经大于了，那么也许无法简单判断两个字符串吧？
-                    break;
-                }
+    int n;
+    cin >> n;
+    vector<vector<int>> matrix(1, vector<int>(1));
+    int                 idx = 0;
+    matrix[0][0]            = n;
+    auto add_left_inplace   = [&](vector<vector<int>>& x) {
+        vector<vector<int>> new_matrix(sz(x) + 1, vector<int>(sz(x) + 1));
+        for (int i = 0; i < sz(x); i++) {
+            for (int j = 0; j < sz(x); j++) {
+                new_matrix[i + 1][j + 1] = x[i][j];
             }
         }
-    }
+        idx++;
+        new_matrix[0][0] = 1;
 
-    struct item {
-        i64    cur_len;
-        string s;
-        int    used = 0;
-
-        int operator<(item& o)
-        {
-            if (cur_len == o.cur_len) return used < o.used;
-            return (cur_len > o.cur_len);  // 长的沉入
-        }
+        x         = new_matrix;
+        x[0][idx] = x[1][idx] / 2;
+        x[1][0]   = -2;
+        x[1][idx] %= 2;
     };
+    auto add_right_inplace = [&](vector<vector<int>>& x) -> void {
+        vector<vector<int>> new_matrix(sz(x) + 2, vector<int>(sz(x) + 2));
+        for (int i = 0; i < sz(x); i++) {
+            for (int j = 0; j < sz(x); j++) {
+                new_matrix[i][j] = x[i][j];
+            }
+        }
+        x = new_matrix;
+        assert(x[1][0] == -2);
+        x[1][0] = 0;
+        int row = sz(x);
 
-    vector<char>                               min_c(2e6, INT8_MAX);
-    priority_queue<item, vector<item>, less<>> pq;
-    for (int i = 1; i <= 10; i++) {
-        if (candi[i].empty()) continue;
-        for (int j = 1; j <= i; j++) {
-            min_c[j] = min(min_c[j], candi[i][j]);
-        }
-        string new_string = string(10 - i, ' ') + candi[i];
-        assert(new_string.size() == 11);
+        x[row - 1][row - 1] = 1;
+        x[row - 2][row - 2] = 1;
+        x[row - 1][0]       = 1;
+        x[row - 2][0]       = 1;
+        assert(x[1][row - 2] == 0);
+        assert(x[1][row - 1] == 0);
 
-        pq.push({i, new_string, 1});
+        x[1][row - 2] = 1;
+        x[1][row - 1] = 1;
+    };
+    while (matrix[0][idx] > 1) {
+        add_left_inplace(matrix);
+        dbg(matrix);
+        add_right_inplace(matrix);
+        dbg(matrix);
     }
-    int ans;
-
-    vector<int> vis(2e6, 0);  // 必须，否则复杂度可能错误
-    while (true) {
-        item cur = pq.top();
-        pq.pop();
-        const string& s       = cur.s;  // len == 11，可以访问[1, 10]
-        int           cur_len = cur.cur_len;
-        bool          flag    = 1;
-        for (int i = 0; i < 10; i++) {  // 倒序10个，因为每次最多更新10个吧
-            if (cur_len - i <= 0) break;
-            if (s[10 - i] > min_c[cur_len - i]) {
-                flag = 0;
-            }
+    cout << sz(matrix) << '\n';
+    for (int i = 0; i < sz(matrix); i++) {
+        for (int j = 0; j < sz(matrix); j++) {
+            cout << matrix[i][j] << ' ';
         }
-        if (!flag) continue;
-        if (vis[cur_len]) continue;
-        vis[cur_len] = 1;
-        if (cur.used == k) {
-            ans = cur.cur_len;
-            break;
-        }
-        for (int i = 1; i <= 10; i++) {
-            if (candi[i].empty()) continue;
-            int update = 1;
-            for (int j = 1; j <= i; j++) {
-                if (min_c[cur_len + j] > candi[i][j]) {  // 肯定行！
-                    min_c[cur_len + j] = candi[i][j];
-                    update             = 1;
-                    break;
-                } else if (min_c[cur_len + j] < candi[i][j]) {  // 如果。。。肯定不行
-                    update = 0;
-                    break;
-                }
-            }
-            if (update) {  // 更新一下
-                for (int j = 1; j <= i; j++) {
-                    if (min_c[cur_len + j] > candi[i][j]) {
-                        min_c[cur_len + j] = candi[i][j];
-                    }
-                }
-            }
-            if (update) {  // 同时放堆里面去
-                string new_string =
-                    string(s.begin() + i, s.begin() + 11) + string(candi[i].begin() + 1, candi[i].end());
-                assert(new_string.size() == 11);
-                pq.push({cur_len + i, new_string, cur.used + 1});
-            }
-        }
+        cout << '\n';
     }
-    for (int i = 1; i <= ans; i++) {
-        cout << min_c[i];
-    }
-    cout << '\n';
+    dbg(sz(matrix));
 }
 
 signed main(signed argc, char** argv)
@@ -263,11 +206,7 @@ signed main(signed argc, char** argv)
 #endif
     int t = 1;
     while (t--) {
-        try {
-            solve();
-        } catch (...) {
-            cout << -1 << '\n';
-        }
+        solve();
     }
     return 0;
 }

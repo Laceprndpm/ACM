@@ -9,7 +9,7 @@ const std::vector<std::string> process_paths = {"/home/patchouli/Code/ACM/hackro
 const fs::path                 gene_path     = "/home/patchouli/Code/ACM/hackroom/gene.cpp";
 constexpr int                  num_processes = 2;
 
-constexpr std::string timelimit = "2s";
+constexpr std::string timelimit = "4s";
 
 std::optional<std::string> compile_program(const fs::path &output_path, const fs::path &source_path,
                                            const std::string &flags = "")
@@ -111,7 +111,7 @@ int main()
     std::vector<std::thread> threads;
     for (int i = 0; i < num_threads; ++i) {
         threads.emplace_back(helperFunction, i,
-                             100);  // 假设你仍然想要运行1000次
+                             10000);  // 假设你仍然想要运行1000次
         // 第一次运行需要由time(0)初始化，之后则可以注释掉
         // std::this_thread::sleep_for(std::chrono::seconds(1));
     }

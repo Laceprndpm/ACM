@@ -1,8 +1,9 @@
+#include <bits/stdc++.h>
+
+#include <cassert>
 #include <iostream>
 #include <vector>
 
-#pragma GCC optimize("Ofast,unroll-loops")
-#pragma GCC target("avx2,popcnt")
 using namespace std;
 using ll   = long long;
 using u8   = uint8_t;
@@ -57,7 +58,7 @@ struct is_iterable<T, std::void_t<decltype(std::declval<T>().begin())>> : std::t
 
 // 递归打印
 template <class T>
-void smart_print(std::ostream& os, const T& val, int indent = 0)
+void smart_print(std::ostream &os, const T &val, int indent = 0)
 {
     if constexpr (is_iterable<T>::value && !std::is_same_v<T, std::string>) {
         if (indent == 0) {
@@ -88,7 +89,7 @@ void flush()
 }
 
 template <class T>
-void dbg_wt(const T& val)
+void dbg_wt(const T &val)
 {
     std::cerr << RED;
     detail::smart_print(std::cerr, val);
@@ -101,7 +102,7 @@ void print()
 }
 
 template <class Head, class... Tail>
-void print(Head&& head, Tail&&... tail)
+void print(Head &&head, Tail &&...tail)
 {
     dbg_wt(head);
     if (sizeof...(Tail)) dbg_wt(' ');
@@ -121,8 +122,201 @@ void print(Head&& head, Tail&&... tail)
 #else
 #define dbg(...)
 #endif
+constexpr i64 P   = 1e9 + 7;
+constexpr i64 MOD = 1e9 + 7;
 
-signed main(signed argc, char** argv)
+// assume -P <= x < 2P
+int jianglynorm(int x)
+{
+    if (x < 0) {
+        x += MOD;
+    }
+    if (x >= MOD) {
+        x -= MOD;
+    }
+    return x;
+}
+
+template <class T>
+T power(T a, i64 b)
+{
+    T res = 1;
+    for (; b; b /= 2, a *= a) {
+        if (b % 2) {
+            res *= a;
+        }
+    }
+    return res;
+}
+
+struct Z {
+    int x;
+
+    Z(int x = 0) : x(jianglynorm(x)) {}
+
+    Z(i64 x) : x(jianglynorm(x % MOD)) {}
+
+    int val() const
+    {
+        return x;
+    }
+
+    Z operator-() const
+    {
+        return Z(jianglynorm(MOD - x));
+    }
+
+    Z inv() const
+    {
+        assert(x != 0);
+        return power(*this, MOD - 2);
+    }
+
+    Z &operator*=(const Z &rhs)
+    {
+        x = i64(x) * rhs.x % MOD;
+        return *this;
+    }
+
+    Z &operator+=(const Z &rhs)
+    {
+        x = jianglynorm(x + rhs.x);
+        return *this;
+    }
+
+    Z &operator-=(const Z &rhs)
+    {
+        x = jianglynorm(x - rhs.x);
+        return *this;
+    }
+
+    Z &operator/=(const Z &rhs)
+    {
+        return *this *= rhs.inv();
+    }
+
+    friend Z operator*(const Z &lhs, const Z &rhs)
+    {
+        Z res = lhs;
+        res *= rhs;
+        return res;
+    }
+
+    friend Z operator+(const Z &lhs, const Z &rhs)
+    {
+        Z res = lhs;
+        res += rhs;
+        return res;
+    }
+
+    friend Z operator-(const Z &lhs, const Z &rhs)
+    {
+        Z res = lhs;
+        res -= rhs;
+        return res;
+    }
+
+    friend Z operator/(const Z &lhs, const Z &rhs)
+    {
+        Z res = lhs;
+        res /= rhs;
+        return res;
+    }
+
+    friend std::istream &operator>>(std::istream &is, Z &a)
+    {
+        i64 v;
+        is >> v;
+        a = Z(v);
+        return is;
+    }
+
+    friend std::ostream &operator<<(std::ostream &os, const Z &a)
+    {
+        return os << a.val();
+    }
+};
+
+struct Comb {
+    int            n;
+    std::vector<Z> _fac;
+    std::vector<Z> _invfac;
+    std::vector<Z> _inv;
+
+    Comb() : n{0}, _fac{1}, _invfac{1}, _inv{0} {}
+
+    Comb(int n) : Comb()
+    {
+        init(n);
+    }
+
+    void init(int m)
+    {
+        if (m <= n) return;
+        _fac.resize(m + 1);
+        _invfac.resize(m + 1);
+        _inv.resize(m + 1);
+
+        for (int i = n + 1; i <= m; i++) {
+            _fac[i] = _fac[i - 1] * i;
+        }
+        _invfac[m] = _fac[m].inv();
+        for (int i = m; i > n; i--) {
+            _invfac[i - 1] = _invfac[i] * i;
+            _inv[i]        = _invfac[i] * _fac[i - 1];
+        }
+        n = m;
+    }
+
+    Z fac(int m)
+    {
+        if (m > n) init(2 * m);
+        return _fac[m];
+    }
+
+    Z invfac(int m)
+    {
+        if (m > n) init(2 * m);
+        return _invfac[m];
+    }
+
+    Z inv(int m)
+    {
+        if (m > n) init(2 * m);
+        return _inv[m];
+    }
+
+    Z binom(int n, int m)
+    {
+        if (n < m || m < 0) return 0;
+        return fac(n) * invfac(m) * invfac(n - m);
+    }
+} comb(1e7 + 5);
+
+void solve()
+{
+    i64 n, m, c, d;
+    cin >> n >> m >> c >> d;
+    Z   a      = Z(c) / Z(c + d);  // 折射
+    Z   b      = Z(d) / Z(c + d);  // 反射
+    Z   ans    = 0;
+    Z   cur_b  = 1;
+    Z   b2     = b * b;
+    Z   a2_inv = power(a * a, MOD - 2);
+    i64 j      = n + m + 1;
+    Z   cur_a  = power(a, j);
+    for (int i = 2; (i / 2 <= min(n + 1, m)); i += 2) {  // i为反射次数
+        cur_a *= a2_inv;
+        cur_b *= b2;
+        ans += ((i == n + m + 1) ? 1 : cur_a) * cur_b * comb.binom(n + 1, i / 2) * comb.binom(m - 1, i / 2 - 1);
+    }
+    if (m == 0) {  // 除了m == 0， 还有i其他特判吗？？至少要反射两次，才可能到m!=0的地方吧？
+        ans += power(a, n + 1);
+    }
+    cout << ans << '\n';
+}
+
+signed main(signed argc, char **argv)
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
@@ -131,8 +325,11 @@ signed main(signed argc, char** argv)
     freopen(argv[1], "r", stdin);
     freopen(argv[2], "w", stdout);
 #endif
-    vector<int> arr = {0, 0};
-    dbg(arr);
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
     return 0;
 }
 

@@ -1,11 +1,9 @@
 #include <algorithm>
-#include <array>
-#include <cassert>
-#include <cstdint>
-#include <exception>
-#include <functional>
+#include <ctime>
 #include <iostream>
-#include <queue>
+#include <random>
+#include <set>
+#include <utility>
 #include <vector>
 
 using namespace std;
@@ -127,129 +125,47 @@ void print(Head&& head, Tail&&... tail)
 #define dbg(...)
 #endif
 
+mt19937 rng(time(0));
+
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    // 最大的问题，即不同长度间，性价比无法比较
-    // abc
-    // abcaa
-    // 后者明显优于前者，而这又取决于其他字符串是否有aaa。。。
-    // 哦，长度最多为10,感觉lcm() = 2520 + 某种dp，a + b 对比 c + d
-    // 无穷背包？
-    //
-    // 贪心：
-    // 先按照顺序排序，选择最短的哪个，检查，直到字典序>的位置
-    // 此时，就获得了10个长度不同开头的，对于每个长度，都可以再来一次？把所有上面的字符串前缀加入后
-    // 或者也许精确地说，我们只需要每个长度中最小的？
-    //
-    vector<string> s_vec(n);
+    int n;
+    cin >> n;
+    vector<pair<int, int>> input(n);
+    vector<int>            all_points_sorted;
+    vector<u64>            hash1(n * 2 + 2);
+    vector<u64>            hash2(n * 2 + 2);
     for (int i = 0; i < n; i++) {
-        cin >> s_vec[i];
+        int l, r;
+        cin >> l >> r;
+        r++;
+        input[i] = {l, r};
+        all_points_sorted.pb(l), all_points_sorted.pb(r);
     }
-    sort(all(s_vec));
-    array<string, 11> candi({});
+    sort(all(all_points_sorted));
+    all_points_sorted.erase(unique(all(all_points_sorted)), all_points_sorted.end());
     for (int i = 0; i < n; i++) {
-        if (candi[len(s_vec[i])].empty()) {
-            candi[len(s_vec[i])] = ' ' + s_vec[i];
-        }
+        auto [l, r] = input[i];
+        int nl      = lower_bound(all(all_points_sorted), l) - bg(all_points_sorted);
+        int nr      = lower_bound(all(all_points_sorted), r) - bg(all_points_sorted);
+        u64 has1 = rng(), has2 = rng();
+        hash1[nl] ^= has1;
+        hash1[nr] ^= has1;
+        hash2[nl] ^= has2;
+        hash2[nr] ^= has2;
     }
-    for (int i = 1; i <= 10; i++) {
-        if (candi[i].empty()) {
-            continue;
-        }
-        for (int j = 1; j <= 10; j++) {
-            if (i == j) continue;
-            if (candi[j].empty()) continue;
-            for (int kk = 1; kk <= min(i, j); kk++) {
-                if (candi[i][kk] < candi[j][kk]) {  // 必须删掉劣的字符串哦。。。否则后面添加到pq时会错误初始化取不到的
-                    candi[j] = "";
-                    break;
-                } else if (candi[i][kk] > candi[j][kk]) {  // 如果这里已经大于了，那么也许无法简单判断两个字符串吧？
-                    break;
-                }
-            }
-        }
+    vector<u64>         prefix_hash1(n * 2 + 3);
+    vector<u64>         prefix_hash2(n * 2 + 3);
+    set<pair<u64, u64>> hash_set;
+    for (int i = 0; i < 2 * n + 2; i++) {
+        prefix_hash1[i + 1] = prefix_hash1[i];
+        prefix_hash1[i + 1] ^= hash1[i];
+        prefix_hash2[i + 1] = prefix_hash2[i];
+        prefix_hash2[i + 1] ^= hash2[i];
+        hash_set.insert({prefix_hash1[i + 1], prefix_hash2[i + 1]});
     }
-
-    struct item {
-        i64    cur_len;
-        string s;
-        int    used = 0;
-
-        int operator<(item& o)
-        {
-            if (cur_len == o.cur_len) return used < o.used;
-            return (cur_len > o.cur_len);  // 长的沉入
-        }
-    };
-
-    vector<char>                               min_c(2e6, INT8_MAX);
-    priority_queue<item, vector<item>, less<>> pq;
-    for (int i = 1; i <= 10; i++) {
-        if (candi[i].empty()) continue;
-        for (int j = 1; j <= i; j++) {
-            min_c[j] = min(min_c[j], candi[i][j]);
-        }
-        string new_string = string(10 - i, ' ') + candi[i];
-        assert(new_string.size() == 11);
-
-        pq.push({i, new_string, 1});
-    }
-    int ans;
-
-    vector<int> vis(2e6, 0);  // 必须，否则复杂度可能错误
-    while (true) {
-        item cur = pq.top();
-        pq.pop();
-        const string& s       = cur.s;  // len == 11，可以访问[1, 10]
-        int           cur_len = cur.cur_len;
-        bool          flag    = 1;
-        for (int i = 0; i < 10; i++) {  // 倒序10个，因为每次最多更新10个吧
-            if (cur_len - i <= 0) break;
-            if (s[10 - i] > min_c[cur_len - i]) {
-                flag = 0;
-            }
-        }
-        if (!flag) continue;
-        if (vis[cur_len]) continue;
-        vis[cur_len] = 1;
-        if (cur.used == k) {
-            ans = cur.cur_len;
-            break;
-        }
-        for (int i = 1; i <= 10; i++) {
-            if (candi[i].empty()) continue;
-            int update = 1;
-            for (int j = 1; j <= i; j++) {
-                if (min_c[cur_len + j] > candi[i][j]) {  // 肯定行！
-                    min_c[cur_len + j] = candi[i][j];
-                    update             = 1;
-                    break;
-                } else if (min_c[cur_len + j] < candi[i][j]) {  // 如果。。。肯定不行
-                    update = 0;
-                    break;
-                }
-            }
-            if (update) {  // 更新一下
-                for (int j = 1; j <= i; j++) {
-                    if (min_c[cur_len + j] > candi[i][j]) {
-                        min_c[cur_len + j] = candi[i][j];
-                    }
-                }
-            }
-            if (update) {  // 同时放堆里面去
-                string new_string =
-                    string(s.begin() + i, s.begin() + 11) + string(candi[i].begin() + 1, candi[i].end());
-                assert(new_string.size() == 11);
-                pq.push({cur_len + i, new_string, cur.used + 1});
-            }
-        }
-    }
-    for (int i = 1; i <= ans; i++) {
-        cout << min_c[i];
-    }
-    cout << '\n';
+    hash_set.insert({0, 0});
+    cout << hash_set.size() << '\n';
 }
 
 signed main(signed argc, char** argv)
@@ -261,13 +177,10 @@ signed main(signed argc, char** argv)
     freopen(argv[1], "r", stdin);
     freopen(argv[2], "w", stdout);
 #endif
-    int t = 1;
+    int t;
+    cin >> t;
     while (t--) {
-        try {
-            solve();
-        } catch (...) {
-            cout << -1 << '\n';
-        }
+        solve();
     }
     return 0;
 }

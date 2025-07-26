@@ -1,11 +1,7 @@
-#include <algorithm>
-#include <array>
-#include <cassert>
-#include <cstdint>
-#include <exception>
-#include <functional>
 #include <iostream>
-#include <queue>
+#include <map>
+#include <numeric>
+#include <utility>
 #include <vector>
 
 using namespace std;
@@ -126,130 +122,144 @@ void print(Head&& head, Tail&&... tail)
 #else
 #define dbg(...)
 #endif
+/**
+ * @brief 并查集
+ * 0-index
+ */
+struct DSU {
+    int              component;
+    std::vector<int> f, siz;
+
+    DSU() {}
+
+    DSU(int n) : component(n)
+    {
+        init(n);
+    }
+
+    void init(int n)
+    {
+        f.resize(n);
+        std::iota(f.begin(), f.end(), 0);
+        siz.assign(n, 1);
+    }
+
+    int find(int x)
+    {
+        while (x != f[x]) {
+            x = f[x] = f[f[x]];
+        }
+        return x;
+    }
+
+    bool same(int x, int y)
+    {
+        return find(x) == find(y);
+    }
+
+    bool merge(int x, int y)
+    {
+        x = find(x);
+        y = find(y);
+        if (x == y) {
+            return false;
+        }
+        siz[x] += siz[y];
+        f[y] = x;
+        component--;
+        return true;
+    }
+
+    int size(int x)
+    {
+        return siz[find(x)];
+    }
+
+    std::vector<std::vector<int>> getGroups(void)
+    {
+        std::vector<std::vector<int>>   res;
+        std::map<int, std::vector<int>> groups;
+        for (int i = 0; i < f.size(); i++) {
+            groups[find(i)].emplace_back(i);
+        }
+        res.reserve(groups.size());
+        for (auto& [_, group] : groups) {
+            res.emplace_back(std::move(group));
+        }
+        return res;
+    }
+};
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    // 最大的问题，即不同长度间，性价比无法比较
-    // abc
-    // abcaa
-    // 后者明显优于前者，而这又取决于其他字符串是否有aaa。。。
-    // 哦，长度最多为10,感觉lcm() = 2520 + 某种dp，a + b 对比 c + d
-    // 无穷背包？
-    //
-    // 贪心：
-    // 先按照顺序排序，选择最短的哪个，检查，直到字典序>的位置
-    // 此时，就获得了10个长度不同开头的，对于每个长度，都可以再来一次？把所有上面的字符串前缀加入后
-    // 或者也许精确地说，我们只需要每个长度中最小的？
-    //
-    vector<string> s_vec(n);
-    for (int i = 0; i < n; i++) {
-        cin >> s_vec[i];
-    }
-    sort(all(s_vec));
-    array<string, 11> candi({});
-    for (int i = 0; i < n; i++) {
-        if (candi[len(s_vec[i])].empty()) {
-            candi[len(s_vec[i])] = ' ' + s_vec[i];
-        }
-    }
-    for (int i = 1; i <= 10; i++) {
-        if (candi[i].empty()) {
-            continue;
-        }
-        for (int j = 1; j <= 10; j++) {
-            if (i == j) continue;
-            if (candi[j].empty()) continue;
-            for (int kk = 1; kk <= min(i, j); kk++) {
-                if (candi[i][kk] < candi[j][kk]) {  // 必须删掉劣的字符串哦。。。否则后面添加到pq时会错误初始化取不到的
-                    candi[j] = "";
-                    break;
-                } else if (candi[i][kk] > candi[j][kk]) {  // 如果这里已经大于了，那么也许无法简单判断两个字符串吧？
-                    break;
-                }
-            }
-        }
-    }
-
-    struct item {
-        i64    cur_len;
+    int n, m, k;
+    cin >> n >> m >> k;
+    vector<string> board(n + 2);
+    for (int i = 1; i <= n; i++) {
         string s;
-        int    used = 0;
+        cin >> s;
+        s        = ' ' + s + '1';
+        board[i] = std::move(s);
+    }
+    board[0] = board[n + 1] = string(m + 2, '1');
+    DSU  dsu((n + 1) * (m + 1));
+    auto zip = [&](int x, int y) {
+        return x * (m + 1) + y;
+    };
+    auto unzip = [&](int c) -> pair<int, int> {
+        int x = c / (m + 1), y = c % (m + 1);
+        return {x, y};
+    };
+    int  end_zip   = zip(1, m);
+    auto try_merge = [&](pair<int, int> a, pair<int, int> b) {
+        if (board[a.fi][a.se] == '1' || board[b.fi][b.se] == '1') return;  // 如果都是'1'，则没有合并必要
 
-        int operator<(item& o)
-        {
-            if (cur_len == o.cur_len) return used < o.used;
-            return (cur_len > o.cur_len);  // 长的沉入
+        if (dsu.find(zip(b.fi, b.se)) == end_zip) {  // 让根在前面
+            swap(a, b);
+            dsu.merge(zip(a.fi, a.se), zip(b.fi, b.se));
+            return;
         }
+        if (dsu.find(zip(a.fi, a.se)) == end_zip) {
+            dsu.merge(zip(a.fi, a.se), zip(b.fi, b.se));
+            return;
+        }
+
+        if (a.se < b.se) {
+            swap(a, b);
+        }
+
+        int aa = zip(a.fi, a.se);
+        int bb = zip(b.fi, b.se);
+        dsu.merge(aa, bb);
     };
 
-    vector<char>                               min_c(2e6, INT8_MAX);
-    priority_queue<item, vector<item>, less<>> pq;
-    for (int i = 1; i <= 10; i++) {
-        if (candi[i].empty()) continue;
-        for (int j = 1; j <= i; j++) {
-            min_c[j] = min(min_c[j], candi[i][j]);
-        }
-        string new_string = string(10 - i, ' ') + candi[i];
-        assert(new_string.size() == 11);
-
-        pq.push({i, new_string, 1});
+    for (int i = 1; i <= n; i++) {
+        try_merge({i, m}, {i + 1, m});
     }
-    int ans;
+    bool flag = 0;
+    for (int j = m - 1; j >= 1; j--) {
 
-    vector<int> vis(2e6, 0);  // 必须，否则复杂度可能错误
-    while (true) {
-        item cur = pq.top();
-        pq.pop();
-        const string& s       = cur.s;  // len == 11，可以访问[1, 10]
-        int           cur_len = cur.cur_len;
-        bool          flag    = 1;
-        for (int i = 0; i < 10; i++) {  // 倒序10个，因为每次最多更新10个吧
-            if (cur_len - i <= 0) break;
-            if (s[10 - i] > min_c[cur_len - i]) {
-                flag = 0;
-            }
+        for (int i = 1; i <= n; i++) {
+            try_merge({i, j}, {i + 1, j});
+            try_merge({i, j}, {i, j + 1});
         }
-        if (!flag) continue;
-        if (vis[cur_len]) continue;
-        vis[cur_len] = 1;
-        if (cur.used == k) {
-            ans = cur.cur_len;
-            break;
-        }
-        for (int i = 1; i <= 10; i++) {
-            if (candi[i].empty()) continue;
-            int update = 1;
-            for (int j = 1; j <= i; j++) {
-                if (min_c[cur_len + j] > candi[i][j]) {  // 肯定行！
-                    min_c[cur_len + j] = candi[i][j];
-                    update             = 1;
-                    break;
-                } else if (min_c[cur_len + j] < candi[i][j]) {  // 如果。。。肯定不行
-                    update = 0;
-                    break;
+        if (j + k <= m) {
+            for (int i = 1; i <= n; i++) {
+                int c    = zip(i, j);
+                int head = dsu.find(c);
+                if (head == end_zip) continue;
+                auto [hx, hy] = unzip(head);
+                if (hy - j >= k - 1) {
+                    flag = 1;
                 }
             }
-            if (update) {  // 更新一下
-                for (int j = 1; j <= i; j++) {
-                    if (min_c[cur_len + j] > candi[i][j]) {
-                        min_c[cur_len + j] = candi[i][j];
-                    }
-                }
-            }
-            if (update) {  // 同时放堆里面去
-                string new_string =
-                    string(s.begin() + i, s.begin() + 11) + string(candi[i].begin() + 1, candi[i].end());
-                assert(new_string.size() == 11);
-                pq.push({cur_len + i, new_string, cur.used + 1});
-            }
         }
     }
-    for (int i = 1; i <= ans; i++) {
-        cout << min_c[i];
+    if (flag) {
+        cout << "Yes\n";
+    } else {
+        cout << "No\n";
     }
-    cout << '\n';
 }
 
 signed main(signed argc, char** argv)
@@ -261,13 +271,10 @@ signed main(signed argc, char** argv)
     freopen(argv[1], "r", stdin);
     freopen(argv[2], "w", stdout);
 #endif
-    int t = 1;
+    int t;
+    cin >> t;
     while (t--) {
-        try {
-            solve();
-        } catch (...) {
-            cout << -1 << '\n';
-        }
+        solve();
     }
     return 0;
 }

@@ -1,8 +1,10 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 
-#pragma GCC optimize("Ofast,unroll-loops")
-#pragma GCC target("avx2,popcnt")
+#include <algorithm>
+#include <array>
+#include <iostream>
+#include <numeric>
+#include <vector>
 using namespace std;
 using ll   = long long;
 using u8   = uint8_t;
@@ -122,17 +124,55 @@ void print(Head&& head, Tail&&... tail)
 #define dbg(...)
 #endif
 
+void solve()
+{
+    array<i64, 13> ai;
+    for (int i = 0; i < 13; i++) {
+        cin >> ai[i];
+    }
+    const i64 A     = accumulate(all(ai), 0ll);
+    auto      check = [&](i64 x) -> bool {
+        i64 up_bound  = 0;
+        i64 low_bound = 0;
+        for (int i = 0; i < 13; i++) {
+            i64 low  = max((ai[i] - A + 3ll * x + 1) / 2, 0ll);
+            i64 high = ai[i] / 3;
+            low_bound += low;
+            up_bound += high;
+            if (high < low) {
+                return 0;
+            }
+        }
+        if (low_bound > x) return 0;
+        if (up_bound < x) return 0;
+        return 1;
+    };
+    i64 lo = 0, hi = A / 4;
+    i64 ans = 0;
+    while (lo <= hi) {
+        i64 mid = (lo + hi) / 2;
+        if (check(mid)) {
+            ans = mid;
+            lo  = mid + 1;
+        } else {
+            hi = mid - 1;
+        }
+    }
+    cout << ans << '\n';
+}
+
 signed main(signed argc, char** argv)
 {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
+
 #ifdef BATCH
     freopen(argv[1], "r", stdin);
     freopen(argv[2], "w", stdout);
 #endif
-    vector<int> arr = {0, 0};
-    dbg(arr);
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
     return 0;
 }
 

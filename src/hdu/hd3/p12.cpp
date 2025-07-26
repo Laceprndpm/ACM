@@ -1,8 +1,11 @@
+#include <bits/stdc++.h>
+
+#include <algorithm>
+#include <cassert>
 #include <iostream>
+#include <utility>
 #include <vector>
 
-#pragma GCC optimize("Ofast,unroll-loops")
-#pragma GCC target("avx2,popcnt")
 using namespace std;
 using ll   = long long;
 using u8   = uint8_t;
@@ -121,6 +124,86 @@ void print(Head&& head, Tail&&... tail)
 #else
 #define dbg(...)
 #endif
+constexpr i64 MOD = 1e9 + 7;
+
+i64 qpow(i64 n, i64 q, i64 mod = MOD)
+{
+    if (q == 0) {
+        return 1;
+    }
+    i64 ans = 1;
+    while (q > 0) {
+        if (q & 1) {
+            ans *= n;
+            ans %= mod;
+        }
+        n *= n;
+        n %= mod;
+        q >>= 1;
+    }
+    return ans;
+}
+
+void solve()
+{
+    auto to_Manhattan = [](pair<i64, i64> point) -> pair<i64, i64> {
+        i64 tx = (point.fi + point.se) / 2;
+        i64 ty = (point.fi - point.se) / 2;
+        return {tx, ty};
+    };
+
+    struct Point {
+        i64 x, y;
+        i64 ai;
+    };
+
+    int n;
+
+    cin >> n;
+    vector<Point> points(n);
+
+    for (int i = 0; i < n; i++) {
+        i64 l, r, ai;
+        cin >> l >> r >> ai;
+        l *= 2, r *= 2;
+        auto [x, y] = to_Manhattan({l, r});
+        points[i]   = {x, y, ai};
+    }
+    sort(all(points), [](Point a, Point b) {
+        return a.x < b.x;
+    });
+    vector<i64> prefix(n + 1);
+    for (int i = 0; i < n; i++) {
+        prefix[i + 1] = prefix[i];
+        prefix[i + 1] += points[i].x;
+        prefix[i + 1] %= MOD;
+    }
+    i64 ans_x = 0;
+    for (int i = 0; i < n; i++) {
+        i64 sum_x = prefix[n] - prefix[i + 1] - (n - i - 1) * points[i].x % MOD;
+        sum_x += i * points[i].x % MOD - prefix[i];
+        ans_x += sum_x * points[i].ai % MOD;
+        ans_x %= MOD;
+        ans_x += MOD;
+    }
+    sort(all(points), [](Point a, Point b) {
+        return a.y < b.y;
+    });
+    for (int i = 0; i < n; i++) {
+        prefix[i + 1] = prefix[i];
+        prefix[i + 1] += points[i].y;
+        prefix[i + 1] %= MOD;
+    }
+    for (int i = 0; i < n; i++) {
+        i64 sum_y = prefix[n] - prefix[i + 1] - (n - i - 1) * points[i].y % MOD;
+        sum_y += i * points[i].y % MOD - prefix[i];
+        ans_x += sum_y * points[i].ai % MOD;
+        ans_x %= MOD;
+        ans_x += MOD;
+    }
+    ans_x %= MOD;
+    cout << ans_x * 500000004ll % MOD << '\n';
+}
 
 signed main(signed argc, char** argv)
 {
@@ -131,8 +214,11 @@ signed main(signed argc, char** argv)
     freopen(argv[1], "r", stdin);
     freopen(argv[2], "w", stdout);
 #endif
-    vector<int> arr = {0, 0};
-    dbg(arr);
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
     return 0;
 }
 

@@ -1,4 +1,3 @@
-#include <iostream>
 
 namespace detail {
 
@@ -62,16 +61,16 @@ void print(Head&& head, Tail&&... tail)
     print(forward<Tail>(tail)...);
 }
 
-#if defined(LOCAL)
-#define SHOW(...)                                    SHOW_IMPL(__VA_ARGS__, SHOW6, SHOW5, SHOW4, SHOW3, SHOW2, SHOW1)(__VA_ARGS__)
-#define SHOW_IMPL(_1, _2, _3, _4, _5, _6, NAME, ...) NAME
-#define SHOW1(x)                                     print(#x, "=", (x)), flush()
-#define SHOW2(x, y)                                  print(#x, "=", (x), #y, "=", (y)), flush()
-#define SHOW3(x, y, z)                               print(#x, "=", (x), #y, "=", (y), #z, "=", (z)), flush()
-#define SHOW4(x, y, z, w)                            print(#x, "=", (x), #y, "=", (y), #z, "=", (z), #w, "=", (w)), flush()
-#define SHOW5(x, y, z, w, v)                         print(#x, "=", (x), #y, "=", (y), #z, "=", (z), #w, "=", (w), #v, "=", (v)), flush()
-#define SHOW6(x, y, z, w, v, u) \
+#if defined(DEBUG)
+#define dbg(...)                                    dbg_IMPL(__VA_ARGS__, dbg6, dbg5, dbg4, dbg3, dbg2, dbg1)(__VA_ARGS__)
+#define dbg_IMPL(_1, _2, _3, _4, _5, _6, NAME, ...) NAME
+#define dbg1(x)                                     print(#x, "=", (x)), flush()
+#define dbg2(x, y)                                  print(#x, "=", (x), #y, "=", (y)), flush()
+#define dbg3(x, y, z)                               print(#x, "=", (x), #y, "=", (y), #z, "=", (z)), flush()
+#define dbg4(x, y, z, w)                            print(#x, "=", (x), #y, "=", (y), #z, "=", (z), #w, "=", (w)), flush()
+#define dbg5(x, y, z, w, v)                         print(#x, "=", (x), #y, "=", (y), #z, "=", (z), #w, "=", (w), #v, "=", (v)), flush()
+#define dbg6(x, y, z, w, v, u) \
     print(#x, "=", (x), #y, "=", (y), #z, "=", (z), #w, "=", (w), #v, "=", (v), #u, "=", (u)), flush()
 #else
-#define SHOW(...)
+#define dbg(...)
 #endif

@@ -2,7 +2,6 @@
 #include <array>
 #include <cassert>
 #include <cstdint>
-#include <exception>
 #include <functional>
 #include <iostream>
 #include <queue>
@@ -220,22 +219,24 @@ void solve()
         }
         for (int i = 1; i <= 10; i++) {
             if (candi[i].empty()) continue;
-            int update = 1;
+            int update = 1;  // 默认更新
             for (int j = 1; j <= i; j++) {
-                if (min_c[cur_len + j] > candi[i][j]) {  // 肯定行！
+                if (min_c[cur_len + j] > candi[i][j]) {  // 强更新
                     min_c[cur_len + j] = candi[i][j];
-                    update             = 1;
+                    update             = 2;
                     break;
-                } else if (min_c[cur_len + j] < candi[i][j]) {  // 如果。。。肯定不行
+                } else if (min_c[cur_len + j] < candi[i][j]) {  // 无更新
                     update = 0;
                     break;
                 }
             }
-            if (update) {  // 更新一下
-                for (int j = 1; j <= i; j++) {
-                    if (min_c[cur_len + j] > candi[i][j]) {
-                        min_c[cur_len + j] = candi[i][j];
-                    }
+            if (update == 2) {  // 强更新
+                int j;
+                for (j = 1; j <= i; j++) {
+                    min_c[cur_len + j] = candi[i][j];
+                }
+                for (; j <= 10; j++) {
+                    min_c[cur_len + j] = 'z' + 1;
                 }
             }
             if (update) {  // 同时放堆里面去
@@ -263,11 +264,7 @@ signed main(signed argc, char** argv)
 #endif
     int t = 1;
     while (t--) {
-        try {
-            solve();
-        } catch (...) {
-            cout << -1 << '\n';
-        }
+        solve();
     }
     return 0;
 }
