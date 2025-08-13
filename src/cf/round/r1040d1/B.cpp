@@ -1,0 +1,273 @@
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+using ll   = long long;
+using u8   = uint8_t;
+using u16  = uint16_t;
+using u32  = uint32_t;
+using i64  = long long;
+using u64  = uint64_t;
+using i128 = __int128;
+using u128 = unsigned __int128;
+using f128 = __float128;
+
+// vectors
+#define sz(x)   int(size(x))
+#define bg(x)   begin(x)
+#define all(x)  bg(x), end(x)
+#define rall(x) rbegin(x), rend(x)
+#define sor(x)  sort(all(x))
+#define rsz     resize
+#define ins     insert
+#define pb      push_back
+#define eb      emplace_back
+#define ft      front()
+#define bk      back()
+#define mt      make_tuple
+#define fi      first
+#define se      second
+
+// https://trap.jp/post/1224/
+#define FOR1(a)                       for (i64 _ = 0; _ < i64(a); ++_)
+#define FOR2(i, a)                    for (i64 i = 0; i < i64(a); ++i)
+#define FOR3(i, a, b)                 for (i64 i = a; i < i64(b); ++i)
+#define FOR4(i, a, b, c)              for (i64 i = a; i < i64(b); i += (c))
+#define FOR1_R(a)                     for (i64 i = (a) - 1; i >= i64(0); --i)
+#define FOR2_R(i, a)                  for (i64 i = (a) - 1; i >= i64(0); --i)
+#define FOR3_R(i, a, b)               for (i64 i = (b) - 1; i >= i64(a); --i)
+#define overload4(a, b, c, d, e, ...) e
+#define overload3(a, b, c, d, ...)    d
+#define FOR(...)                      overload4(__VA_ARGS__, FOR4, FOR3, FOR2, FOR1)(__VA_ARGS__)
+#define FOR_R(...)                    overload3(__VA_ARGS__, FOR3_R, FOR2_R, FOR1_R)(__VA_ARGS__)
+
+constexpr int INF = 1e9;
+
+namespace detail {
+
+// 检测是否可迭代
+template <class T, class = void>
+struct is_iterable : std::false_type {};
+
+template <class T>
+struct is_iterable<T, std::void_t<decltype(std::declval<T>().begin())>> : std::true_type {};
+
+// 递归打印
+template <class T>
+void smart_print(std::ostream &os, const T &val, int indent = 0)
+{
+    if constexpr (is_iterable<T>::value && !std::is_same_v<T, std::string>) {
+        if (indent == 0) {
+            os << '\n';
+        }
+        using element_type   = typename T::value_type;
+        constexpr bool is_2d = is_iterable<element_type>::value;
+        os << (is_2d ? "[\n" : "[");
+        for (auto it = val.begin(); it != val.end();) {
+            if constexpr (is_2d) os << std::string(indent + 2, ' ');
+            smart_print(os, *it, indent + 2);
+            if (++it != val.end()) os << (is_2d ? ",\n" : ", ");
+        }
+        os << (is_2d ? "\n" + std::string(indent, ' ') : "") << "]";
+    } else {
+        os << val;  // 基础类型直接输出
+    }
+}
+}  // namespace detail
+
+#define GREEN "\033[32m"
+#define RED   "\033[31m"
+#define RESET "\033[0m"
+
+void flush()
+{
+    std::cerr.flush();
+}
+
+template <class T>
+void dbg_wt(const T &val)
+{
+    std::cerr << RED;
+    detail::smart_print(std::cerr, val);
+    std::cerr << RESET;
+}
+
+void print()
+{
+    dbg_wt('\n');
+}
+
+template <class Head, class... Tail>
+void print(Head &&head, Tail &&...tail)
+{
+    dbg_wt(head);
+    if (sizeof...(Tail)) dbg_wt(' ');
+    print(forward<Tail>(tail)...);
+}
+
+#if defined(DEBUG)
+#define dbg(...)                                    dbg_IMPL(__VA_ARGS__, dbg6, dbg5, dbg4, dbg3, dbg2, dbg1)(__VA_ARGS__)
+#define dbg_IMPL(_1, _2, _3, _4, _5, _6, NAME, ...) NAME
+#define dbg1(x)                                     print(#x, "=", (x)), flush()
+#define dbg2(x, y)                                  print(#x, "=", (x), #y, "=", (y)), flush()
+#define dbg3(x, y, z)                               print(#x, "=", (x), #y, "=", (y), #z, "=", (z)), flush()
+#define dbg4(x, y, z, w)                            print(#x, "=", (x), #y, "=", (y), #z, "=", (z), #w, "=", (w)), flush()
+#define dbg5(x, y, z, w, v)                         print(#x, "=", (x), #y, "=", (y), #z, "=", (z), #w, "=", (w), #v, "=", (v)), flush()
+#define dbg6(x, y, z, w, v, u) \
+    print(#x, "=", (x), #y, "=", (y), #z, "=", (z), #w, "=", (w), #v, "=", (v), #u, "=", (u)), flush()
+#else
+#define dbg(...)
+#endif
+
+template <typename T>
+struct Fenwick {
+    int            n;
+    std::vector<T> a;
+
+    Fenwick(int n_ = 0)
+    {
+        init(n_);
+    }
+
+    void init(int n_)
+    {
+        n = n_;
+        a.assign(n, T{0});
+    }
+
+    void add(int x, const T &v)
+    {
+        for (int i = x + 1; i <= n; i += i & -i) {
+            a[i - 1] = a[i - 1] + v;
+        }
+    }
+
+    T sum(int x)
+    {
+        T ans{};
+        for (int i = x; i > 0; i -= i & -i) {
+            ans = ans + a[i - 1];
+        }
+        return ans;
+    }
+
+    T rangeSum(int l, int r)
+    {
+        return sum(r) - sum(l);
+    }
+
+    int select(const T &k)
+    {
+        int x = 0;
+        T   cur{};
+        for (int i = 1 << std::__lg(n); i; i /= 2) {
+            if (x + i <= n && cur + a[x + i - 1] <= k) {
+                x += i;
+                cur = cur + a[x - 1];
+            }
+        }
+        return x;
+    }
+};
+
+template <class T>
+struct RangeFenwick {
+    int        n;
+    Fenwick<T> d1, d2;
+
+    RangeFenwick(int n_) : n(n_), d1(n_), d2(n_) {}
+
+    void add(i64 k, T v)
+    {
+        T v1 = k * v;
+        d1.add(k, v), d2.add(k, v1);
+        // 在diff的k位置+v
+    }
+
+    void add(i64 l, i64 r, T v)
+    {
+        add(l, v), add(r, -v);  // 将区间加差分为两个前缀加
+    }
+
+    T getsum(i64 x)
+    {
+        return x * d1.sum(x) - d2.sum(x);
+    }
+
+    T getsum(i64 l, i64 r)
+    {
+        return getsum(r) - getsum(l);
+    }
+};
+
+void solve()
+{
+    int n;
+    cin >> n;
+    // 明显的，和之前那题很像，
+    // 感性的:我们有一上一下的路径
+    // 难道说要dp吗？n**2啊，感觉怪怪的，怎么样dp可以达到n**2？哦，不一定只和前面一个相关，而是所有的
+    // 如果反转了，一定大于所有数（n除外）
+    // 区间dp吗？
+    // 我从小往大
+    // 如果反转该位，则他与之后所有的会组成逆序对
+    // 否则与前面所有组成逆序对，假如只考虑它的贡献，那么似乎确实只需要简单比较
+    // 1 2 | 4 3 -> 1 2 | 4 5
+    //
+    // 我考虑反转i位受什么影响？怎么设状态？
+    // 是否只有[>k的数有几个]，与当前的逆序对数？
+    // 假如我从前往后dp，假如该位是k,则开始考虑反转/不反转，反转则变成一个新数
+    // k，则对于[i][j] ->
+    //
+    // 当我到i位，我只关心前面>k的数的个数[k][0...i]
+    // 插入这个数后，对于[0..k - 1][0..i]应该转移到[0..k-1][1..i+1]，同时逆序数+i，代表大于他的数+1
+    // 对于[k+1..n][0..i]不变
+    //
+    // pending
+    // 假如我从小到大dp，记录位置，
+    //
+    // 傻逼，从大到小贪心秒了
+    //
+    Fenwick<i64> cnt(n + 2);
+    vector<int>  arr(n + 1);
+    vector<int>  pos(n + 1);
+    for (int i = 1; i <= n; i++) {
+        cin >> arr[i];
+        pos[arr[i]] = i;
+    }
+    int ans = 0;
+    for (int i = n; i >= 1; i--) {  // 从大到小
+        int pos_i    = pos[i];
+        int stay_val = cnt.rangeSum(0, pos_i);
+        int mirror   = cnt.rangeSum(pos_i, n + 1);
+        ans += min(stay_val, mirror);
+        cnt.add(pos_i, 1);
+    }
+    cout << ans << '\n';
+}
+
+signed main(signed argc, char **argv)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+#ifdef BATCH
+    freopen(argv[1], "r", stdin);
+    freopen(argv[2], "w", stdout);
+#endif
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}
+
+/* stuff you should look for
+ * int overflow, array bounds
+ * special cases (n=1?)
+ * do smth instead of nothing and stay organized
+ * WRITE STUFF DOWN
+ * DON'T GET STUCK ON ONE APPROACH
+ */

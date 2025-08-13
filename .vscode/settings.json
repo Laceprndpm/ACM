@@ -56,6 +56,6 @@
         // compelie_commands.json 文件的目录位置(相对于工作区，由于 CMake 生成的该文件默认在 build 文件夹中，故设置为 build)
         // "--compile-commands-dir=build"
         // 关闭背景索引
-        // "--background-index=false",
+        "--background-index=false",
     ],
 }

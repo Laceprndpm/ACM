@@ -1,6 +1,10 @@
+#include <bits/stdc++.h>
+
 #include <algorithm>
 #include <cassert>
+#include <deque>
 #include <iostream>
+#include <set>
 #include <utility>
 #include <vector>
 
@@ -79,7 +83,7 @@ void smart_print(std::ostream& os, const T& val, int indent = 0)
 }
 
 template <>
-void smart_print(std::ostream& os, const std::pair<int, int>& p, int indent)
+void smart_print(std::ostream& os, const std::pair<i64, i64>& p, int indent)
 {
     os << "(";
     smart_print(os, p.first, indent);  // 递归处理 first
@@ -134,21 +138,21 @@ void print(Head&& head, Tail&&... tail)
 #define dbg(...)
 #endif
 struct HLD {
-    int                            n;
-    std::vector<int>               siz, top, dep, parent, in, out, seq;
-    std::vector<std::vector<int>>  adj;
-    int                            cur;
-    vector<vector<pair<int, int>>> top_vec;
-    vector<int>                    ai;
+    int                           n;
+    std::vector<int>              siz, top, dep, parent, in, out, seq;
+    std::vector<std::vector<int>> adj;
+    int                           cur;
+    vector<set<pair<i64, i64>>>   top_vec;
+    vector<i64>                   ai;
 
     HLD() {}
 
-    HLD(int n)
+    HLD(int n, auto&& ai_)
     {
-        init(n);
+        init(n, std::forward<decltype(ai_)>(ai_));
     }
 
-    void init(int n)
+    void init(int n, auto&& ai_)
     {
         this->n = n;
         siz.resize(n);
@@ -163,6 +167,7 @@ struct HLD {
 
         //
         top_vec.resize(n);  // 按照depth递增
+        ai = ai_;
     }
 
     void addEdge(int u, int v)
@@ -213,7 +218,7 @@ struct HLD {
     void dfs3(int u)
     {
         if (ai[u] != 1) {
-            top_vec[top[u]].pb({dep[u], ai[u]});
+            top_vec[top[u]].insert({dep[u], ai[u]});
         }
         for (auto v : adj[u]) {
             dfs3(v);
@@ -225,147 +230,136 @@ struct HLD {
         int init_dep_u = dep[u];
         int init_dep_v = dep[v];
 
-        vector<pair<int, int>> left_arr;
-        vector<pair<int, int>> right_arr;
-        int                    cur_none1 = 0;
-        while (top[u] != top[v] && cur_none1 <= 25) {
+        vector<pair<i64, i64>> left_arr;
+        vector<pair<i64, i64>> right_arr;
+        while (top[u] != top[v] && sz(left_arr) + sz(right_arr) <= 12) {
             if (dep[top[u]] > dep[top[v]]) {
-                const auto& cur_top_vec = top_vec[top[u]];
-                int         off_set     = upper_bound(all(cur_top_vec), dep[u],
-                                                      [](int a, pair<int, int> b) {
-                                              return a < b.fi;  // 找到第一个a > b.fi，前面的留着，后面的滚了
-                                          })
-                              - bg(cur_top_vec);
-                cur_none1 += off_set;
-                left_arr.insert(left_arr.end(), bg(top_vec[top[u]]), bg(top_vec[top[u]]) + off_set);
+                const auto&            cur_top_vec = top_vec[top[u]];
+                auto                   ed_it       = cur_top_vec.upper_bound({dep[u], INF});
+                vector<pair<i64, i64>> tmp;  // 浅到深
+                for (auto it = bg(cur_top_vec); it != ed_it; it++) {
+                    tmp.pb(*it);
+                    if (sz(tmp) + sz(right_arr) + sz(left_arr) > 12) return 0;
+                }
+                reverse(all(tmp));
+                left_arr.insert(left_arr.end(), all(tmp));
                 u = parent[top[u]];
             } else {
-                const auto& cur_top_vec = top_vec[top[v]];
-                int         off_set     = upper_bound(all(cur_top_vec), dep[v],
-                                                      [](int a, pair<int, int> b) {
-                                              return a < b.fi;  // 找到第一个a > b.fi，前面的留着，后面的滚了
-                                          })
-                              - bg(cur_top_vec);
-                cur_none1 += off_set;
-                right_arr.insert(right_arr.end(), bg(top_vec[top[v]]), bg(top_vec[top[v]]) + off_set);
+                const auto&            cur_top_vec = top_vec[top[v]];
+                auto                   ed_it       = cur_top_vec.upper_bound({dep[v], INF});
+                vector<pair<i64, i64>> tmp;  // 浅到深
+                for (auto it = bg(cur_top_vec); it != ed_it; it++) {
+                    tmp.pb(*it);
+                    if (sz(tmp) + sz(right_arr) + sz(left_arr) > 12) return 0;
+                }
+                reverse(all(tmp));
+                right_arr.insert(right_arr.end(), all(tmp));
                 v = parent[top[v]];
             }
         }
-        if (cur_none1 > 25) {
+        if (sz(left_arr) + sz(right_arr) > 12) {
             return 0;
         }
         assert(top[u] == top[v]);
         if (dep[u] < dep[v]) {
-            const auto& cur_top_vec = top_vec[top[v]];
-            int         off_set_u   = lower_bound(all(cur_top_vec), dep[u],
-                                                  [](pair<int, int> a, int b) {
-                                            return a.fi < b;  // 找到第一个a >= b.fi
-                                        })
-                            - bg(cur_top_vec);
-            int off_set_v = upper_bound(all(cur_top_vec), dep[v],
-                                        [](int a, pair<int, int> b) {
-                                            return a < b.fi;  // 找到第一个a > b.fi
-                                        })
-                            - bg(cur_top_vec);
-            cur_none1 += off_set_v - off_set_u;
-            right_arr.insert(right_arr.end(), bg(cur_top_vec) + off_set_u, bg(cur_top_vec) + off_set_v);
+            const auto&            cur_top_vec = top_vec[top[v]];
+            auto                   bg_it       = cur_top_vec.lower_bound({dep[u], 0});
+            auto                   ed_it       = cur_top_vec.upper_bound({dep[v], INF});
+            vector<pair<i64, i64>> tmp;  // 浅到深
+            for (auto it = bg_it; it != ed_it; it++) {
+                tmp.pb(*it);
+                if (sz(tmp) + sz(right_arr) + sz(left_arr) > 12) return 0;
+            }
+            reverse(all(tmp));
+            right_arr.insert(right_arr.end(), all(tmp));
         } else {
-            // dep[u] > dep[v]
-            const auto& cur_top_vec = top_vec[top[v]];
-            int         off_set_u   = lower_bound(all(cur_top_vec), dep[u],
-                                                  [](pair<int, int> a, int b) {
-                                            return a.fi < b;  // 找到第一个a >= b.fi
-                                        })
-                            - bg(cur_top_vec);
-            int off_set_v = upper_bound(all(cur_top_vec), dep[v],
-                                        [](int a, pair<int, int> b) {
-                                            return a < b.fi;  // 找到第一个a > b.fi
-                                        })
-                            - bg(cur_top_vec);
-            cur_none1 += off_set_u - off_set_v;
-            left_arr.insert(left_arr.end(), bg(cur_top_vec) + off_set_v, bg(cur_top_vec) + off_set_u);
+            // dep[u] >= dep[v]
+            const auto&            cur_top_vec = top_vec[top[v]];
+            auto                   bg_it       = cur_top_vec.lower_bound({dep[v], 0});
+            auto                   ed_it       = cur_top_vec.upper_bound({dep[u], INF});
+            vector<pair<i64, i64>> tmp;  // 浅到深
+            for (auto it = bg_it; it != ed_it; it++) {
+                tmp.pb(*it);
+                if (sz(right_arr) + sz(left_arr) > 12) return 0;
+            }
+            reverse(all(tmp));
+            left_arr.insert(left_arr.end(), all(tmp));
         }
-        reverse(all(left_arr));
+        reverse(all(right_arr));
         // now the left_arr and right_arr is depth decress
         //
         //
-        int                    lca_depth = min(dep[u], dep[v]);
-        vector<pair<int, int>> todo_que;  // val_cnt
-        int                    cur_dep = init_dep_u + 1;
+        int                   lca_depth = min(dep[u], dep[v]);
+        deque<pair<i64, i64>> todo_que;  // val_cnt
+        int                   cur_dep = init_dep_u + 1;
         for (auto i : left_arr) {
-            todo_que.push_back({1, cur_dep - i.fi - 1});
+            if (cur_dep - i.fi - 1) todo_que.push_back({1, cur_dep - i.fi - 1});
             todo_que.push_back({i.se, 1});
             cur_dep = i.fi;
         }
         cur_dep = lca_depth - (cur_dep - lca_depth);
         for (auto i : right_arr) {
-            todo_que.push_back({1, i.fi - cur_dep - 1});
+            if (i.fi - cur_dep - 1) todo_que.push_back({1, i.fi - cur_dep - 1});
             todo_que.push_back({i.se, 1});
             cur_dep = i.fi;
         }
-        if (cur_dep != init_dep_v) {
-            todo_que.push_back({1, init_dep_v - cur_dep + 1});
-        }
+        if (init_dep_v - cur_dep) todo_que.push_back({1, init_dep_v - cur_dep});
         dbg(todo_que);
-        return 0;
+        constexpr u64 mask = 0x1fffffe;
+        u64           dp   = 0;
+        while (!todo_que.empty()) {
+            auto cur = todo_que.front();
+            todo_que.pop_front();
+            if (cur.se != 0) {
+                if (cur.fi <= 24) dp = (1ull << cur.fi) & mask;
+                if (cur.se - 1) todo_que.push_front({cur.fi, cur.se - 1});
+                break;
+            }
+        }
+        while (!todo_que.empty()) {
+            auto cur = todo_que.front();
+            todo_que.pop_front();
+            if (cur.se == 0) continue;
+            if (cur.fi > 24) {
+                dp = 0;
+                continue;
+            }
+            if (cur.fi == 1) {
+                for (int i = 0; i < min(cur.se, 24ll); i++) {
+                    dp |= dp << 1;  // 模拟加法和乘法
+                    dp &= mask;
+                }
+            } else {
+
+                i64 val    = cur.fi;
+                u64 new_dp = 0;
+
+                for (int i = 1; i <= 24; i++) {
+                    if (dp >> i & 1 && i * val <= 24) {
+                        new_dp |= 1ull << (i * val);  // 模拟乘法
+                    }
+                }
+                if (val <= 24) new_dp |= (dp << val) & mask;  // 模拟加法
+                dp = new_dp;
+            }
+        }
+        return dp >> 24 & 1;
     }
 
-    int dist(int u, int v)
+    void erase(int x, i64 val)
     {
-        return dep[u] + dep[v] - 2 * dep[lca(u, v)];
+        auto& vec = top_vec[top[x]];
+        // If you want to find the iterator with dep[x] as the first element:
+        auto it = vec.lower_bound({dep[x], val});
+        assert(it->fi == dep[x] && it->se == val);
+        vec.erase(it);
+        // Do something with 'it' if needed
     }
 
-    int jump(int u, int k)
+    void insert(int x, i64 val)
     {
-        if (dep[u] < k) {
-            return -1;
-        }
-
-        int d = dep[u] - k;
-
-        while (dep[top[u]] > d) {
-            u = parent[top[u]];
-        }
-
-        return seq[in[u] - dep[u] + d];
-    }
-
-    bool isAncester(int u, int v)
-    {
-        return in[u] <= in[v] && in[v] < out[u];
-    }
-
-    int rootedParent(int u, int v)
-    {
-        std::swap(u, v);
-        if (u == v) {
-            return u;
-        }
-        if (!isAncester(u, v)) {
-            return parent[u];
-        }
-        auto it = std::upper_bound(adj[u].begin(), adj[u].end(), v,
-                                   [&](int x, int y) {
-                                       return in[x] < in[y];
-                                   })
-                  - 1;
-        return *it;
-    }
-
-    int rootedSize(int u, int v)
-    {
-        if (u == v) {
-            return n;
-        }
-        if (!isAncester(v, u)) {
-            return siz[v];
-        }
-        return n - siz[rootedParent(u, v)];
-    }
-
-    int rootedLca(int a, int b, int c)
-    {
-        return lca(a, b) ^ lca(b, c) ^ lca(c, a);
+        auto& vec = top_vec[top[x]];
+        vec.insert({dep[x], val});
     }
 };
 
@@ -373,13 +367,11 @@ void solve()
 {
     int n, q;
     cin >> n >> q;
-    vector<int> ai(n + 1);
+    vector<i64> ai(n + 1);
     for (int i = 1; i <= n; i++) {
         cin >> ai[i];
     }
-    HLD hld(n + 1);
-
-    hld.ai = ai;
+    HLD hld(n + 1, std::move(ai));
 
     for (int i = 1; i <= n - 1; i++) {
         int u, v;
@@ -393,10 +385,23 @@ void solve()
         if (cmd == 1) {
             int l, r;
             cin >> l >> r;
-            hld.lca(l, r);
+            if (hld.lca(l, r)) {
+                cout << "1\n";
+            } else {
+                cout << "0\n";
+            }
         } else {
-            int x, d;
+            i64 x, d;
             cin >> x >> d;
+            i64 o_i = hld.ai[x];
+            if (o_i == d) continue;
+            if (o_i != 1) {
+                hld.erase(x, o_i);
+            }
+            if (d != 1) {
+                hld.insert(x, d);
+            }
+            hld.ai[x] = d;
         }
     }
 }

@@ -5,13 +5,13 @@ i64 mergesort(RandomIt first, RandomIt last, Compare cmp = Compare())
     const auto len = std::distance(first, last);
     if (len <= 1) return 0;
 
-    std::vector<T> buffer(len);
     auto           mid = first + len / 2;
     i64            ans = 0;
     // 递归排序左右两半
     ans += mergesort(first, mid, cmp);
     ans += mergesort(mid, last, cmp);
-
+    
+    std::vector<T> buffer(len);
     // 归并阶段
     auto it   = buffer.begin();
     auto left = first, right = mid;

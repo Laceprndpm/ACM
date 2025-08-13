@@ -33,7 +33,6 @@
 			"using f128 = __float128;",
 			"",
 			"// vectors",
-			"#define len(x)  int(x.size())",
 			"#define sz(x)   int(size(x))",
 			"#define bg(x)   begin(x)",
 			"#define all(x)  bg(x), end(x)",

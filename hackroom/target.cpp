@@ -1,11 +1,12 @@
+#include <bits/stdc++.h>
+
 #include <algorithm>
-#include <array>
 #include <cassert>
-#include <cstdint>
-#include <exception>
-#include <functional>
+#include <cmath>
 #include <iostream>
-#include <queue>
+#include <numeric>
+#include <ratio>
+#include <set>
 #include <vector>
 
 using namespace std;
@@ -20,7 +21,6 @@ using u128 = unsigned __int128;
 using f128 = __float128;
 
 // vectors
-#define len(x)  int(x.size())
 #define sz(x)   int(size(x))
 #define bg(x)   begin(x)
 #define all(x)  bg(x), end(x)
@@ -127,129 +127,90 @@ void print(Head&& head, Tail&&... tail)
 #define dbg(...)
 #endif
 
+int check(const vector<int>& arr, int l, int r)
+{
+    int diff = 0;
+    for (int i = l; i + 1 <= r; i++) {
+        diff = gcd(diff, arr[i] - arr[i + 1]);
+    }
+    return diff;
+}
+
+int work(const vector<int>& arr, int n)
+{
+    vector<int> prefix(n + 2);
+    vector<int> suffix(n + 2);
+    prefix[0]     = 0;
+    suffix[n + 1] = 0;
+    for (int i = 1; i <= n; i++) {
+        prefix[i] = gcd(prefix[i - 1], arr[i]);
+    }
+    prefix[n + 1] = prefix[n];
+    for (int i = n; i >= 1; i--) {
+        suffix[i] = gcd(suffix[i + 1], arr[i]);
+    }
+    suffix[0] = suffix[1];
+    vector<int> factors1;
+    for (int i = 1; i <= sqrtl(prefix[1] + 1); i++) {
+        if (prefix[1] % i == 0) {
+            factors1.pb(i);
+            factors1.pb(prefix[1] / i);
+        }
+    }
+    vector<int> factors;
+    for (int fa : factors1) {
+        if (suffix[n] % fa == 0) {
+            factors.pb(fa);
+        }
+    }
+    sort(all(factors));
+    factors.erase(unique(all(factors)), factors.end());
+    int l = n + 1, r = 0;
+    int ans = 1;
+    for (int re : factors) {
+        while (prefix[l] % re != 0) {
+            l--;
+        }
+        assert(l >= 0);
+        while (suffix[r] % re != 0) {
+            r++;
+        }
+        assert(r <= n + 1);
+        int res = check(arr, l + 1, r - 1);
+        ans     = max(ans, gcd(re, res));
+    }
+    int diff = 0;
+    for (int i = 1; i <= n; i++) {
+        ans = max(ans, gcd(suffix[i], diff));
+        if (i >= 2 && i <= n) diff = gcd(diff, arr[i - 1] - arr[i]);
+    }
+    diff = 0;
+    for (int i = n; i >= 1; i--) {
+        ans = max(ans, gcd(prefix[i], diff));
+        if (i + 1 <= n && i >= 1) diff = gcd(diff, arr[i + 1] - arr[i]);
+    }
+    return ans;
+}
+
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    // 最大的问题，即不同长度间，性价比无法比较
-    // abc
-    // abcaa
-    // 后者明显优于前者，而这又取决于其他字符串是否有aaa。。。
-    // 哦，长度最多为10,感觉lcm() = 2520 + 某种dp，a + b 对比 c + d
-    // 无穷背包？
-    //
-    // 贪心：
-    // 先按照顺序排序，选择最短的哪个，检查，直到字典序>的位置
-    // 此时，就获得了10个长度不同开头的，对于每个长度，都可以再来一次？把所有上面的字符串前缀加入后
-    // 或者也许精确地说，我们只需要每个长度中最小的？
-    //
-    vector<string> s_vec(n);
-    for (int i = 0; i < n; i++) {
-        cin >> s_vec[i];
+    int n;
+    cin >> n;
+    vector<int> arr(n + 1);
+    for (int i = 1; i <= n; i++) {
+        cin >> arr[i];
     }
-    sort(all(s_vec));
-    array<string, 11> candi({});
-    for (int i = 0; i < n; i++) {
-        if (candi[len(s_vec[i])].empty()) {
-            candi[len(s_vec[i])] = ' ' + s_vec[i];
-        }
+    bool allsame = 1;
+    for (int i = 1; i <= n; i++) {
+        if (arr[i] != arr[1]) allsame = 0;
     }
-    for (int i = 1; i <= 10; i++) {
-        if (candi[i].empty()) {
-            continue;
-        }
-        for (int j = 1; j <= 10; j++) {
-            if (i == j) continue;
-            if (candi[j].empty()) continue;
-            for (int kk = 1; kk <= min(i, j); kk++) {
-                if (candi[i][kk] < candi[j][kk]) {  // 必须删掉劣的字符串哦。。。否则后面添加到pq时会错误初始化取不到的
-                    candi[j] = "";
-                    break;
-                } else if (candi[i][kk] > candi[j][kk]) {  // 如果这里已经大于了，那么也许无法简单判断两个字符串吧？
-                    break;
-                }
-            }
-        }
+    if (allsame) {
+        cout << 0 << '\n';
+        return;
     }
-
-    struct item {
-        i64    cur_len;
-        string s;
-        int    used = 0;
-
-        int operator<(item& o)
-        {
-            if (cur_len == o.cur_len) return used < o.used;
-            return (cur_len > o.cur_len);  // 长的沉入
-        }
-    };
-
-    vector<char>                               min_c(2e6, INT8_MAX);
-    priority_queue<item, vector<item>, less<>> pq;
-    for (int i = 1; i <= 10; i++) {
-        if (candi[i].empty()) continue;
-        for (int j = 1; j <= i; j++) {
-            min_c[j] = min(min_c[j], candi[i][j]);
-        }
-        string new_string = string(10 - i, ' ') + candi[i];
-        assert(new_string.size() == 11);
-
-        pq.push({i, new_string, 1});
-    }
-    int ans;
-
-    vector<int> vis(2e6, 0);  // 必须，否则复杂度可能错误
-    while (true) {
-        item cur = pq.top();
-        pq.pop();
-        const string& s       = cur.s;  // len == 11，可以访问[1, 10]
-        int           cur_len = cur.cur_len;
-        bool          flag    = 1;
-        for (int i = 0; i < 10; i++) {  // 倒序10个，因为每次最多更新10个吧
-            if (cur_len - i <= 0) break;
-            if (s[10 - i] > min_c[cur_len - i]) {
-                flag = 0;
-            }
-        }
-        if (!flag) continue;
-        if (vis[cur_len]) continue;
-        vis[cur_len] = 1;
-        if (cur.used == k) {
-            ans = cur.cur_len;
-            break;
-        }
-        for (int i = 1; i <= 10; i++) {
-            if (candi[i].empty()) continue;
-            int update = 1;
-            for (int j = 1; j <= i; j++) {
-                if (min_c[cur_len + j] > candi[i][j]) {  // 肯定行！
-                    min_c[cur_len + j] = candi[i][j];
-                    update             = 1;
-                    break;
-                } else if (min_c[cur_len + j] < candi[i][j]) {  // 如果。。。肯定不行
-                    update = 0;
-                    break;
-                }
-            }
-            if (update) {  // 更新一下
-                for (int j = 1; j <= i; j++) {
-                    if (min_c[cur_len + j] > candi[i][j]) {
-                        min_c[cur_len + j] = candi[i][j];
-                    }
-                }
-            }
-            if (update) {  // 同时放堆里面去
-                string new_string =
-                    string(s.begin() + i, s.begin() + 11) + string(candi[i].begin() + 1, candi[i].end());
-                assert(new_string.size() == 11);
-                pq.push({cur_len + i, new_string, cur.used + 1});
-            }
-        }
-    }
-    for (int i = 1; i <= ans; i++) {
-        cout << min_c[i];
-    }
-    cout << '\n';
+    int ans = work(arr, n);
+    ans     = max(ans, check(arr, 1, n));
+    cout << ans << '\n';
 }
 
 signed main(signed argc, char** argv)
@@ -261,13 +222,10 @@ signed main(signed argc, char** argv)
     freopen(argv[1], "r", stdin);
     freopen(argv[2], "w", stdout);
 #endif
-    int t = 1;
+    int t;
+    cin >> t;
     while (t--) {
-        try {
-            solve();
-        } catch (...) {
-            cout << -1 << '\n';
-        }
+        solve();
     }
     return 0;
 }

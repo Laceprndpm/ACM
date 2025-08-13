@@ -45,15 +45,12 @@ signed main(int argc, char** argv)
 #endif
     // freopen("test.in", "w", stdout);
     int t = 1;
+    cout << 1 << '\n';
     while (t--) {
-        int n = rdInt(1, 9), k = rdInt(1, 9);
-        cout << n << ' ' << k << '\n';
+        int n = rdInt(1, 100000);
+        cout << n << '\n';
         for (int i = 0; i < n; i++) {
-            int len = rdInt(1, 11);
-            for (int j = 0; j < len; j++) {
-                cout << char(rdInt(0, 26) + 'a');
-            }
-            cout << '\n';
+            cout << rdInt(1, 100000) << ' ';
         }
     }
     cout << endl;

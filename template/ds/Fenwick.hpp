@@ -1,7 +1,3 @@
-#pragma once
-using i64 = long long;
-#include <vector>
-
 template <typename T>
 struct Fenwick {
     int            n;
@@ -15,7 +11,7 @@ struct Fenwick {
     void init(int n_)
     {
         n = n_;
-        a.assign(n, T{0});
+        a.assign(n, T{});
     }
 
     void add(int x, const T &v)

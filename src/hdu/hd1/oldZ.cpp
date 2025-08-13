@@ -32,7 +32,7 @@ struct Z {
 
     Z(int x = 0) : x(jianglynorm(x)) {}
 
-    Z(i64 x) : x(norm(x % P)) {}
+    Z(i64 x) : x(jianglynorm(x % P)) {}
 
     int val() const
     {

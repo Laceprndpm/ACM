@@ -115,7 +115,10 @@
         // {
         //     "type": "shell",
         //     "label": "run O2",
-        //     "command": "${fileDirname}/${fileBasenameNoExtension}.O2",
+        //     "command": "${fileDirname}/${fileBasenameNoExtension}.test",
+        //     "dependsOn": [
+        //         "DEBUG"
+        //     ],
         //     "group": {
         //         "kind": "build",
         //         "isDefault": true

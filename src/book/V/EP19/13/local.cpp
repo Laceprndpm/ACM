@@ -7,7 +7,7 @@ constexpr int INF = 1e9;
 
 struct Phi {
     vector<int> phi;
-    vector<int> p;
+    vector<int> primes;
 
     void init(int n)
     {
@@ -15,15 +15,15 @@ struct Phi {
         phi[1]    = 1;
         for (int i = 2; i <= n; i++) {
             if (!phi[i]) {
-                p[total++] = i;
-                phi[i]     = i - 1;
+                primes[total++] = i;
+                phi[i]          = i - 1;
             }
-            for (int j = 0; j < total && i * p[j] <= n; j++) {
-                if (i % p[j] == 0) {
-                    phi[i * p[j]] = phi[i] * p[j];
+            for (int j = 0; j < total && i * primes[j] <= n; j++) {
+                if (i % primes[j] == 0) {
+                    phi[i * primes[j]] = phi[i] * primes[j];
                     break;
                 } else {
-                    phi[i * p[j]] = phi[i] * (p[j] - 1);
+                    phi[i * primes[j]] = phi[i] * (primes[j] - 1);
                 }
             }
         }

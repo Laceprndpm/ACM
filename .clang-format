@@ -78,7 +78,7 @@ AllowShortIfStatementsOnASingleLine: true
 # 允许短的Lambdas语句保持在同一行
 AllowShortLambdasOnASingleLine: None
 # 允许短的循环保持在同一行
-AllowShortLoopsOnASingleLine: false
+AllowShortLoopsOnASingleLine: true
 # 总是在定义返回类型后换行(deprecated)
 AlwaysBreakAfterDefinitionReturnType: None
 # 总是在返回类型后换行: None, All, TopLevel(顶级函数，不包括在类中的函数),
