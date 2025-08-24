@@ -683,7 +683,7 @@ void polyexp(Z f[], int n)
     for (int i = 2; i <= n; i <<= 1) {
         for (int j = 0; j < i; j++) b[j] = c[j];
         polyln(b, i);
-        for (int j = 0; j < i; j++) b[j] = f[i] - b[j];
+        for (int j = 0; j < i; j++) b[j] = f[j] - b[j];
         b[0] = b[0] + 1;
         for (int j = i; j < 2 * i; j++) b[j] = 0;
         convolution(c, b, 2 * i);
