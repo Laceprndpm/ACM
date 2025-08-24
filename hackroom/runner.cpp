@@ -111,7 +111,7 @@ int main()
     std::vector<std::thread> threads;
     for (int i = 0; i < num_threads; ++i) {
         threads.emplace_back(helperFunction, i,
-                             10000);  // 假设你仍然想要运行1000次
+                             1000);  // 假设你仍然想要运行1000次
         // 第一次运行需要由time(0)初始化，之后则可以注释掉
         // std::this_thread::sleep_for(std::chrono::seconds(1));
     }

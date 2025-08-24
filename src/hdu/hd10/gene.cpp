@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+
+#include <cstdio>
 using namespace std;
 using LL     = long long;
 namespace fs = filesystem;
@@ -34,6 +36,8 @@ void rdInit(const std::string seedFileName = fs::current_path() / "seed.txt")
     seedFile.close();
 }
 
+constexpr i64 P = 998244353;
+
 signed main(int argc, char** argv)
 {
     ios::sync_with_stdio(false);
@@ -43,13 +47,23 @@ signed main(int argc, char** argv)
     rdInit(argv[1]);
     freopen(argv[2], "w", stdout);
 #endif
-    // freopen("test.in", "w", stdout);
+    freopen("test.in", "w", stdout);
     int t = 1;
+    cout << t << '\n';
     while (t--) {
-        int n = rdInt(1, 30);
-        cout << n << '\n';
+        int m = 80;
+        int n = int(2e5) / m;
+        cout << n << ' ' << m << '\n';
         for (int i = 0; i < n; i++) {
-            cout << rdInt(1, 10 + 1) << ' ';
+            i64 sum = 0;
+            for (int j = 0; j < 2 * m; j++) {
+                i64 val = rdInt(0, 998244353);
+                sum += val;
+                sum %= 998244353;
+                cout << val << ' ';
+            }
+            cout << (998244353 - sum) % 998244353;
+            cout << '\n';
         }
     }
     cout << endl;

@@ -50,29 +50,26 @@ struct Matrix {
 
 template <class T, int R, int C>
 struct OMatrix {
-    T data[R][C]{};
+    T data[R][C];
 
-    constexpr OMatrix() {}
+    constexpr OMatrix() = default;
 
-    constexpr OMatrix(std::initializer_list<std::initializer_list<T>> init)
+    constexpr OMatrix(array<array<T, C>, R> const& init)
     {
-        int i = 0;
-        for (auto &row : init) {
-            int j = 0;
-            for (auto &val : row) {
-                data[i][j++] = val;
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++) {
+                data[i][j] = init[i][j];
             }
-            ++i;
         }
     }
 
-    constexpr OMatrix operator*=(const OMatrix &o) &
+    constexpr OMatrix operator*=(const OMatrix& o) &
     {
         *this = *this * o;
         return *this;
     }
 
-    constexpr OMatrix operator+=(const OMatrix &o) &
+    constexpr OMatrix operator+=(const OMatrix& o) &
     {
         for (int i = 0; i < R; i++) {
             for (int j = 0; j < C; j++) {
@@ -84,7 +81,7 @@ struct OMatrix {
 };
 
 template <class T, int R, int K, int C>
-constexpr OMatrix<T, R, C> operator*(const OMatrix<T, R, K> &lhs, const OMatrix<T, K, C> &rhs)
+constexpr OMatrix<T, R, C> operator*(const OMatrix<T, R, K>& lhs, const OMatrix<T, K, C>& rhs)
 {
     OMatrix<T, R, C> res;
     for (int i = 0; i < R; i++) {
@@ -98,3 +95,15 @@ constexpr OMatrix<T, R, C> operator*(const OMatrix<T, R, K> &lhs, const OMatrix<
     }
     return {res};
 }
+
+template <typename T, size_t R, size_t C>
+OMatrix(array<array<T, C>, R> const& x) -> OMatrix<T, R, C>;
+
+template <typename T, size_t RC>
+constexpr OMatrix<T, RC, RC> identityMatrix = []() {
+    OMatrix<T, RC, RC> id;
+    for (int i = 0; i < RC; i++) {
+        id.data[i][i] = T{1};
+    }
+    return id;
+}();

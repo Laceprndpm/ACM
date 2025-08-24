@@ -1,0 +1,357 @@
+P1007_2.O2  144096 16628.709033:    5050505 cpu_core/cycles/Pu: 
+	    55a1dc1cb15c solve()+0x6cc (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    55a1dc1ca265 main+0x55 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    7f3924227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    55a1dc1ca2b5 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.710897:    9574907 cpu_core/cycles/Pu: 
+	    55a1dc1ca7de lagrange(int, Z*, int) [clone .part.0]+0x38e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.714719:   19241101 cpu_core/cycles/Pu: 
+	    55a1dc1ca930 lagrange(int, Z*, int) [clone .part.0]+0x4e0 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.720984:   32407778 cpu_core/cycles/Pu: 
+	    55a1dc1cb49e solve()+0xa0e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    55a1dc1ca265 main+0x55 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    7f3924227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    55a1dc1ca2b5 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.729605:   44461406 cpu_core/cycles/Pu: 
+	    55a1dc1ca8d9 lagrange(int, Z*, int) [clone .part.0]+0x489 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.739187:   49478676 cpu_core/cycles/Pu: 
+	    55a1dc1ca780 lagrange(int, Z*, int) [clone .part.0]+0x330 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.749204:   51494877 cpu_core/cycles/Pu: 
+	    55a1dc1ca819 lagrange(int, Z*, int) [clone .part.0]+0x3c9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.759205:   51824726 cpu_core/cycles/Pu: 
+	    55a1dc1ca834 lagrange(int, Z*, int) [clone .part.0]+0x3e4 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.769392:   52257704 cpu_core/cycles/Pu: 
+	    55a1dc1ca8fd lagrange(int, Z*, int) [clone .part.0]+0x4ad (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.779486:   51853306 cpu_core/cycles/Pu: 
+	    55a1dc1ca77e lagrange(int, Z*, int) [clone .part.0]+0x32e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.790897:   51964941 cpu_core/cycles/Pu: 
+	    55a1dc1ca89d lagrange(int, Z*, int) [clone .part.0]+0x44d (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.800968:   51817336 cpu_core/cycles/Pu: 
+	    55a1dc1ca77e lagrange(int, Z*, int) [clone .part.0]+0x32e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.811226:   53241228 cpu_core/cycles/Pu: 
+	    55a1dc1ca849 lagrange(int, Z*, int) [clone .part.0]+0x3f9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.821290:   52691853 cpu_core/cycles/Pu: 
+	    55a1dc1ca760 lagrange(int, Z*, int) [clone .part.0]+0x310 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.831315:   52874518 cpu_core/cycles/Pu: 
+	    55a1dc1ca7e5 lagrange(int, Z*, int) [clone .part.0]+0x395 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.841442:   53173479 cpu_core/cycles/Pu: 
+	    55a1dc1ca769 lagrange(int, Z*, int) [clone .part.0]+0x319 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.851534:   53021580 cpu_core/cycles/Pu: 
+	    55a1dc1ca82b lagrange(int, Z*, int) [clone .part.0]+0x3db (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.861744:   53039220 cpu_core/cycles/Pu: 
+	    55a1dc1ca95b lagrange(int, Z*, int) [clone .part.0]+0x50b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.866288:    5050505 cpu_atom/cycles/Pu: 
+	    55a1dc1ca77e lagrange(int, Z*, int) [clone .part.0]+0x32e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.868605:    8967471 cpu_atom/cycles/Pu: 
+	    55a1dc1ca842 lagrange(int, Z*, int) [clone .part.0]+0x3f2 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.872735:   16012280 cpu_atom/cycles/Pu: 
+	    55a1dc1ca770 lagrange(int, Z*, int) [clone .part.0]+0x320 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.874153:    5050505 cpu_core/cycles/Pu: 
+	    55a1dc1ca84b lagrange(int, Z*, int) [clone .part.0]+0x3fb (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.875920:    9269282 cpu_core/cycles/Pu: 
+	    55a1dc1ca834 lagrange(int, Z*, int) [clone .part.0]+0x3e4 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.880461:   23664375 cpu_core/cycles/Pu: 
+	    55a1dc1cb466 solve()+0x9d6 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    55a1dc1ca265 main+0x55 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    7f3924227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    55a1dc1ca2b5 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.887364:   35665118 cpu_core/cycles/Pu: 
+	    55a1dc1ca7b5 lagrange(int, Z*, int) [clone .part.0]+0x365 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.893646:    5050505 cpu_core/cycles/Pu: 
+	    55a1dc1ca777 lagrange(int, Z*, int) [clone .part.0]+0x327 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.894615:    5050505 cpu_core/cycles/Pu: 
+	    55a1dc1ca7fe lagrange(int, Z*, int) [clone .part.0]+0x3ae (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.897970:   17557604 cpu_core/cycles/Pu: 
+	    55a1dc1ca822 lagrange(int, Z*, int) [clone .part.0]+0x3d2 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.904111:   32186084 cpu_core/cycles/Pu: 
+	    55a1dc1ca769 lagrange(int, Z*, int) [clone .part.0]+0x319 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.912480:   43637516 cpu_core/cycles/Pu: 
+	    55a1dc1ca82b lagrange(int, Z*, int) [clone .part.0]+0x3db (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.921886:   49606634 cpu_core/cycles/Pu: 
+	    55a1dc1ca7a4 lagrange(int, Z*, int) [clone .part.0]+0x354 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.931921:   52160829 cpu_core/cycles/Pu: 
+	    55a1dc1ca7b5 lagrange(int, Z*, int) [clone .part.0]+0x365 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.941877:   52523187 cpu_core/cycles/Pu: 
+	    55a1dc1ca834 lagrange(int, Z*, int) [clone .part.0]+0x3e4 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.951941:   53058944 cpu_core/cycles/Pu: 
+	    55a1dc1ca780 lagrange(int, Z*, int) [clone .part.0]+0x330 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.962026:   53223941 cpu_core/cycles/Pu: 
+	    55a1dc1ca760 lagrange(int, Z*, int) [clone .part.0]+0x310 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.972226:   53289862 cpu_core/cycles/Pu: 
+	    55a1dc1ca8c3 lagrange(int, Z*, int) [clone .part.0]+0x473 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.982241:   52863052 cpu_core/cycles/Pu: 
+	    55a1dc1ca780 lagrange(int, Z*, int) [clone .part.0]+0x330 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16628.992318:   53199081 cpu_core/cycles/Pu: 
+	    55a1dc1ca834 lagrange(int, Z*, int) [clone .part.0]+0x3e4 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.002426:   53294385 cpu_core/cycles/Pu: 
+	    55a1dc1ca870 lagrange(int, Z*, int) [clone .part.0]+0x420 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.012599:   53289052 cpu_core/cycles/Pu: 
+	    55a1dc1cb0f8 solve()+0x668 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    55a1dc1ca265 main+0x55 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    7f3924227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    55a1dc1ca2b5 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.022656:   53004278 cpu_core/cycles/Pu: 
+	    55a1dc1ca7b5 lagrange(int, Z*, int) [clone .part.0]+0x365 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.032770:   53165958 cpu_core/cycles/Pu: 
+	    55a1dc1ca7ab lagrange(int, Z*, int) [clone .part.0]+0x35b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.042846:   53068126 cpu_core/cycles/Pu: 
+	    55a1dc1ca859 lagrange(int, Z*, int) [clone .part.0]+0x409 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.053032:   53157195 cpu_core/cycles/Pu: 
+	    55a1dc1ca82b lagrange(int, Z*, int) [clone .part.0]+0x3db (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.063071:   52686138 cpu_core/cycles/Pu: 
+	    55a1dc1ca769 lagrange(int, Z*, int) [clone .part.0]+0x319 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.073128:   52960783 cpu_core/cycles/Pu: 
+	    55a1dc1ca8ba lagrange(int, Z*, int) [clone .part.0]+0x46a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.083196:   53135672 cpu_core/cycles/Pu: 
+	    55a1dc1ca769 lagrange(int, Z*, int) [clone .part.0]+0x319 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.093312:   53260802 cpu_core/cycles/Pu: 
+	    55a1dc1ca7e5 lagrange(int, Z*, int) [clone .part.0]+0x395 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.103499:   53223447 cpu_core/cycles/Pu: 
+	    55a1dc1ca777 lagrange(int, Z*, int) [clone .part.0]+0x327 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.113560:   52989846 cpu_core/cycles/Pu: 
+	    55a1dc1cb14a solve()+0x6ba (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    55a1dc1ca265 main+0x55 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    7f3924227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    55a1dc1ca2b5 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.123625:   53133322 cpu_core/cycles/Pu: 
+	    55a1dc1ca7d0 lagrange(int, Z*, int) [clone .part.0]+0x380 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.133743:   53277258 cpu_core/cycles/Pu: 
+	    55a1dc1ca5a8 lagrange(int, Z*, int) [clone .part.0]+0x158 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.143914:   53176430 cpu_core/cycles/Pu: 
+	    55a1dc1ca849 lagrange(int, Z*, int) [clone .part.0]+0x3f9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.153963:   52910713 cpu_core/cycles/Pu: 
+	    55a1dc1ca753 lagrange(int, Z*, int) [clone .part.0]+0x303 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.164040:   53136711 cpu_core/cycles/Pu: 
+	    55a1dc1ca7fe lagrange(int, Z*, int) [clone .part.0]+0x3ae (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.174168:   53230346 cpu_core/cycles/Pu: 
+	    55a1dc1ca5a8 lagrange(int, Z*, int) [clone .part.0]+0x158 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.184418:   53067086 cpu_core/cycles/Pu: 
+	    55a1dc1ca6a2 lagrange(int, Z*, int) [clone .part.0]+0x252 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.194455:   52478730 cpu_core/cycles/Pu: 
+	    55a1dc1ca7e5 lagrange(int, Z*, int) [clone .part.0]+0x395 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.204477:   52686489 cpu_core/cycles/Pu: 
+	    55a1dc1ca8d9 lagrange(int, Z*, int) [clone .part.0]+0x489 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.214659:   52976058 cpu_core/cycles/Pu: 
+	    55a1dc1ca7ae lagrange(int, Z*, int) [clone .part.0]+0x35e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.224742:   52545721 cpu_core/cycles/Pu: 
+	    55a1dc1ca849 lagrange(int, Z*, int) [clone .part.0]+0x3f9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.234767:   52519839 cpu_core/cycles/Pu: 
+	    55a1dc1ca865 lagrange(int, Z*, int) [clone .part.0]+0x415 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.244887:   52854679 cpu_core/cycles/Pu: 
+	    55a1dc1cb3df solve()+0x94f (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    55a1dc1ca265 main+0x55 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    7f3924227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    55a1dc1ca2b5 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.254951:   52792501 cpu_core/cycles/Pu: 
+	    55a1dc1ca85c lagrange(int, Z*, int) [clone .part.0]+0x40c (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.265084:   52943759 cpu_core/cycles/Pu: 
+	    55a1dc1ca8cb lagrange(int, Z*, int) [clone .part.0]+0x47b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.275123:   52765870 cpu_core/cycles/Pu: 
+	    55a1dc1ca8f6 lagrange(int, Z*, int) [clone .part.0]+0x4a6 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.277172:    5050505 cpu_core/cycles/Pu: 
+	    55a1dc1ca636 lagrange(int, Z*, int) [clone .part.0]+0x1e6 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.278946:    9179077 cpu_core/cycles/Pu: 
+	    55a1dc1ca84f lagrange(int, Z*, int) [clone .part.0]+0x3ff (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.283508:   23405024 cpu_core/cycles/Pu: 
+	    55a1dc1ca81b lagrange(int, Z*, int) [clone .part.0]+0x3cb (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.290280:   35102039 cpu_core/cycles/Pu: 
+	    55a1dc1ca819 lagrange(int, Z*, int) [clone .part.0]+0x3c9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.298479:    5050505 cpu_core/cycles/Pu: 
+	    55a1dc1ca82b lagrange(int, Z*, int) [clone .part.0]+0x3db (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.299852:    7172007 cpu_core/cycles/Pu: 
+	    55a1dc1ca77e lagrange(int, Z*, int) [clone .part.0]+0x32e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.303244:   17809024 cpu_core/cycles/Pu: 
+	    55a1dc1ca7fe lagrange(int, Z*, int) [clone .part.0]+0x3ae (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.311904:    5050505 cpu_core/cycles/Pu: 
+	    55a1dc1ca7be lagrange(int, Z*, int) [clone .part.0]+0x36e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.312884:    5050505 cpu_core/cycles/Pu: 
+	    55a1dc1ca834 lagrange(int, Z*, int) [clone .part.0]+0x3e4 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.315966:   16030526 cpu_core/cycles/Pu: 
+	    55a1dc1ca769 lagrange(int, Z*, int) [clone .part.0]+0x319 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.321972:   31126505 cpu_core/cycles/Pu: 
+	    55a1dc1ca890 lagrange(int, Z*, int) [clone .part.0]+0x440 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.327814:    5050505 cpu_core/cycles/Pu: 
+	    55a1dc1ca83f lagrange(int, Z*, int) [clone .part.0]+0x3ef (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.328806:    5074975 cpu_core/cycles/Pu: 
+	    55a1dc1cb4b8 solve()+0xa28 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    55a1dc1ca265 main+0x55 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    7f3924227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    55a1dc1ca2b5 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.331883:   15925869 cpu_core/cycles/Pu: 
+	    55a1dc1ca77e lagrange(int, Z*, int) [clone .part.0]+0x32e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.337421:   32361620 cpu_core/cycles/Pu: 
+	    55a1dc1ca7e5 lagrange(int, Z*, int) [clone .part.0]+0x395 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.345883:   43577809 cpu_core/cycles/Pu: 
+	    55a1dc1ca7be lagrange(int, Z*, int) [clone .part.0]+0x36e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.355678:   49044726 cpu_core/cycles/Pu: 
+	    55a1dc1ca79a lagrange(int, Z*, int) [clone .part.0]+0x34a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.365454:   50237330 cpu_core/cycles/Pu: 
+	    55a1dc1ca760 lagrange(int, Z*, int) [clone .part.0]+0x310 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.375462:   51411583 cpu_core/cycles/Pu: 
+	    55a1dc1ca8e5 lagrange(int, Z*, int) [clone .part.0]+0x495 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.385474:   51779545 cpu_core/cycles/Pu: 
+	    55a1dc1ca7b5 lagrange(int, Z*, int) [clone .part.0]+0x365 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.395572:   52159790 cpu_core/cycles/Pu: 
+	    55a1dc1ca84b lagrange(int, Z*, int) [clone .part.0]+0x3fb (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.405619:   52142187 cpu_core/cycles/Pu: 
+	    55a1dc1ca79a lagrange(int, Z*, int) [clone .part.0]+0x34a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.415635:   52375565 cpu_core/cycles/Pu: 
+	    55a1dc1ca80f lagrange(int, Z*, int) [clone .part.0]+0x3bf (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.425751:   52795252 cpu_core/cycles/Pu: 
+	    55a1dc1ca87a lagrange(int, Z*, int) [clone .part.0]+0x42a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.435857:   52881286 cpu_core/cycles/Pu: 
+	    55a1dc1ca873 lagrange(int, Z*, int) [clone .part.0]+0x423 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.446042:   52975713 cpu_core/cycles/Pu: 
+	    55a1dc1ca750 lagrange(int, Z*, int) [clone .part.0]+0x300 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.456168:   52668401 cpu_core/cycles/Pu: 
+	    55a1dc1ca83b lagrange(int, Z*, int) [clone .part.0]+0x3eb (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.466250:   52575309 cpu_core/cycles/Pu: 
+	    55a1dc1ca819 lagrange(int, Z*, int) [clone .part.0]+0x3c9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.476310:   52632780 cpu_core/cycles/Pu: 
+	    55a1dc1cb4e6 solve()+0xa56 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    55a1dc1ca265 main+0x55 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    7f3924227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    55a1dc1ca2b5 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.486501:   52838355 cpu_core/cycles/Pu: 
+	    55a1dc1ca865 lagrange(int, Z*, int) [clone .part.0]+0x415 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.496494:   52512528 cpu_core/cycles/Pu: 
+	    55a1dc1ca769 lagrange(int, Z*, int) [clone .part.0]+0x319 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.506544:   52883073 cpu_core/cycles/Pu: 
+	    55a1dc1ca870 lagrange(int, Z*, int) [clone .part.0]+0x420 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.516611:   53115829 cpu_core/cycles/Pu: 
+	    55a1dc1ca80b lagrange(int, Z*, int) [clone .part.0]+0x3bb (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.526757:   53248052 cpu_core/cycles/Pu: 
+	    55a1dc1ca6bc lagrange(int, Z*, int) [clone .part.0]+0x26c (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.536830:   53074478 cpu_core/cycles/Pu: 
+	    55a1dc1ca777 lagrange(int, Z*, int) [clone .part.0]+0x327 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.546921:   53196167 cpu_core/cycles/Pu: 
+	    55a1dc1ca8e5 lagrange(int, Z*, int) [clone .part.0]+0x495 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.557044:   53261145 cpu_core/cycles/Pu: 
+	    55a1dc1ca7b5 lagrange(int, Z*, int) [clone .part.0]+0x365 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.567196:   53208551 cpu_core/cycles/Pu: 
+	    55a1dc1ca7b5 lagrange(int, Z*, int) [clone .part.0]+0x365 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.577228:   52967351 cpu_core/cycles/Pu: 
+	    55a1dc1ca83b lagrange(int, Z*, int) [clone .part.0]+0x3eb (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.587339:   53236050 cpu_core/cycles/Pu: 
+	    55a1dc1cb4b0 solve()+0xa20 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    55a1dc1ca265 main+0x55 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    7f3924227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    55a1dc1ca2b5 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.597424:   53239897 cpu_core/cycles/Pu: 
+	    55a1dc1ca834 lagrange(int, Z*, int) [clone .part.0]+0x3e4 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.607575:   53303493 cpu_core/cycles/Pu: 
+	    55a1dc1cb3a3 solve()+0x913 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    55a1dc1ca265 main+0x55 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+	    7f3924227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    55a1dc1ca2b5 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+
+P1007_2.O2  144096 16629.617641:   53089695 cpu_core/cycles/Pu: 
+	    55a1dc1ca82b lagrange(int, Z*, int) [clone .part.0]+0x3db (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.O2)
+

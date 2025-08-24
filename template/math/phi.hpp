@@ -2,17 +2,21 @@
 using namespace std;
 using i64 = long long;
 
+// phi = n \cdot \prod_{p | n} (1 - (1 / p))
 i64 get_phi(i64 n)
 {
     i64 phi = 1;
     for (int i = 2; i <= n / i; i++) {
+        // 质数
         if (n % i == 0) {
+            // 第一个乘上prod部分的 i - 1
             phi *= (i - 1);
             n /= i;
-            while (n % i == 0)
-                phi *= i, n /= i;
+            // 后续只能乘n内的i
+            while (n % i == 0) phi *= i, n /= i;
         }
     }
+    // 尾判
     if (n > 1) phi *= (n - 1);
     return phi;
 }

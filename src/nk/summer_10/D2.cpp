@@ -96,14 +96,10 @@ struct SegTree {
     }
 };
 
-int main(signed argc, char** argv)
+int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-#ifdef BATCH
-    freopen(argv[1], "r", stdin);
-    freopen(argv[2], "w", stdout);
-#endif
     int n;
     if (!(cin >> n)) return 0;
     vector<int> a(n + 1);
@@ -218,6 +214,6 @@ int main(signed argc, char** argv)
     // output: print max count and one partition achieving it
     // ensure b1 in [2..n-1], b2 in [b1+1..n]
     if (bestB2 <= bestB1) bestB2 = bestB1 + 1;
-    cout << bestCnt << "\n";
+    cout << bestCnt << "\n" << bestB1 << " " << bestB2 << "\n";
     return 0;
 }

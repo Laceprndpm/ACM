@@ -1,0 +1,1169 @@
+P1007_2.test  137354 15839.827006:    5050505 cpu_atom/cycles/Pu: 
+	    5626f405a2c3 void std::_Construct<Z>(Z*)+0x6 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4059bd1 Z* std::__uninitialized_default_n_1<false>::__uninit_default_n<Z*, unsigned long>(Z*, unsigned long)+0x6e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40593a8 Z* std::__uninitialized_default_n<Z*, unsigned long>(Z*, unsigned long)+0x45 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4058491 Z* std::__uninitialized_default_n_a<Z*, unsigned long, Z>(Z*, unsigned long, std::allocator<Z>&)+0x27 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4056e9c std::vector<Z, std::allocator<Z> >::_M_default_append(unsigned long)+0x5cc (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40555a2 std::vector<Z, std::allocator<Z> >::resize(unsigned long)+0xc4 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4054494 Comb::init(int)+0xc4 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053b96 __static_initialization_and_destruction_0()+0x26 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053bc6 _GLOBAL__sub_I__Z5flushv+0x9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d602277a4 __libc_start_main+0x104 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.829459:    8720918 cpu_atom/cycles/Pu: 
+	    5626f405569a std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x0 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053b96 __static_initialization_and_destruction_0()+0x26 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053bc6 _GLOBAL__sub_I__Z5flushv+0x9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d602277a4 __libc_start_main+0x104 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.833231:   14617155 cpu_atom/cycles/Pu: 
+	    5626f40556b6 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x1c (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405490a Comb::init(int)+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053b96 __static_initialization_and_destruction_0()+0x26 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053bc6 _GLOBAL__sub_I__Z5flushv+0x9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d602277a4 __libc_start_main+0x104 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.839326:    5050505 cpu_core/cycles/Pu: 
+	    5626f405573f std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0xa5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405359d solve()+0x59d (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.840568:    6381716 cpu_core/cycles/Pu: 
+	    5626f405663a std::vector<Z, std::allocator<Z> >::size() const+0x96 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40556e1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x47 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405359d solve()+0x59d (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.843960:   17100827 cpu_core/cycles/Pu: 
+	    5626f40556b1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x17 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053483 solve()+0x483 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.850026:   31195545 cpu_core/cycles/Pu: 
+	    5626f4055725 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x8b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405356e solve()+0x56e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.858407:   42604877 cpu_core/cycles/Pu: 
+	    5626f40556b1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x17 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405356e solve()+0x56e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.868278:   48262230 cpu_core/cycles/Pu: 
+	    5626f40556ee std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x54 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405356e solve()+0x56e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.878259:   49238221 cpu_core/cycles/Pu: 
+	    5626f4052b3d lagrange(int, Z*, int)+0x3bd (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.888171:   49700797 cpu_core/cycles/Pu: 
+	    5626f4052ba6 lagrange(int, Z*, int)+0x426 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.898686:    5050505 cpu_core/cycles/Pu: 
+	    5626f4053587 solve()+0x587 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.900777:   10586066 cpu_core/cycles/Pu: 
+	    5626f4052cf0 lagrange(int, Z*, int)+0x570 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.904621:   20074200 cpu_core/cycles/Pu: 
+	    5626f4052d18 lagrange(int, Z*, int)+0x598 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.908849:    5050505 cpu_core/cycles/Pu: 
+	    5626f40565ad std::vector<Z, std::allocator<Z> >::size() const+0x9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40556e1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x47 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053483 solve()+0x483 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.910658:    9515787 cpu_core/cycles/Pu: 
+	    5626f405660e std::vector<Z, std::allocator<Z> >::size() const+0x6a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40556e1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x47 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053458 solve()+0x458 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.915203:   23891407 cpu_core/cycles/Pu: 
+	    5626f405569a std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x0 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.922076:   35994720 cpu_core/cycles/Pu: 
+	    5626f4052cc0 lagrange(int, Z*, int)+0x540 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.930892:   46265516 cpu_core/cycles/Pu: 
+	    5626f40565a4 std::vector<Z, std::allocator<Z> >::size() const+0x0 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053483 solve()+0x483 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.940601:   51011298 cpu_core/cycles/Pu: 
+	    5626f405569a std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x0 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.950561:   52447087 cpu_core/cycles/Pu: 
+	    5626f4052cdb lagrange(int, Z*, int)+0x55b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.960651:   52977456 cpu_core/cycles/Pu: 
+	    5626f4052c16 lagrange(int, Z*, int)+0x496 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.970717:   53048471 cpu_core/cycles/Pu: 
+	    5626f40556ee std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x54 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405359d solve()+0x59d (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.980815:   53198769 cpu_core/cycles/Pu: 
+	    5626f40535c3 solve()+0x5c3 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15839.990921:   53221115 cpu_core/cycles/Pu: 
+	    5626f4052d0b lagrange(int, Z*, int)+0x58b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.001000:   53217260 cpu_core/cycles/Pu: 
+	    5626f40565ad std::vector<Z, std::allocator<Z> >::size() const+0x9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40556e1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x47 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405356e solve()+0x56e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.011125:   53304151 cpu_core/cycles/Pu: 
+	    5626f4052d07 lagrange(int, Z*, int)+0x587 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.021216:   53209842 cpu_core/cycles/Pu: 
+	    5626f4052c62 lagrange(int, Z*, int)+0x4e2 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.031303:   53251567 cpu_core/cycles/Pu: 
+	    5626f4053587 solve()+0x587 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.041486:   53308176 cpu_core/cycles/Pu: 
+	    5626f4052d18 lagrange(int, Z*, int)+0x598 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.052263:   52938445 cpu_core/cycles/Pu: 
+	    5626f4052d07 lagrange(int, Z*, int)+0x587 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.061733:   49401861 cpu_core/cycles/Pu: 
+	    5626f40557b4 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x11a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405356e solve()+0x56e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.071695:   51841710 cpu_core/cycles/Pu: 
+	    5626f4052b30 lagrange(int, Z*, int)+0x3b0 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.081656:   52343097 cpu_core/cycles/Pu: 
+	    5626f4052b9b lagrange(int, Z*, int)+0x41b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.091734:   52929819 cpu_core/cycles/Pu: 
+	    5626f4052ca1 lagrange(int, Z*, int)+0x521 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.101842:   52970694 cpu_core/cycles/Pu: 
+	    5626f4052b58 lagrange(int, Z*, int)+0x3d8 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.111945:   52968063 cpu_core/cycles/Pu: 
+	    5626f4052b8f lagrange(int, Z*, int)+0x40f (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.121975:   52923079 cpu_core/cycles/Pu: 
+	    5626f4052b9b lagrange(int, Z*, int)+0x41b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.132080:   53202874 cpu_core/cycles/Pu: 
+	    5626f4052cdb lagrange(int, Z*, int)+0x55b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.142196:   53184435 cpu_core/cycles/Pu: 
+	    5626f40528db lagrange(int, Z*, int)+0x15b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.152303:   53141995 cpu_core/cycles/Pu: 
+	    5626f4052d0b lagrange(int, Z*, int)+0x58b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.162412:   53118429 cpu_core/cycles/Pu: 
+	    5626f405573f std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0xa5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053483 solve()+0x483 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.172482:   53099252 cpu_core/cycles/Pu: 
+	    5626f4052ad7 lagrange(int, Z*, int)+0x357 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.182570:   53218159 cpu_core/cycles/Pu: 
+	    5626f405569a std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x0 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.192673:   53256192 cpu_core/cycles/Pu: 
+	    5626f4052b62 lagrange(int, Z*, int)+0x3e2 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.202772:   53260025 cpu_core/cycles/Pu: 
+	    5626f4052c6a lagrange(int, Z*, int)+0x4ea (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.212891:   53276704 cpu_core/cycles/Pu: 
+	    5626f4052d1b lagrange(int, Z*, int)+0x59b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.222971:   53205482 cpu_core/cycles/Pu: 
+	    5626f4052cf0 lagrange(int, Z*, int)+0x570 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.233075:   53288692 cpu_core/cycles/Pu: 
+	    5626f405663a std::vector<Z, std::allocator<Z> >::size() const+0x96 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40556e1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x47 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053483 solve()+0x483 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.243251:   53287876 cpu_core/cycles/Pu: 
+	    5626f4052d15 lagrange(int, Z*, int)+0x595 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.253283:   52923549 cpu_core/cycles/Pu: 
+	    5626f40565a4 std::vector<Z, std::allocator<Z> >::size() const+0x0 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052a29 lagrange(int, Z*, int)+0x2a9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.263428:   53212205 cpu_core/cycles/Pu: 
+	    5626f4052ba2 lagrange(int, Z*, int)+0x422 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.273514:   53098257 cpu_core/cycles/Pu: 
+	    5626f4052d15 lagrange(int, Z*, int)+0x595 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.283625:   53171346 cpu_core/cycles/Pu: 
+	    5626f4055782 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0xe8 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405356e solve()+0x56e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.293710:   53120376 cpu_core/cycles/Pu: 
+	    5626f4052ce5 lagrange(int, Z*, int)+0x565 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.303797:   53188596 cpu_core/cycles/Pu: 
+	    5626f4052d1b lagrange(int, Z*, int)+0x59b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.313909:   53255715 cpu_core/cycles/Pu: 
+	    5626f4052d1b lagrange(int, Z*, int)+0x59b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.324008:   53207940 cpu_core/cycles/Pu: 
+	    5626f4052d15 lagrange(int, Z*, int)+0x595 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.334128:   53258201 cpu_core/cycles/Pu: 
+	    5626f40535b5 solve()+0x5b5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.344396:   53177327 cpu_core/cycles/Pu: 
+	    5626f4052b73 lagrange(int, Z*, int)+0x3f3 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.354920:   52487166 cpu_core/cycles/Pu: 
+	    5626f4055717 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x7d (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405356e solve()+0x56e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.364596:   50837020 cpu_core/cycles/Pu: 
+	    5626f4055717 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x7d (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052a29 lagrange(int, Z*, int)+0x2a9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.374690:   52405541 cpu_core/cycles/Pu: 
+	    5626f4052d1b lagrange(int, Z*, int)+0x59b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.384661:   52440338 cpu_core/cycles/Pu: 
+	    5626f4052c51 lagrange(int, Z*, int)+0x4d1 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.394729:   52973471 cpu_core/cycles/Pu: 
+	    5626f4053d1a operator+(Z const&, Z const&)+0xa (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053474 solve()+0x474 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.404858:   53103118 cpu_core/cycles/Pu: 
+	    5626f40529c5 lagrange(int, Z*, int)+0x245 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.414952:   53021135 cpu_core/cycles/Pu: 
+	    5626f405660e std::vector<Z, std::allocator<Z> >::size() const+0x6a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40556e1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x47 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052a29 lagrange(int, Z*, int)+0x2a9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.425021:   53018342 cpu_core/cycles/Pu: 
+	    5626f4055761 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0xc7 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053458 solve()+0x458 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.435148:   53145437 cpu_core/cycles/Pu: 
+	    5626f4052d00 lagrange(int, Z*, int)+0x580 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.445246:   53165910 cpu_core/cycles/Pu: 
+	    5626f40557b4 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x11a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053458 solve()+0x458 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.455361:   53141115 cpu_core/cycles/Pu: 
+	    5626f4055717 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x7d (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052a29 lagrange(int, Z*, int)+0x2a9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.465433:   53066934 cpu_core/cycles/Pu: 
+	    5626f4052d15 lagrange(int, Z*, int)+0x595 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.475504:   53171974 cpu_core/cycles/Pu: 
+	    5626f4053420 solve()+0x420 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.485618:   53292235 cpu_core/cycles/Pu: 
+	    5626f4052b52 lagrange(int, Z*, int)+0x3d2 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.495747:   53314998 cpu_core/cycles/Pu: 
+	    5626f405342e solve()+0x42e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.505829:   53229959 cpu_core/cycles/Pu: 
+	    5626f4052bb3 lagrange(int, Z*, int)+0x433 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.516014:   53289445 cpu_core/cycles/Pu: 
+	    5626f4052d15 lagrange(int, Z*, int)+0x595 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.526034:   52813262 cpu_core/cycles/Pu: 
+	    5626f4052d0b lagrange(int, Z*, int)+0x58b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.536129:   53126333 cpu_core/cycles/Pu: 
+	    5626f40556a1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x7 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052a29 lagrange(int, Z*, int)+0x2a9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.546213:   53130254 cpu_core/cycles/Pu: 
+	    5626f40557aa std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x110 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053483 solve()+0x483 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.556286:   53190883 cpu_core/cycles/Pu: 
+	    5626f4052a85 lagrange(int, Z*, int)+0x305 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.567330:   53290389 cpu_core/cycles/Pu: 
+	    5626f4052b81 lagrange(int, Z*, int)+0x401 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.577841:   53389458 cpu_core/cycles/Pu: 
+	    5626f4055752 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0xb8 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052a29 lagrange(int, Z*, int)+0x2a9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.587602:   51390945 cpu_core/cycles/Pu: 
+	    5626f4052ceb lagrange(int, Z*, int)+0x56b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.597666:   52640246 cpu_core/cycles/Pu: 
+	    5626f4052cf7 lagrange(int, Z*, int)+0x577 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.607722:   52931166 cpu_core/cycles/Pu: 
+	    5626f4052ceb lagrange(int, Z*, int)+0x56b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.617827:   53104224 cpu_core/cycles/Pu: 
+	    5626f40557b4 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x11a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405342e solve()+0x42e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.627905:   53093438 cpu_core/cycles/Pu: 
+	    5626f40528fa lagrange(int, Z*, int)+0x17a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.637979:   53178089 cpu_core/cycles/Pu: 
+	    5626f4052b9b lagrange(int, Z*, int)+0x41b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.648084:   53293095 cpu_core/cycles/Pu: 
+	    5626f405573f std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0xa5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053483 solve()+0x483 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.658632:   53260052 cpu_core/cycles/Pu: 
+	    5626f4052c40 lagrange(int, Z*, int)+0x4c0 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.669214:   55634532 cpu_core/cycles/Pu: 
+	    5626f405665b std::vector<Z, std::allocator<Z> >::size() const+0xb7 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40556e1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x47 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052a29 lagrange(int, Z*, int)+0x2a9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.679392:   53702298 cpu_core/cycles/Pu: 
+	    5626f40556ee std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x54 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405356e solve()+0x56e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.689514:   53402410 cpu_core/cycles/Pu: 
+	    5626f4052b44 lagrange(int, Z*, int)+0x3c4 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.699646:   53303653 cpu_core/cycles/Pu: 
+	    5626f4052c24 lagrange(int, Z*, int)+0x4a4 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.709718:   53128154 cpu_core/cycles/Pu: 
+	    5626f4052b7b lagrange(int, Z*, int)+0x3fb (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.719820:   53266523 cpu_core/cycles/Pu: 
+	    5626f4052b58 lagrange(int, Z*, int)+0x3d8 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.729911:   53277483 cpu_core/cycles/Pu: 
+	    5626f405349b solve()+0x49b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.740029:   53317237 cpu_core/cycles/Pu: 
+	    5626f4052ce8 lagrange(int, Z*, int)+0x568 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.750180:   53234012 cpu_core/cycles/Pu: 
+	    5626f405663a std::vector<Z, std::allocator<Z> >::size() const+0x96 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40556e1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x47 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053458 solve()+0x458 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.760250:   53097187 cpu_core/cycles/Pu: 
+	    5626f4052b69 lagrange(int, Z*, int)+0x3e9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.770337:   53247119 cpu_core/cycles/Pu: 
+	    5626f4052bb6 lagrange(int, Z*, int)+0x436 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.780466:   53299537 cpu_core/cycles/Pu: 
+	    5626f40557b4 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x11a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40529d4 lagrange(int, Z*, int)+0x254 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.790574:   53192215 cpu_core/cycles/Pu: 
+	    5626f4052b9b lagrange(int, Z*, int)+0x41b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.800703:   53160782 cpu_core/cycles/Pu: 
+	    5626f40557aa std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x110 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40529d4 lagrange(int, Z*, int)+0x254 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.810780:   53007495 cpu_core/cycles/Pu: 
+	    5626f4052b3d lagrange(int, Z*, int)+0x3bd (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.820930:   53117514 cpu_core/cycles/Pu: 
+	    5626f4052d18 lagrange(int, Z*, int)+0x598 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.831028:   52972001 cpu_core/cycles/Pu: 
+	    5626f4052b44 lagrange(int, Z*, int)+0x3c4 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.841099:   52971274 cpu_core/cycles/Pu: 
+	    5626f4052b73 lagrange(int, Z*, int)+0x3f3 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.851192:   53090802 cpu_core/cycles/Pu: 
+	    5626f405663a std::vector<Z, std::allocator<Z> >::size() const+0x96 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40556e1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x47 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405359d solve()+0x59d (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.861263:   53073633 cpu_core/cycles/Pu: 
+	    5626f40557b4 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x11a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405342e solve()+0x42e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.871351:   53154681 cpu_core/cycles/Pu: 
+	    5626f4052d1b lagrange(int, Z*, int)+0x59b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.881583:   53179972 cpu_core/cycles/Pu: 
+	    5626f405663a std::vector<Z, std::allocator<Z> >::size() const+0x96 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40556e1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x47 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053483 solve()+0x483 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.891511:   52362739 cpu_core/cycles/Pu: 
+	    5626f4052d0e lagrange(int, Z*, int)+0x58e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.901578:   53049251 cpu_core/cycles/Pu: 
+	    5626f4052ce5 lagrange(int, Z*, int)+0x565 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.911652:   53165413 cpu_core/cycles/Pu: 
+	    5626f4052b44 lagrange(int, Z*, int)+0x3c4 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.921751:   53281914 cpu_core/cycles/Pu: 
+	    5626f405573f std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0xa5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405359d solve()+0x59d (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.931890:   53298542 cpu_core/cycles/Pu: 
+	    5626f4052b75 lagrange(int, Z*, int)+0x3f5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.942013:   53155528 cpu_core/cycles/Pu: 
+	    5626f40556a1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x7 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053458 solve()+0x458 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.952107:   53042341 cpu_core/cycles/Pu: 
+	    5626f4052ac2 lagrange(int, Z*, int)+0x342 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.962214:   53029849 cpu_core/cycles/Pu: 
+	    5626f4052b30 lagrange(int, Z*, int)+0x3b0 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.972286:   53031561 cpu_core/cycles/Pu: 
+	    5626f4052c0f lagrange(int, Z*, int)+0x48f (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.982396:   53161393 cpu_core/cycles/Pu: 
+	    5626f4052bb6 lagrange(int, Z*, int)+0x436 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15840.992467:   53121456 cpu_core/cycles/Pu: 
+	    5626f4052c62 lagrange(int, Z*, int)+0x4e2 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.002572:   53251267 cpu_core/cycles/Pu: 
+	    5626f4052c78 lagrange(int, Z*, int)+0x4f8 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.012665:   53225984 cpu_core/cycles/Pu: 
+	    5626f40557b4 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x11a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40529d4 lagrange(int, Z*, int)+0x254 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.022760:   53270870 cpu_core/cycles/Pu: 
+	    5626f4055761 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0xc7 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053483 solve()+0x483 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.032854:   53285358 cpu_core/cycles/Pu: 
+	    5626f4052c7e lagrange(int, Z*, int)+0x4fe (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.042972:   53318201 cpu_core/cycles/Pu: 
+	    5626f4052993 lagrange(int, Z*, int)+0x213 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.054178:   53244680 cpu_core/cycles/Pu: 
+	    5626f40556be std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x24 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052a29 lagrange(int, Z*, int)+0x2a9 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.064285:   52923576 cpu_core/cycles/Pu: 
+	    5626f40556d5 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x3b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405342e solve()+0x42e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.074426:   52794999 cpu_core/cycles/Pu: 
+	    5626f4052888 lagrange(int, Z*, int)+0x108 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.084457:   52808540 cpu_core/cycles/Pu: 
+	    5626f4052d18 lagrange(int, Z*, int)+0x598 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.094505:   52923618 cpu_core/cycles/Pu: 
+	    5626f4052cd7 lagrange(int, Z*, int)+0x557 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.104584:   53125460 cpu_core/cycles/Pu: 
+	    5626f4052ba6 lagrange(int, Z*, int)+0x426 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.114691:   53208267 cpu_core/cycles/Pu: 
+	    5626f4052ceb lagrange(int, Z*, int)+0x56b (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.124780:   53162268 cpu_core/cycles/Pu: 
+	    5626f4052b81 lagrange(int, Z*, int)+0x401 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.134931:   53250721 cpu_core/cycles/Pu: 
+	    5626f405663a std::vector<Z, std::allocator<Z> >::size() const+0x96 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40556e1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x47 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053483 solve()+0x483 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.145056:   53118321 cpu_core/cycles/Pu: 
+	    5626f4052b33 lagrange(int, Z*, int)+0x3b3 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.155102:   52999119 cpu_core/cycles/Pu: 
+	    5626f4052c7e lagrange(int, Z*, int)+0x4fe (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.165194:   53218541 cpu_core/cycles/Pu: 
+	    5626f40565fd std::vector<Z, std::allocator<Z> >::size() const+0x59 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f40556e1 std::vector<Z, std::allocator<Z> >::operator[](unsigned long)+0x47 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405342e solve()+0x42e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.175287:   53244172 cpu_core/cycles/Pu: 
+	    5626f4052cde lagrange(int, Z*, int)+0x55e (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.185391:   53273581 cpu_core/cycles/Pu: 
+	    5626f4053d43 operator+(Z const&, Z const&)+0x33 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4053474 solve()+0x474 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+
+P1007_2.test  137354 15841.195488:   53225270 cpu_core/cycles/Pu: 
+	    5626f4052ce5 lagrange(int, Z*, int)+0x565 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f405353a solve()+0x53a (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    5626f4052415 main+0x1a5 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+	    7f8d60227675 [unknown] (/usr/lib/libc.so.6)
+	    7f8d60227729 __libc_start_main+0x89 (/usr/lib/libc.so.6)
+	    5626f4052555 _start+0x25 (/home/patchouli/Code/ACM/src/hdu/hd2/P1007_2.test)
+

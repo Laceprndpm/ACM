@@ -261,8 +261,7 @@ struct Polygon {
     GEO_T area() const
     {
         GEO_T sum = 0;
-        for (size_t i = 0; i < p.size(); i++)
-            sum += p[i] ^ p[nxt(i)];
+        for (size_t i = 0; i < p.size(); i++) sum += p[i] ^ p[nxt(i)];
         return sum;
     }
 
@@ -270,8 +269,7 @@ struct Polygon {
     GEO_T circ() const
     {
         GEO_T sum = 0;
-        for (size_t i = 0; i < p.size(); i++)
-            sum += p[i].dis(p[nxt(i)]);
+        for (size_t i = 0; i < p.size(); i++) sum += p[i].dis(p[nxt(i)]);
         return sum;
     }
 };
@@ -288,10 +286,8 @@ struct Convex : Polygon {
         const auto cmp = [](const Segment &u, const Segment &v) {
             return Argcmp()(u.b - u.a, v.b - v.a);
         };
-        for (size_t i = 0; i < p.size(); i++)
-            e1[i] = {p[i], p[this->nxt(i)]};
-        for (size_t i = 0; i < c.p.size(); i++)
-            e2[i] = {c.p[i], c.p[c.nxt(i)]};
+        for (size_t i = 0; i < p.size(); i++) e1[i] = {p[i], p[this->nxt(i)]};
+        for (size_t i = 0; i < c.p.size(); i++) e2[i] = {c.p[i], c.p[c.nxt(i)]};
         rotate(e1.begin(), min_element(e1.begin(), e1.end(), cmp), e1.end());
         rotate(e2.begin(), min_element(e2.begin(), e2.end(), cmp), e2.end());
         merge(e1.begin(), e1.end(), e2.begin(), e2.end(), edge.begin(), cmp);
@@ -301,8 +297,7 @@ struct Convex : Polygon {
         };
         auto u = e1[0].a + e2[0].a;
         for (const auto &v : edge) {
-            while (res.size() > 1 && check(res, u))
-                res.pop_back();
+            while (res.size() > 1 && check(res, u)) res.pop_back();
             res.push_back(u);
             u = u + v.b - v.a;
         }
@@ -636,16 +631,14 @@ Convex convexhull(vector<Point> p)
         return (back1 - back2).toleft(u - back1) <= 0;
     };
     for (const Point &u : p) {
-        while (st.size() > 1 && check(st, u))
-            st.pop_back();
+        while (st.size() > 1 && check(st, u)) st.pop_back();
         st.push_back(u);
     }
     size_t k = st.size();
     p.pop_back();
     reverse(p.begin(), p.end());
     for (const Point &u : p) {
-        while (st.size() > k && check(st, u))
-            st.pop_back();
+        while (st.size() > k && check(st, u)) st.pop_back();
         st.push_back(u);
     }
     st.pop_back();
@@ -675,17 +668,13 @@ vector<Line> halfinter(vector<Line> l, const GEO_T lim = 1e9)
     deque<Line> q;
     for (size_t i = 0; i < l.size(); i++) {
         if (i > 0 && l[i - 1].v.toleft(l[i].v) == 0 && l[i - 1].v * l[i].v > GEO_eps) continue;
-        while (q.size() > 1 && check(l[i], q.back(), q[q.size() - 2]))
-            q.pop_back();
-        while (q.size() > 1 && check(l[i], q[0], q[1]))
-            q.pop_front();
+        while (q.size() > 1 && check(l[i], q.back(), q[q.size() - 2])) q.pop_back();
+        while (q.size() > 1 && check(l[i], q[0], q[1])) q.pop_front();
         if (!q.empty() && q.back().v.toleft(l[i].v) <= 0) return vector<Line>();
         q.push_back(l[i]);
     }
-    while (q.size() > 1 && check(q[0], q.back(), q[q.size() - 2]))
-        q.pop_back();
-    while (q.size() > 1 && check(q.back(), q[0], q[1]))
-        q.pop_front();
+    while (q.size() > 1 && check(q[0], q.back(), q[q.size() - 2])) q.pop_back();
+    while (q.size() > 1 && check(q.back(), q[0], q[1])) q.pop_front();
     return vector<Line>(q.begin(), q.end());
 }
 
@@ -712,13 +701,11 @@ pair<GEO_T, GEO_T> minmax_triangle(const vector<Point> &vec)
         return Argcmp()({du.y, -du.x}, {dv.y, -dv.x});
     });
     vector<size_t> vx(vec.size()), pos(vec.size());
-    for (size_t i = 0; i < vec.size(); i++)
-        vx[i] = i;
+    for (size_t i = 0; i < vec.size(); i++) vx[i] = i;
     sort(vx.begin(), vx.end(), [&](int x, int y) {
         return vec[x] < vec[y];
     });
-    for (size_t i = 0; i < vx.size(); i++)
-        pos[vx[i]] = i;
+    for (size_t i = 0; i < vx.size(); i++) pos[vx[i]] = i;
     for (auto [u, v] : evt) {
         const size_t i = pos[u], j = pos[v];
         const size_t l = min(i, j), r = max(i, j);
@@ -745,8 +732,7 @@ GEO_T closest_pair(vector<Point> points)
     GEO_T                           ans = GEO_INF;
     for (size_t i = 0, l = 0; i < points.size(); i++) {
         const GEO_T sqans = sqrtl(ans) + 1;
-        while (l < i && points[i].x - points[l].x >= sqans)
-            s.erase(s.find(points[l++]));
+        while (l < i && points[i].x - points[l].x >= sqans) s.erase(s.find(points[l++]));
         for (auto it = s.lower_bound(Point{-GEO_INF, points[i].y - sqans});
              it != s.end() && it->y - points[i].y <= sqans; it++) {
             ans = min(ans, points[i].dis2(*it));

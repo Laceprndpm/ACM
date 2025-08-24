@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 
 #include <algorithm>
+#include <cassert>
 #include <functional>
 #include <iostream>
 #include <iterator>
@@ -473,6 +474,7 @@ void solve()
     while (b1 < n) {
         int  val = arr[b1];
         auto it  = lower_bound(ord[val].begin(), ord[val].end(), b1);
+        assert(*it == b1);
         if (sz(ord[val]) <= 2) {
             b1++;
             continue;
@@ -498,7 +500,7 @@ void solve()
             ans  = cur;
         }
     }
-    cout << ans << '\n';
+    cout << b1b2.fi << ' ' << b1b2.se << '\n';
 }
 
 signed main(signed argc, char **argv)
@@ -510,7 +512,8 @@ signed main(signed argc, char **argv)
     freopen(argv[1], "r", stdin);
     freopen(argv[2], "w", stdout);
 #endif
-    int t = 1;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }

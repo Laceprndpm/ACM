@@ -84,34 +84,34 @@
         //         "$gcc"
         //     ]
         // },
-        // {
-        //     "type": "cppbuild",
-        //     "label": "build with g++ -O2",
-        //     "command": "g++",
-        //     "args": [
-        //         "-fdiagnostics-color=always",
-        //         "-fsanitize=address",
-        //         "-fsanitize=undefined",
-        //         "-fsanitize=null",
-        //         "-fno-omit-frame-pointer",
-        //         "-O2",
-        //         "-g",
-        //         "${file}",
-        //         "-D",
-        //         "DEBUG",
-        //         "-o",
-        //         "${fileDirname}/${fileBasenameNoExtension}.O2",
-        //         "-std=c++23",
-        //         "-Wall"
-        //     ],
-        //     "group": {
-        //         "kind": "build",
-        //         "isDefault": true
-        //     },
-        //     "problemMatcher": [
-        //         "$gcc"
-        //     ]
-        // },
+        {
+            "type": "cppbuild",
+            "label": "build with g++ -O2",
+            "command": "g++",
+            "args": [
+                // "-fdiagnostics-color=always",
+                // "-fsanitize=address",
+                // "-fsanitize=undefined",
+                // "-fsanitize=null",
+                // "-fno-omit-frame-pointer",
+                "-O2",
+                "-g",
+                "${file}",
+                "-D",
+                "DEBUG",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.O2",
+                "-std=c++23",
+                "-Wall"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
         // {
         //     "type": "shell",
         //     "label": "run O2",
