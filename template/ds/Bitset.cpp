@@ -526,3 +526,104 @@ struct My_Bitset {
 };
 
 string My_Bitset::TO_STR[256];  // END: ds/my_bitset.hpp
+
+// struct My_Bitset {
+//     int         N;
+//     vector<u64> dat;
+//     using T = My_Bitset;
+
+//     My_Bitset(int N = 0, int x = 0) : N(N)
+//     {
+//         assert(x == 0 || x == 1);
+//         u64 v = (x == 0 ? 0 : -1);
+//         dat.assign((N + 63) >> 6, v);
+//         if (N) dat.back() >>= (64 * len(dat) - N);
+//     }
+
+//     static T from_string(string &S)
+//     {
+//         int N = len(S);
+//         T   ANS(N);
+//         for (int i = 0; i < N; i++) ANS[i] = (S[i] == '1');
+//         return ANS;
+//     }
+
+//     int size()
+//     {
+//         return N;
+//     }
+
+//     // thanks to chatgpt!
+//     class Proxy {
+//     public:
+//         Proxy(vector<u64> &d, int i) : dat(d), index(i) {}
+
+//         operator bool() const
+//         {
+//             return (dat[index >> 6] >> (index & 63)) & 1;
+//         }
+
+//         Proxy &operator=(u64 value)
+//         {
+//             dat[index >> 6] &= ~(u64(1) << (index & 63));
+//             dat[index >> 6] |= (value & 1) << (index & 63);
+//             return *this;
+//         }
+
+//         void flip()
+//         {
+//             dat[index >> 6] ^= (u64(1) << (index & 63));  // XOR to flip the bit
+//         }
+
+//     private:
+//         vector<u64> &dat;
+//         int          index;
+//     };
+
+//     Proxy operator[](int i)
+//     {
+//         return Proxy(dat, i);
+//     }
+
+//     My_Bitset range(int L, int R)
+//     {
+//         assert(L <= R);
+//         My_Bitset p(R - L);
+//         int       rm = (R - L) & 63;
+//         for (i64 _ = 0; _ < rm; _++) {
+//             p[R - L - 1] = bool((*this)[R - 1]);
+//             --R;
+//         }
+//         int n  = (R - L) >> 6;
+//         int hi = L & 63;
+//         int lo = 64 - hi;
+//         int s  = L >> 6;
+//         if (hi == 0) {
+//             for (i64 i = 0; i < n; i++) {
+//                 p.dat[i] ^= dat[s + i];
+//             }
+//         } else {
+//             for (i64 i = 0; i < n; i++) {
+//                 p.dat[i] ^= (dat[s + i] >> hi) ^ (dat[s + i + 1] << lo);
+//             }
+//         }
+//         return p;
+//     }
+
+//     T &operator^=(const T &p)
+//     {
+//         assert(N == p.N);
+//         for (int i = 0; i < len(dat); i++) dat[i] ^= p.dat[i];
+//         return *this;
+//     }
+
+//     void flip(int i)
+//     {
+//         (*this)[i].flip();
+//     }
+
+//     T operator^(const T &p) const
+//     {
+//         return T(*this) ^= p;
+//     }
+// };

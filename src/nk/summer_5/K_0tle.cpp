@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 
+#include <bit>
 #include <cassert>
 #include <iostream>
 #include <utility>
@@ -443,21 +444,14 @@ void solve()
     }
     const int mask = (1 << m) - 1;
     auto      cur  = dp1;
-    Or(cur, 1), Or(dp1, 1);
-    for (int i = 1; i <= m; i++) {
-        Z ans = 0;
-        for (int j = 0; j < 1 << m; j++) {
-            ans += (__builtin_popcount(mask ^ j) & 1 ? -1 : 1) * cur[j];
-        }
+    for (int i = 1; i < 22; i++) {
+        Z ans = cur[(1 << m) - 1];
         if (ans != 0) {
             cout << i << ' ' << ans / comb.fac(i) << '\n';
             return;
         }
         dbg(cur);
-        // cur = calc(cur, dp1);
-        for (int j = 0; j < 1 << m; j++) {
-            cur[j] *= dp1[j];
-        }
+        cur = calc(cur, dp1);
         dbg(cur);
     }
     cout << -1 << '\n';

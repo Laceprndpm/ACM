@@ -1,8 +1,5 @@
-
 #include <cassert>
 #include <iostream>
-#include <tuple>
-#include <utility>
 #include <vector>
 
 using namespace std;
@@ -122,7 +119,6 @@ void print(Head &&head, Tail &&...tail)
 #else
 #define dbg(...)
 #endif
-
 template <class T>
 constexpr T power(T a, u64 b, T res = 1)
 {
@@ -223,7 +219,6 @@ public:
 
     constexpr ModIntBase inv() const
     {
-        assert(this->x);
         return power(*this, mod() - 2);
     }
 
@@ -531,28 +526,19 @@ struct Comb {
     }
 } comb;
 
-namespace Poly {
-constexpr int get_MAX()
-{
-#ifdef CLANGD_MODE
-    return 1;
-#else
-    return 1 << 22;
-#endif
-}
+namespace Poly_beta {
+constexpr int CAPACITY = 1 << 21;
 
-// 缺省是因为clangd无法解析静态数组
-constexpr int MAXN = get_MAX();
-
-Z d[MAXN], b[MAXN], c[MAXN];
+vector<Z> d(CAPACITY), b(CAPACITY), c(CAPACITY);
 
 /*
  * 进行 FFT 和 IFFT 前的反置变换
  * 位置 i 和 i 的二进制反转后的位置互换
  * len 必须为 2 的幂
  */
-void change(Z y[], int len)
+void change(vector<Z> &y)
 {
+    const int len = y.size();
     // 一开始 i 是 0...01，而 j 是 10...0，在二进制下相反对称。
     // 之后 i 逐渐加一，而 j 依然维持着和 i 相反对称，一直到 i = 1...11。
     for (int i = 1, j = len / 2, k; i < len - 1; i++) {
@@ -570,13 +556,15 @@ void change(Z y[], int len)
     }
 }
 
-void ntt(Z y[], int len, int on)
+void ntt(vector<Z> &y, int on)
 {
+    const int len = y.size();
     assert((len == (len & -len)) && len);
+    assert(len >= y.size());
     constexpr Z g = 3;
 
     // 位逆序置换
-    change(y, len);
+    change(y);
     // 模拟合并过程，一开始，从长度为一合并到长度为二，一直合并到长度为 len。
     for (int h = 2; h <= len; h <<= 1) {
         // wn：当前单位复根的间隔：w^1_h
@@ -610,54 +598,91 @@ void ntt(Z y[], int len, int on)
     }
 }
 
+void reserve_size(vector<Z> &vec, int n, int val = 0)
+{
+    if (n > vec.capacity()) {
+        size_t cur_sz = 1ull << (n > 1 ? 64 - __builtin_clzll(n - 1) : 0);
+        vec.reserve(cur_sz);
+    }
+    vec.resize(n, val);
+}
+
 /* 多项式乘积
- * n为f和g的最高次和+1
+ * a和b为多项式长度或者说，最高次+1
  * 即n = f.len + g.len - 1
  * 注意此处最高次项是长度-1
  * 请保证f和g的长度不小于n
- * 也请自行保证f和g在各自len到n的范围内已清空
+ * 安全特化版本
  */
-void convolution(Z f[], Z g[], int n)
+void convolution(vector<Z> &f, vector<Z> &g, bool unsafe = 0)
 {
     int lens = 1;
+    int n    = f.size() + g.size() - 1;
     while (lens < n) lens <<= 1;
-    assert(lens <= MAXN);
-    ntt(f, lens, 1), ntt(g, lens, 1);
+    assert(unsafe || (f.capacity() >= lens && g.capacity() >= lens));
+    // f.resize(lens, 0), g.resize(lens, 0);
+    reserve_size(f, lens), reserve_size(g, lens);
+    ntt(f, 1), ntt(g, 1);
     for (int i = 0; i < lens; i++) f[i] = f[i] * g[i];
-    ntt(f, lens, -1);
+    ntt(f, -1);
+    f.resize(n);
+    g.resize(0);
+}
+
+void mult(vector<Z> &f, vector<Z> const &g)
+{
+    int fsz = f.size(), gsz = g.size();
+    int n = fsz + gsz - 1;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = max(0, i - gsz + 1); j < min(i, fsz); j++) {
+            b[i] += f[j] * g[i - j];
+        }
+    }
+    reserve_size(f, n);
+    for (int i = 0; i < n; i++) {
+        f[i] = b[i];
+    }
 }
 
 /* 多项式求逆(inv)
  * n为f最高次
  * Q(2n) = 2Q(n) - P(n) \cdot Q^2(n)
  */
-void polyinv(Z f[], int n)
+void polyinv(vector<Z> &f)
 {
+    const int n = f.size();
     for (i64 i = 0; i < n; i++) d[i] = 0;
     d[0] = f[0].inv();
     for (int i = 2; i <= n; i <<= 1) {
+        b.resize(i << 1);
+        c.resize(i << 1);
+        d.resize(i);
         for (int j = 0; j < i; j++) b[j] = f[j];
         for (int j = i; j < 2 * i; j++) b[j] = 0;
         for (int j = 0; j < i / 2; j++) c[j] = d[j];
         for (int j = i / 2; j < 2 * i; j++) c[j] = 0;
-        ntt(b, i << 1, 1), ntt(c, i << 1, 1);
+        ntt(b, 1), ntt(c, 1);
         for (int j = 0; j < 2 * i; j++) b[j] = b[j] * c[j] * c[j];
-        ntt(b, i << 1, -1);
+        ntt(b, -1);
         for (int j = 0; j < i; j++) d[j] = 2ll * d[j] - b[j];
     }
     for (int i = 0; i < n; i++) f[i] = d[i];
 }
 
-void polyd(Z f[], int n)
+void polyd(vector<Z> &f)
 {
+    const int n = f.size();
     for (int i = 0; i < n - 1; i++) {
         f[i] = f[i + 1] * (i + 1);
     }
-    f[n - 1] = 0;
+    f.resize(n - 1);
 }
 
-void polyint(Z f[], int n)
+void polyint(vector<Z> &f)
 {
+    const int n = f.size() + 1;
+    f.resize(n);
     for (int i = n - 1; i > 0; i--) f[i] = f[i - 1] * Z(i).inv();
     f[0] = 0;
 }
@@ -665,15 +690,17 @@ void polyint(Z f[], int n)
 /* 多项式求ln
  * G(x) = ln(F(x)) => G'(x) = F'(x) / F(x) => G = int{F'/F}
  */
-void polyln(Z f[], int n)
+void polyln(vector<Z> &f)
 {
+    const int n = f.size();
+    f.resize(n);
+    b.resize(n);
     for (int i = 0; i < n; i++) b[i] = f[i];
-    polyd(b, n);
-    polyinv(f, n);
-    for (int i = n; i < 2 * n; i++) f[i] = b[i] = 0;
-    // WARNING
-    convolution(b, f, 2 * n);
-    polyint(b, n);
+    polyd(b);
+    polyinv(f);
+    convolution(b, f);
+    polyint(b);
+    f.resize(n);
     for (int i = 0; i < n; i++) f[i] = b[i];
 }
 
@@ -682,36 +709,40 @@ void polyln(Z f[], int n)
  * F_{n} = exp(A) (mod x^n)
  * F_{2n} = F_n \cdot (1 - ln(F_n) + A) (mod x^{2n})
  */
-void polyexp(Z f[], int n)
+void polyexp(vector<Z> &f, int n)
 {
-    for (int i = 0; i < n; i++) c[i] = 0;
+    c.resize(2);
     c[0] = 1;
     for (int i = 2; i <= n; i <<= 1) {
+        b.resize(i);
         for (int j = 0; j < i; j++) b[j] = c[j];
-        polyln(b, i);
+        polyln(b);
         for (int j = 0; j < i; j++) b[j] = f[j] - b[j];
         b[0] = b[0] + 1;
-        for (int j = i; j < 2 * i; j++) b[j] = 0;
-        convolution(c, b, 2 * i);
+        convolution(c, b);
+        c.resize(2 * i);
         for (int j = i; j < 2 * i; j++) c[j] = 0;
     }
+    // f.resize(n);
+    reserve_size(f, n);
     for (int i = 0; i < n; i++) f[i] = c[i];
 }
 
 /* 多项式快速幂
  * G = F^k => lnG = k lnF => G = exp(k * lnF)
  */
-void polyqpow(Z f[], int k, int n)
+void polyqpow(vector<Z> &f, int k)
 {
-    polyln(f, n);
+    const int n = f.size();
+    polyln(f);
     for (int i = 0; i < n; i++) f[i] = f[i] * k;
     polyexp(f, n);
 }
 
-Z lagrange(int x, Z ptr[], int n)
+Z lagrange(int x, vector<Z> &y_value, int n)
 {
     if (x <= n) {
-        return ptr[x];
+        return y_value[x];
     }
     Z wi = 1;
     for (int j = 1; j <= n; j++) {
@@ -719,16 +750,42 @@ Z lagrange(int x, Z ptr[], int n)
     }
     Z ans = 0;
     for (int i = 1; i <= n; i++) {
-        ans += ptr[i] * wi / (x - i) * comb.invfac(i - 1) * comb.invfac(n - i) * ((n - i) & 1 ? -1 : 1);
+        ans += y_value[i] * wi / (x - i) * comb.invfac(i - 1) * comb.invfac(n - i) * ((n - i) & 1 ? -1 : 1);
     }
     return ans;
 }
 
-};  // namespace Poly
+};  // namespace Poly_beta
 
-using namespace Poly;
-
-void solve() {}
+void solve()
+{
+    int n, k;
+    cin >> n >> k;
+    vector<int> arr(n + 1);
+    for (int i = 1; i <= n; i++) {
+        cin >> arr[i];
+    }
+    vector<Z> Ax(2);
+    Ax[1] = 1;
+    vector<Z> tmp;
+    tmp.resize(2);
+    for (int i = 1; i <= n; i++) {
+        tmp[0] = arr[i];
+        tmp[1] = -1;
+        Poly_beta::mult(Ax, tmp);
+    }
+    vector<Z> uper(2);
+    uper[1] = n;
+    Poly_beta::polyexp(uper, 5001);
+    Poly_beta::convolution(Ax, uper);
+    vector<Z> ans = Ax;
+    tmp           = Ax;
+    for (int i = 2; i <= n; i++) {
+        tmp = Ax;
+        Poly_beta::convolution(ans, tmp);
+    }
+    cout << ans[k];
+}
 
 signed main(signed argc, char **argv)
 {
@@ -739,8 +796,7 @@ signed main(signed argc, char **argv)
     freopen(argv[1], "r", stdin);
     freopen(argv[2], "w", stdout);
 #endif
-    int t;
-    cin >> t;
+    int t = 1;
     while (t--) {
         solve();
     }

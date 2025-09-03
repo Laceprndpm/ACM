@@ -1,8 +1,6 @@
-
 #include <cassert>
+#include <functional>
 #include <iostream>
-#include <tuple>
-#include <utility>
 #include <vector>
 
 using namespace std;
@@ -223,7 +221,6 @@ public:
 
     constexpr ModIntBase inv() const
     {
-        assert(this->x);
         return power(*this, mod() - 2);
     }
 
@@ -473,7 +470,9 @@ private:
 template <u32 Id>
 Barrett DynModInt<Id>::bt = 998244353;
 
-using Z = ModInt<998244353>;
+constexpr i64 P = 998244353;
+
+using Z = ModInt<P>;
 
 struct Comb {
     int            n;
@@ -531,204 +530,364 @@ struct Comb {
     }
 } comb;
 
-namespace Poly {
-constexpr int get_MAX()
+vector<int> rev;
+template <int P>
+vector<Z> roots{0, 1};
+
+template <int P>
+constexpr Z findPrimitiveRoot()
 {
-#ifdef CLANGD_MODE
-    return 1;
-#else
-    return 1 << 22;
-#endif
-}
-
-// 缺省是因为clangd无法解析静态数组
-constexpr int MAXN = get_MAX();
-
-Z d[MAXN], b[MAXN], c[MAXN];
-
-/*
- * 进行 FFT 和 IFFT 前的反置变换
- * 位置 i 和 i 的二进制反转后的位置互换
- * len 必须为 2 的幂
- */
-void change(Z y[], int len)
-{
-    // 一开始 i 是 0...01，而 j 是 10...0，在二进制下相反对称。
-    // 之后 i 逐渐加一，而 j 依然维持着和 i 相反对称，一直到 i = 1...11。
-    for (int i = 1, j = len / 2, k; i < len - 1; i++) {
-        // 交换互为小标反转的元素，i < j 保证交换一次
-        if (i < j) swap(y[i], y[j]);
-        // i 做正常的 + 1，j 做反转类型的 + 1，始终保持 i 和 j 是反转的。
-        // 这里 k 代表了 0 出现的最高位。j 先减去高位的全为 1 的数字，直到遇到了
-        // 0，之后再加上即可。
-        k = len / 2;
-        while (j >= k) {
-            j = j - k;
-            k = k / 2;
+    Z   i = 2;
+    int k = __builtin_ctz(P - 1);
+    while (true) {
+        if (power(i, (P - 1) / 2) != 1) {
+            break;
         }
-        if (j < k) j += k;
+        i += 1;
     }
+    return power(i, (P - 1) >> k);
 }
 
-void ntt(Z y[], int len, int on)
-{
-    assert((len == (len & -len)) && len);
-    constexpr Z g = 3;
+template <int P>
+constexpr Z primitiveRoot = findPrimitiveRoot<P>();
+template <>
+constexpr Z primitiveRoot<998244353>{31};
 
-    // 位逆序置换
-    change(y, len);
-    // 模拟合并过程，一开始，从长度为一合并到长度为二，一直合并到长度为 len。
-    for (int h = 2; h <= len; h <<= 1) {
-        // wn：当前单位复根的间隔：w^1_h
-        Z wn = power(g, (Z::mod() - 1) / h);
-        if (on == -1) wn = wn.inv();
-        // 合并，共 len / h 次。
-        for (int j = 0; j < len; j += h) {
-            // 计算当前单位复根，一开始是 1 = w^0_n，之后是以 wn 为间隔递增： w^1_n
-            // ...
-            Z w(1);
-            for (int k = j; k < j + h / 2; k++) {
-                // 左侧部分和右侧是子问题的解
-                Z u = y[k];
-                Z t = w * y[k + h / 2];
-                // 这就是把两部分分治的结果加起来
-                y[k]         = u + t;
-                y[k + h / 2] = u - t;
-                // 后半个 「step」 中的ω一定和 「前半个」 中的成相反数
-                // 「红圈」上的点转一整圈「转回来」，转半圈正好转成相反数
-                // 一个数相反数的平方与这个数自身的平方相等
-                w = w * wn;
+constexpr void dft(vector<Z> &a)
+{  // 离散傅里叶变换
+    int n = a.size();
+
+    if (int(rev.size()) != n) {
+        int k = __builtin_ctz(n) - 1;
+        rev.resize(n);
+        for (int i = 0; i < n; i++) {
+            rev[i] = rev[i >> 1] >> 1 | (i & 1) << k;
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (rev[i] < i) {
+            swap(a[i], a[rev[i]]);
+        }
+    }
+    if (roots<P>.size() < n) {
+        int k = __builtin_ctz(roots<P>.size());
+        roots<P>.resize(n);
+        while ((1 << k) < n) {
+            auto e = power(primitiveRoot<P>, 1 << (__builtin_ctz(P - 1) - k - 1));
+            for (int i = 1 << (k - 1); i < (1 << k); i++) {
+                roots<P>[2 * i]     = roots<P>[i];
+                roots<P>[2 * i + 1] = roots<P>[i] * e;
+            }
+            k++;
+        }
+    }
+    for (int k = 1; k < n; k *= 2) {
+        for (int i = 0; i < n; i += 2 * k) {
+            for (int j = 0; j < k; j++) {
+                Z u          = a[i + j];
+                Z v          = a[i + j + k] * roots<P>[k + j];
+                a[i + j]     = u + v;
+                a[i + j + k] = u - v;
             }
         }
     }
-    // 如果是 IDFT，它的逆矩阵的每一个元素不只是原元素取倒数，还要除以长度 len。
-    Z iv = Z(len).inv();
-    if (on == -1) {
-        for (int i = 0; i < len; i++) {
-            y[i] = y[i] * iv;
+}
+
+constexpr void idft(vector<Z> &a)
+{  // 逆变换
+    int n = a.size();
+    reverse(a.begin() + 1, a.end());
+    dft(a);
+    Z inv = (1 - P) / n;
+    for (int i = 0; i < n; i++) {
+        a[i] *= inv;
+    }
+}
+
+struct Poly : public vector<Z> {
+    using Value = Z;
+
+    Poly() : vector<Value>() {}
+
+    explicit constexpr Poly(int n) : vector<Value>(n) {}
+
+    explicit constexpr Poly(const vector<Value> &a) : vector<Value>(a) {}
+
+    constexpr Poly(const initializer_list<Value> &a) : vector<Value>(a) {}
+
+    template <class InputIt, class = _RequireInputIter<InputIt>>
+    explicit constexpr Poly(InputIt first, InputIt last) : vector<Value>(first, last)
+    {
+    }
+
+    template <class F>
+    explicit constexpr Poly(int n, F f) : vector<Value>(n)
+    {
+        for (int i = 0; i < n; i++) {
+            (*this)[i] = f(i);
         }
     }
-}
 
-/* 多项式乘积
- * n为f和g的最高次和+1
- * 即n = f.len + g.len - 1
- * 注意此处最高次项是长度-1
- * 请保证f和g的长度不小于n
- * 也请自行保证f和g在各自len到n的范围内已清空
- */
-void convolution(Z f[], Z g[], int n)
-{
-    int lens = 1;
-    while (lens < n) lens <<= 1;
-    assert(lens <= MAXN);
-    ntt(f, lens, 1), ntt(g, lens, 1);
-    for (int i = 0; i < lens; i++) f[i] = f[i] * g[i];
-    ntt(f, lens, -1);
-}
-
-/* 多项式求逆(inv)
- * n为f最高次
- * Q(2n) = 2Q(n) - P(n) \cdot Q^2(n)
- */
-void polyinv(Z f[], int n)
-{
-    for (i64 i = 0; i < n; i++) d[i] = 0;
-    d[0] = f[0].inv();
-    for (int i = 2; i <= n; i <<= 1) {
-        for (int j = 0; j < i; j++) b[j] = f[j];
-        for (int j = i; j < 2 * i; j++) b[j] = 0;
-        for (int j = 0; j < i / 2; j++) c[j] = d[j];
-        for (int j = i / 2; j < 2 * i; j++) c[j] = 0;
-        ntt(b, i << 1, 1), ntt(c, i << 1, 1);
-        for (int j = 0; j < 2 * i; j++) b[j] = b[j] * c[j] * c[j];
-        ntt(b, i << 1, -1);
-        for (int j = 0; j < i; j++) d[j] = 2ll * d[j] - b[j];
+    constexpr Poly shift(int k) const
+    {
+        if (k >= 0) {
+            auto b = *this;
+            b.insert(b.begin(), k, 0);
+            return b;
+        } else if (this->size() <= -k) {
+            return Poly();
+        } else {
+            return Poly(this->begin() + (-k), this->end());
+        }
     }
-    for (int i = 0; i < n; i++) f[i] = d[i];
-}
 
-void polyd(Z f[], int n)
-{
-    for (int i = 0; i < n - 1; i++) {
-        f[i] = f[i + 1] * (i + 1);
+    constexpr Poly trunc(int k) const
+    {
+        Poly f = *this;
+        f.resize(k);
+        return f;
     }
-    f[n - 1] = 0;
-}
 
-void polyint(Z f[], int n)
-{
-    for (int i = n - 1; i > 0; i--) f[i] = f[i - 1] * Z(i).inv();
-    f[0] = 0;
-}
-
-/* 多项式求ln
- * G(x) = ln(F(x)) => G'(x) = F'(x) / F(x) => G = int{F'/F}
- */
-void polyln(Z f[], int n)
-{
-    for (int i = 0; i < n; i++) b[i] = f[i];
-    polyd(b, n);
-    polyinv(f, n);
-    for (int i = n; i < 2 * n; i++) f[i] = b[i] = 0;
-    // WARNING
-    convolution(b, f, 2 * n);
-    polyint(b, n);
-    for (int i = 0; i < n; i++) f[i] = b[i];
-}
-
-/* 多项式求exp
- * exp(x) = 1 + x + x^2/2! ... x^n / n!
- * F_{n} = exp(A) (mod x^n)
- * F_{2n} = F_n \cdot (1 - ln(F_n) + A) (mod x^{2n})
- */
-void polyexp(Z f[], int n)
-{
-    for (int i = 0; i < n; i++) c[i] = 0;
-    c[0] = 1;
-    for (int i = 2; i <= n; i <<= 1) {
-        for (int j = 0; j < i; j++) b[j] = c[j];
-        polyln(b, i);
-        for (int j = 0; j < i; j++) b[j] = f[j] - b[j];
-        b[0] = b[0] + 1;
-        for (int j = i; j < 2 * i; j++) b[j] = 0;
-        convolution(c, b, 2 * i);
-        for (int j = i; j < 2 * i; j++) c[j] = 0;
+    constexpr friend Poly operator+(const Poly &a, const Poly &b)
+    {
+        Poly res(max(a.size(), b.size()));
+        for (int i = 0; i < a.size(); i++) {
+            res[i] += a[i];
+        }
+        for (int i = 0; i < b.size(); i++) {
+            res[i] += b[i];
+        }
+        return res;
     }
-    for (int i = 0; i < n; i++) f[i] = c[i];
-}
 
-/* 多项式快速幂
- * G = F^k => lnG = k lnF => G = exp(k * lnF)
- */
-void polyqpow(Z f[], int k, int n)
+    constexpr friend Poly operator-(const Poly &a, const Poly &b)
+    {
+        Poly res(max(a.size(), b.size()));
+        for (int i = 0; i < a.size(); i++) {
+            res[i] += a[i];
+        }
+        for (int i = 0; i < b.size(); i++) {
+            res[i] -= b[i];
+        }
+        return res;
+    }
+
+    constexpr friend Poly operator-(const Poly &a)
+    {
+        vector<Value> res(a.size());
+        for (int i = 0; i < int(res.size()); i++) {
+            res[i] = -a[i];
+        }
+        return Poly(res);
+    }
+
+    constexpr friend Poly operator*(Poly a, Poly b)
+    {
+        if (a.size() == 0 || b.size() == 0) {
+            return Poly();
+        }
+        if (a.size() < b.size()) {
+            std::swap(a, b);
+        }
+        int n = 1, tot = a.size() + b.size() - 1;
+        while (n < tot) {
+            n *= 2;
+        }
+        if (((P - 1) & (n - 1)) != 0 || b.size() < 128) {
+            Poly c(a.size() + b.size() - 1);
+            for (int i = 0; i < a.size(); i++) {
+                for (int j = 0; j < b.size(); j++) {
+                    c[i + j] += a[i] * b[j];
+                }
+            }
+            return c;
+        }
+        a.resize(n);
+        b.resize(n);
+        dft(a);
+        dft(b);
+        for (int i = 0; i < n; ++i) {
+            a[i] *= b[i];
+        }
+        idft(a);
+        a.resize(tot);
+        return a;
+    }
+
+    constexpr friend Poly operator*(Value a, Poly b)
+    {
+        for (int i = 0; i < int(b.size()); i++) {
+            b[i] *= a;
+        }
+        return b;
+    }
+
+    constexpr friend Poly operator*(Poly a, Value b)
+    {
+        for (int i = 0; i < int(a.size()); i++) {
+            a[i] *= b;
+        }
+        return a;
+    }
+
+    constexpr friend Poly operator/(Poly a, Value b)
+    {
+        for (int i = 0; i < int(a.size()); i++) {
+            a[i] /= b;
+        }
+        return a;
+    }
+
+    constexpr Poly &operator+=(Poly b)
+    {
+        return (*this) = (*this) + b;
+    }
+
+    constexpr Poly &operator-=(Poly b)
+    {
+        return (*this) = (*this) - b;
+    }
+
+    constexpr Poly &operator*=(Poly b)
+    {
+        return (*this) = (*this) * b;
+    }
+
+    constexpr Poly &operator*=(Value b)
+    {
+        return (*this) = (*this) * b;
+    }
+
+    constexpr Poly &operator/=(Value b)
+    {
+        return (*this) = (*this) / b;
+    }
+
+    constexpr Poly deriv() const
+    {
+        if (this->empty()) {
+            return Poly();
+        }
+        Poly res(this->size() - 1);
+        for (int i = 0; i < this->size() - 1; ++i) {
+            res[i] = (i + 1) * (*this)[i + 1];
+        }
+        return res;
+    }
+
+    constexpr Poly integr() const
+    {
+        Poly res(this->size() + 1);
+        for (int i = 0; i < this->size(); ++i) {
+            res[i + 1] = (*this)[i] / (i + 1);
+        }
+        return res;
+    }
+
+    constexpr Poly inv(int m) const
+    {
+        Poly x{(*this)[0].inv()};
+        int  k = 1;
+        while (k < m) {
+            k *= 2;
+            x = (x * (Poly{2} - trunc(k) * x)).trunc(k);
+        }
+        return x.trunc(m);
+    }
+
+    constexpr Poly log(int m) const
+    {
+        return (deriv() * inv(m)).integr().trunc(m);
+    }
+
+    constexpr Poly exp(int m) const
+    {
+        Poly x{1};
+        int  k = 1;
+        while (k < m) {
+            k *= 2;
+            x = (x * (Poly{1} - x.log(k) + trunc(k))).trunc(k);
+        }
+        return x.trunc(m);
+    }
+
+    constexpr Poly pow(int k, int m) const
+    {
+        int i = 0;
+        while (i < this->size() && (*this)[i] == 0) {
+            i++;
+        }
+        if (i == this->size() || 1LL * i * k >= m) {
+            return Poly(m);
+        }
+        Value v = (*this)[i];
+        auto  f = shift(-i) * v.inv();
+        return (f.log(m - i * k) * k).exp(m - i * k).shift(i * k) * power(v, k);
+    }
+
+    constexpr Poly sqrt(int m) const
+    {
+        Poly x{1};
+        int  k = 1;
+        while (k < m) {
+            k *= 2;
+            x = (x + (trunc(k) * x.inv(k)).trunc(k)) * Z(2).inv();
+        }
+        return x.trunc(m);
+    }
+
+    constexpr Poly mulT(Poly b) const
+    {
+        if (b.size() == 0) {
+            return Poly();
+        }
+        int n = b.size();
+        reverse(b.begin(), b.end());
+        return ((*this) * b).shift(-(n - 1));
+    }
+
+    constexpr vector<Value> eval(vector<Value> x) const
+    {
+        if (this->size() == 0) {
+            return vector<Value>(x.size(), 0);
+        }
+        const int     n = max(x.size(), this->size());
+        vector<Poly>  q(4 * n);
+        vector<Value> ans(x.size());
+        x.resize(n);
+        function<void(int, int, int)> build = [&](int p, int l, int r) {
+            if (r - l == 1) {
+                q[p] = Poly{1, -x[l]};
+            } else {
+                int m = (l + r) / 2;
+                build(2 * p, l, m);
+                build(2 * p + 1, m, r);
+                q[p] = q[2 * p] * q[2 * p + 1];
+            }
+        };
+        build(1, 0, n);
+        function<void(int, int, int, const Poly &)> work;
+        work = [&](int p, int l, int r, const Poly &num) -> void {
+            if (r - l == 1) {
+                if (l < int(ans.size())) {
+                    ans[l] = num[0];
+                }
+            } else {
+                int m = (l + r) / 2;
+                work(2 * p, l, m, num.mulT(q[2 * p + 1]).resize(m - l));
+                work(2 * p + 1, m, r, num.mulT(q[2 * p]).resize(r - m));
+            }
+        };
+        work(1, 0, n, mulT(q[1].inv(n)));
+        return ans;
+    }
+};
+
+void solve()
 {
-    polyln(f, n);
-    for (int i = 0; i < n; i++) f[i] = f[i] * k;
-    polyexp(f, n);
+    Poly
 }
-
-Z lagrange(int x, Z ptr[], int n)
-{
-    if (x <= n) {
-        return ptr[x];
-    }
-    Z wi = 1;
-    for (int j = 1; j <= n; j++) {
-        wi *= Z(x - j);
-    }
-    Z ans = 0;
-    for (int i = 1; i <= n; i++) {
-        ans += ptr[i] * wi / (x - i) * comb.invfac(i - 1) * comb.invfac(n - i) * ((n - i) & 1 ? -1 : 1);
-    }
-    return ans;
-}
-
-};  // namespace Poly
-
-using namespace Poly;
-
-void solve() {}
 
 signed main(signed argc, char **argv)
 {

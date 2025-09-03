@@ -87,8 +87,7 @@ void solve()
 {
     cin >> n >> m >> k;
 
-    for (int i = 0; i <= n; ++i)
-        g[i].clear();
+    for (int i = 0; i <= n; ++i) g[i].clear();
     memset(sm, -1, sizeof(sm));
     memset(cnt, 0, sizeof(cnt));
 

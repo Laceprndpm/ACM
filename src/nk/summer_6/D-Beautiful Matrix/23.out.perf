@@ -1,0 +1,560 @@
+D_0ac.O2  106404  6166.004435:    5050505 cpu_core/cycles/Pu: 
+	    562277986984 solve()+0x5d4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.006057:    8089700 cpu_core/cycles/Pu: 
+	    56227798698c solve()+0x5dc (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.009636:   18144432 cpu_core/cycles/Pu: 
+	    562277986524 solve()+0x174 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.013535:    5050505 cpu_core/cycles/Pu: 
+	    56227798742d std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >::resize(unsigned long)+0x14d (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.015377:    8366378 cpu_core/cycles/Pu: 
+	    5622779866f0 solve()+0x340 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.019588:   19705628 cpu_core/cycles/Pu: 
+	    56227798985b Poly<998244353>::pow(int, int) const+0x21b (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	332ace8e0d187213 [unknown] ([unknown])
+
+D_0ac.O2  106404  6166.026418:   32005244 cpu_core/cycles/Pu: 
+	    562277986fd1 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1d1 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.034606:   41647635 cpu_core/cycles/Pu: 
+	    56227798700e void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x20e (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.044036:   48032004 cpu_core/cycles/Pu: 
+	    562277986ffd void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1fd (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.053934:   50458065 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.063842:   51136020 cpu_core/cycles/Pu: 
+	    562277986fd4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1d4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.073907:   51777306 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.084342:   52120284 cpu_core/cycles/Pu: 
+	    562277986e6f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x6f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.093898:   49877557 cpu_core/cycles/Pu: 
+	    562277987029 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x229 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.103706:   51743487 cpu_core/cycles/Pu: 
+	    562277986fce void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1ce (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.114402:   52885157 cpu_core/cycles/Pu: 
+	    562277986fe6 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e6 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.124229:   51312845 cpu_core/cycles/Pu: 
+	    562277986fc0 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1c0 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.134277:   52406472 cpu_core/cycles/Pu: 
+	    562277986feb void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1eb (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.144236:   52498723 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.155188:   53001576 cpu_core/cycles/Pu: 
+	    56227798700a void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x20a (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.164369:   48426980 cpu_core/cycles/Pu: 
+	    562277986fc0 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1c0 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.174216:   51824144 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.184364:   52806392 cpu_core/cycles/Pu: 
+	    562277986e5f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x5f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.194406:   52764928 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.204947:   53032722 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.214713:   51307311 cpu_core/cycles/Pu: 
+	    562277986feb void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1eb (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.224789:   52669515 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.234801:   52810216 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.244883:   53161914 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.254978:   53234626 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.265197:   53266366 cpu_core/cycles/Pu: 
+	    562277986e5f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x5f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.275303:   52791286 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.285325:   52845543 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.295400:   53145586 cpu_core/cycles/Pu: 
+	    562277986fc0 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1c0 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.307147:   53250187 cpu_core/cycles/Pu: 
+	    562277986fe6 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e6 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.316552:   49440392 cpu_core/cycles/Pu: 
+	    562277987001 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x201 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.326494:   52019853 cpu_core/cycles/Pu: 
+	    562277986fe6 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e6 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.336503:   52610226 cpu_core/cycles/Pu: 
+	    562277986fc4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1c4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.346618:   52967389 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.356778:   52998769 cpu_core/cycles/Pu: 
+	    562277986fe6 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e6 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.366837:   52955282 cpu_core/cycles/Pu: 
+	    562277986e5f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x5f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.376988:   53115853 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.387041:   52995763 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.397185:   53188597 cpu_core/cycles/Pu: 
+	    562277987029 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x229 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.409745:   53096063 cpu_core/cycles/Pu: 
+	    562277986ff1 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f1 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.418644:   46426428 cpu_core/cycles/Pu: 
+	    562277986fd8 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1d8 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.428379:   51088376 cpu_core/cycles/Pu: 
+	    562277986fc0 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1c0 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.438401:   52475497 cpu_core/cycles/Pu: 
+	    562277986e5f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x5f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.448451:   52815327 cpu_core/cycles/Pu: 
+	    562277986fc0 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1c0 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.458484:   52917938 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.468687:   53185631 cpu_core/cycles/Pu: 
+	    562277986e5f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x5f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.478781:   52662262 cpu_core/cycles/Pu: 
+	    56227798700e void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x20e (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.488761:   52623313 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.498829:   53102347 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.509011:   53233857 cpu_core/cycles/Pu: 
+	    562277988490 Poly<998244353>::log(int) const+0x230 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	27ad35b60003d090 [unknown] ([unknown])
+
+D_0ac.O2  106404  6166.519182:   52956355 cpu_core/cycles/Pu: 
+	    5622779884fe Poly<998244353>::log(int) const+0x29e (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	27ad35b60003d090 [unknown] ([unknown])
+
+D_0ac.O2  106404  6166.529160:   52610579 cpu_core/cycles/Pu: 
+	    5622779884ad Poly<998244353>::log(int) const+0x24d (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	27ad35b60003d090 [unknown] ([unknown])
+
+D_0ac.O2  106404  6166.539338:   53102867 cpu_core/cycles/Pu: 
+	    5622779884d5 Poly<998244353>::log(int) const+0x275 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	27ad35b60003d090 [unknown] ([unknown])
+
+D_0ac.O2  106404  6166.549460:   52783556 cpu_core/cycles/Pu: 
+	    5622779884ad Poly<998244353>::log(int) const+0x24d (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	27ad35b60003d090 [unknown] ([unknown])
+
+D_0ac.O2  106404  6166.559473:   52774686 cpu_core/cycles/Pu: 
+	    5622779884b4 Poly<998244353>::log(int) const+0x254 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	27ad35b60003d090 [unknown] ([unknown])
+
+D_0ac.O2  106404  6166.570350:   53199048 cpu_core/cycles/Pu: 
+	    562277986fd8 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1d8 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.580424:   51145541 cpu_core/cycles/Pu: 
+	    562277986fd8 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1d8 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.590461:   51264955 cpu_core/cycles/Pu: 
+	    562277986fe6 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e6 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.600551:   51453997 cpu_core/cycles/Pu: 
+	    562277986ff7 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f7 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.610633:   51441288 cpu_core/cycles/Pu: 
+	    562277986fce void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1ce (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.620805:   51636827 cpu_core/cycles/Pu: 
+	    562277987001 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x201 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.630736:   51347501 cpu_core/cycles/Pu: 
+	    562277986e5f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x5f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.640689:   51978506 cpu_core/cycles/Pu: 
+	    562277986fc0 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1c0 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.650897:   52528358 cpu_core/cycles/Pu: 
+	    562277986fd4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1d4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.660858:   52061523 cpu_core/cycles/Pu: 
+	    562277986fd8 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1d8 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.670990:   52679387 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.681044:   52768158 cpu_core/cycles/Pu: 
+	    562277986fd8 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1d8 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.691164:   52792589 cpu_core/cycles/Pu: 
+	    56227798771d operator*(Poly<998244353>, Poly<998244353>)+0x15d (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.701181:   52617089 cpu_core/cycles/Pu: 
+	    562277986fc0 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1c0 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.711366:   53057760 cpu_core/cycles/Pu: 
+	    562277986fe2 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e2 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.721440:   52586615 cpu_core/cycles/Pu: 
+	    562277986fce void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1ce (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.731629:   52635700 cpu_core/cycles/Pu: 
+	    562277986fce void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1ce (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.741701:   52490092 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.751749:   52607484 cpu_core/cycles/Pu: 
+	    562277986feb void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1eb (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.761780:   52769942 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.771904:   53080098 cpu_core/cycles/Pu: 
+	    562277986e85 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x85 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.782159:   52948184 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.792144:   52604904 cpu_core/cycles/Pu: 
+	    562277987001 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x201 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.802235:   53067355 cpu_core/cycles/Pu: 
+	    5622779884d5 Poly<998244353>::log(int) const+0x275 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	 8b5e0a20d10d0f3 [unknown] ([unknown])
+
+D_0ac.O2  106404  6166.812337:   53169533 cpu_core/cycles/Pu: 
+	    562277986e5f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x5f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.822589:   53195973 cpu_core/cycles/Pu: 
+	    562277987012 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x212 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.832615:   52590511 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.842662:   52900468 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.852730:   53072257 cpu_core/cycles/Pu: 
+	    562277986fe2 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e2 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.862986:   53223846 cpu_core/cycles/Pu: 
+	    56227798701c void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x21c (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.873009:   52467703 cpu_core/cycles/Pu: 
+	    562277986e5f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x5f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.883007:   52728042 cpu_core/cycles/Pu: 
+	    562277986fce void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1ce (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.893126:   53134382 cpu_core/cycles/Pu: 
+	    562277987001 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x201 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.903286:   53078010 cpu_core/cycles/Pu: 
+	    562277986fd4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1d4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.913342:   52627629 cpu_core/cycles/Pu: 
+	    56227798701c void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x21c (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.923402:   52809087 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.933427:   52878895 cpu_core/cycles/Pu: 
+	    562277986fe6 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e6 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.943521:   53176057 cpu_core/cycles/Pu: 
+	    562277986feb void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1eb (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.953721:   53264407 cpu_core/cycles/Pu: 
+	    562277986fd8 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1d8 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.964304:   52968462 cpu_core/cycles/Pu: 
+	    562277987012 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x212 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.974301:   51933899 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.984255:   52307860 cpu_core/cycles/Pu: 
+	    562277987001 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x201 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6166.994450:   52868823 cpu_core/cycles/Pu: 
+	    562277987001 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x201 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.004939:   52654778 cpu_core/cycles/Pu: 
+	    562277986ff1 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f1 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.014485:   50237095 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.024504:   52419637 cpu_core/cycles/Pu: 
+	    562277987029 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x229 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.034666:   52755021 cpu_core/cycles/Pu: 
+	    562277987035 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x235 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.044641:   52394331 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.054800:   52909835 cpu_core/cycles/Pu: 
+	    5622779884ca Poly<998244353>::log(int) const+0x26a (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	 8b5e0a20d10d0f3 [unknown] ([unknown])
+
+D_0ac.O2  106404  6167.064936:   52773901 cpu_core/cycles/Pu: 
+	    562277988490 Poly<998244353>::log(int) const+0x230 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	 8b5e0a20d10d0f3 [unknown] ([unknown])
+
+D_0ac.O2  106404  6167.075122:   52721876 cpu_core/cycles/Pu: 
+	    562277986e70 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x70 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.085205:   52274861 cpu_core/cycles/Pu: 
+	    562277986fd4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1d4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.095314:   52340423 cpu_core/cycles/Pu: 
+	    56227798700e void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x20e (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.105511:   52314175 cpu_core/cycles/Pu: 
+	    562277986e5f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x5f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.115688:   51998968 cpu_core/cycles/Pu: 
+	    562277986fce void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1ce (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.125839:   51682322 cpu_core/cycles/Pu: 
+	    562277987001 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x201 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.135975:   51485926 cpu_core/cycles/Pu: 
+	    562277986fe6 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e6 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.146089:   51457536 cpu_core/cycles/Pu: 
+	    562277987001 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x201 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.156241:   51446123 cpu_core/cycles/Pu: 
+	    562277986fe2 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e2 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.166253:   51239105 cpu_core/cycles/Pu: 
+	    562277986fe6 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e6 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.176233:   51671568 cpu_core/cycles/Pu: 
+	    562277986e5f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x5f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.186193:   52115790 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.196294:   52607800 cpu_core/cycles/Pu: 
+	    56227798701c void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x21c (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.206567:   52700715 cpu_core/cycles/Pu: 
+	    562277986e77 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x77 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.216644:   51988192 cpu_core/cycles/Pu: 
+	    562277986fd4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1d4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.226829:   52373766 cpu_core/cycles/Pu: 
+	    562277986fc0 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1c0 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.236833:   52074789 cpu_core/cycles/Pu: 
+	    562277986e5f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x5f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.246974:   52334059 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.257552:   52234969 cpu_core/cycles/Pu: 
+	    56227798700e void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x20e (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.264163:    5050505 cpu_core/cycles/Pu: 
+	    562277987029 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x229 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.266196:   10667416 cpu_core/cycles/Pu: 
+	    562277986fe6 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e6 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.270103:   20578478 cpu_core/cycles/Pu: 
+	    562277986ffd void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1fd (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.276193:   31351437 cpu_core/cycles/Pu: 
+	    562277987001 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x201 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.284601:   43991035 cpu_core/cycles/Pu: 
+	    562277986e5f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x5f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.294218:   49821494 cpu_core/cycles/Pu: 
+	    562277986fd8 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1d8 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.304406:   51747789 cpu_core/cycles/Pu: 
+	    562277987016 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x216 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.314243:   51316853 cpu_core/cycles/Pu: 
+	    562277986ff7 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f7 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.324333:   52363031 cpu_core/cycles/Pu: 
+	    562277986feb void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1eb (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.334412:   52322734 cpu_core/cycles/Pu: 
+	    562277986e79 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x79 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.344565:   52409635 cpu_core/cycles/Pu: 
+	    562277986fe2 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e2 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.354542:   52159910 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.364640:   52634283 cpu_core/cycles/Pu: 
+	    562277987029 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x229 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.374797:   52766390 cpu_core/cycles/Pu: 
+	    56227798700e void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x20e (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.384797:   52441204 cpu_core/cycles/Pu: 
+	    562277986fe2 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e2 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.395009:   52829216 cpu_core/cycles/Pu: 
+	    562277986fce void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1ce (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.406579:   52374069 cpu_core/cycles/Pu: 
+	    562277986e63 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x63 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.415677:   47485435 cpu_core/cycles/Pu: 
+	    56227798701c void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x21c (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.425523:   51141864 cpu_core/cycles/Pu: 
+	    562277987001 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x201 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.435443:   52075443 cpu_core/cycles/Pu: 
+	    562277987029 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x229 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.445631:   52760877 cpu_core/cycles/Pu: 
+	    562277986fc0 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1c0 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.455716:   52502402 cpu_core/cycles/Pu: 
+	    562277986fce void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1ce (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.465810:   52545709 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.475968:   52680153 cpu_core/cycles/Pu: 
+	    562277987027 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x227 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.485987:   52382777 cpu_core/cycles/Pu: 
+	    562277986fc0 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1c0 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.496103:   52679951 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.507352:   52649119 cpu_core/cycles/Pu: 
+	    562277987422 std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >::resize(unsigned long)+0x142 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.516571:   45685599 cpu_core/cycles/Pu: 
+	    562277987001 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x201 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.526165:   49653815 cpu_core/cycles/Pu: 
+	    562277986fc0 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1c0 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.536001:   51461034 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.546086:   52445137 cpu_core/cycles/Pu: 
+	    562277986ffd void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1fd (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.556125:   52461302 cpu_core/cycles/Pu: 
+	    56227798700e void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x20e (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.566234:   52843255 cpu_core/cycles/Pu: 
+	    562277986fe6 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e6 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.576388:   52810533 cpu_core/cycles/Pu: 
+	    562277986e6f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x6f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.586452:   52522765 cpu_core/cycles/Pu: 
+	    562277986fe2 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e2 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.596540:   52581510 cpu_core/cycles/Pu: 
+	    562277986ff4 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1f4 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.606897:   52701687 cpu_core/cycles/Pu: 
+	ffffffffa7001280 [unknown] ([unknown])
+	    7fd00c56e853 [unknown] (/usr/lib/libc.so.6)
+	               0 [unknown] ([unknown])
+
+D_0ac.O2  106404  6167.617278:   52749571 cpu_core/cycles/Pu: 
+	    5622779884a6 Poly<998244353>::log(int) const+0x246 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	 8b5e0a20d10d0f3 [unknown] ([unknown])
+
+D_0ac.O2  106404  6167.627223:   51908005 cpu_core/cycles/Pu: 
+	    5622779884b4 Poly<998244353>::log(int) const+0x254 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	 8b5e0a20d10d0f3 [unknown] ([unknown])
+
+D_0ac.O2  106404  6167.637233:   52530677 cpu_core/cycles/Pu: 
+	    5622779884d7 Poly<998244353>::log(int) const+0x277 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	 8b5e0a20d10d0f3 [unknown] ([unknown])
+
+D_0ac.O2  106404  6167.648422:   52914397 cpu_core/cycles/Pu: 
+	    562277988490 Poly<998244353>::log(int) const+0x230 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	 8b5e0a20d10d0f3 [unknown] ([unknown])
+
+D_0ac.O2  106404  6167.659027:   52938783 cpu_core/cycles/Pu: 
+	    562277986e5f void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x5f (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.668543:   49788920 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.678549:   52081859 cpu_core/cycles/Pu: 
+	    562277986fce void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1ce (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.688568:   52466406 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.698819:   52855792 cpu_core/cycles/Pu: 
+	    562277987012 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x212 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.708846:   52284467 cpu_core/cycles/Pu: 
+	    562277986fce void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1ce (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.718938:   52488169 cpu_core/cycles/Pu: 
+	    562277986fe2 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1e2 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.729008:   52503947 cpu_core/cycles/Pu: 
+	    562277986fb0 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1b0 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.739070:   52611671 cpu_core/cycles/Pu: 
+	    562277986fc0 void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1c0 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.749248:   52909513 cpu_core/cycles/Pu: 
+	    562277986fdf void ntt<998244353u>(std::vector<ModIntBase<unsigned int, 998244353u>, std::allocator<ModIntBase<unsigned int, 998244353u> > >&, int) [clone .isra.0]+0x1df (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+
+D_0ac.O2  106404  6167.759974:   52649126 cpu_core/cycles/Pu: 
+	    5622779865c8 solve()+0x218 (/home/patchouli/Code/ACM/src/nk/summer_6/D-Beautiful Matrix/D_0ac.O2)
+	 c609b2000000000 [unknown] ([unknown])
+
