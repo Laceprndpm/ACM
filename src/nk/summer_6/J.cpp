@@ -4,10 +4,11 @@
 
 #ifndef DEBUG
 #define NDEBUG
+#undef assert
 #define assert(x) [[assume(x)]]
 #include <bits/stdc++.h>
 #endif
-using namespace std;
+    using namespace std;
 using ll   = long long;
 using u8   = uint8_t;
 using u16  = uint16_t;

@@ -8,10 +8,7 @@ struct DSU {
 
     DSU() {}
 
-    DSU(int n) : component(n)
-    {
-        init(n);
-    }
+    DSU(int n) : component(n) { init(n); }
 
     void init(int n)
     {
@@ -28,10 +25,7 @@ struct DSU {
         return x;
     }
 
-    bool same(int x, int y)
-    {
-        return find(x) == find(y);
-    }
+    bool same(int x, int y) { return find(x) == find(y); }
 
     bool merge(int x, int y)
     {
@@ -46,20 +40,17 @@ struct DSU {
         return true;
     }
 
-    int size(int x)
-    {
-        return siz[find(x)];
-    }
+    int size(int x) { return siz[find(x)]; }
 
     std::vector<std::vector<int>> getGroups(void)
     {
-        std::vector<std::vector<int>>   res;
-        std::map<int, std::vector<int>> groups;
+        std::vector<std::vector<int>> res;
+        std::vector<std::vector<int>> groups(f.size());
         for (int i = 0; i < f.size(); i++) {
             groups[find(i)].emplace_back(i);
         }
-        res.reserve(groups.size());
-        for (auto &[_, group] : groups) {
+        for (int i = 0; i < f.size(); i++) {
+            if (groups[i].empty()) continue;
             res.emplace_back(std::move(group));
         }
         return res;

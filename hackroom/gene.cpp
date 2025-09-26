@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
+
+#include <algorithm>
+#include <vector>
 using namespace std;
 using LL     = long long;
 namespace fs = filesystem;
 mt19937 rd;
 using i64 = long long;
 
-i64 rdInt(i64 l, i64 r)
-{
-    return rd() % (r - l) + l;
-}
+i64 rdInt(i64 l, i64 r) { return rd() % (r - l) + l; }
 
 void rdInit(const std::string seedFileName = fs::current_path() / "seed.txt")
 {
@@ -45,12 +45,14 @@ signed main(int argc, char** argv)
 #endif
     // freopen("test.in", "w", stdout);
     int t = 1;
+    cout << t << '\n';
     while (t--) {
-        int n = rdInt(1, 30);
+        int n = rdInt(1, 20);
         cout << n << '\n';
         for (int i = 0; i < n; i++) {
-            cout << rdInt(1, 10 + 1) << ' ';
+            cout << char(rdInt(0, 2) + 'a');
         }
+        cout << '\n';
     }
     cout << endl;
     return 0;

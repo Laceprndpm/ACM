@@ -84,10 +84,7 @@ void smart_print(std::ostream &os, const T &val, int indent = 0)
 #define RED   "\033[31m"
 #define RESET "\033[0m"
 
-void flush()
-{
-    std::cerr.flush();
-}
+void flush() { std::cerr.flush(); }
 
 template <class T>
 void dbg_wt(const T &val)
@@ -97,10 +94,7 @@ void dbg_wt(const T &val)
     std::cerr << RESET;
 }
 
-void print()
-{
-    dbg_wt('\n');
-}
+void print() { dbg_wt('\n'); }
 
 template <class Head, class... Tail>
 void print(Head &&head, Tail &&...tail)
@@ -204,15 +198,9 @@ public:
         x = v;
     }
 
-    constexpr static U mod()
-    {
-        return P;
-    }
+    constexpr static U mod() { return P; }
 
-    constexpr U val() const
-    {
-        return x;
-    }
+    constexpr U val() const { return x; }
 
     constexpr ModIntBase operator-() const
     {
@@ -221,10 +209,7 @@ public:
         return res;
     }
 
-    constexpr ModIntBase inv() const
-    {
-        return power(*this, mod() - 2);
-    }
+    constexpr ModIntBase inv() const { return power(*this, mod() - 2); }
 
     constexpr ModIntBase &operator*=(const ModIntBase &rhs) &
     {
@@ -250,10 +235,7 @@ public:
         return *this;
     }
 
-    constexpr ModIntBase &operator/=(const ModIntBase &rhs) &
-    {
-        return *this *= rhs.inv();
-    }
+    constexpr ModIntBase &operator/=(const ModIntBase &rhs) & { return *this *= rhs.inv(); }
 
     friend constexpr ModIntBase operator*(ModIntBase lhs, const ModIntBase &rhs)
     {
@@ -287,15 +269,9 @@ public:
         return is;
     }
 
-    friend constexpr std::ostream &operator<<(std::ostream &os, const ModIntBase &a)
-    {
-        return os << a.val();
-    }
+    friend constexpr std::ostream &operator<<(std::ostream &os, const ModIntBase &a) { return os << a.val(); }
 
-    friend constexpr bool operator==(const ModIntBase &lhs, const ModIntBase &rhs)
-    {
-        return lhs.val() == rhs.val();
-    }
+    friend constexpr bool operator==(const ModIntBase &lhs, const ModIntBase &rhs) { return lhs.val() == rhs.val(); }
 
     friend constexpr std::strong_ordering operator<=>(const ModIntBase &lhs, const ModIntBase &rhs)
     {
@@ -315,10 +291,7 @@ struct Barrett {
 public:
     Barrett(u32 m_) : m(m_), im((u64)(-1) / m_ + 1) {}
 
-    constexpr u32 mod() const
-    {
-        return m;
-    }
+    constexpr u32 mod() const { return m; }
 
     constexpr u32 mul(u32 a, u32 b) const
     {
@@ -359,20 +332,11 @@ public:
         x = v;
     }
 
-    constexpr static void setMod(u32 m)
-    {
-        bt = m;
-    }
+    constexpr static void setMod(u32 m) { bt = m; }
 
-    static u32 mod()
-    {
-        return bt.mod();
-    }
+    static u32 mod() { return bt.mod(); }
 
-    constexpr u32 val() const
-    {
-        return x;
-    }
+    constexpr u32 val() const { return x; }
 
     constexpr DynModInt operator-() const
     {
@@ -412,10 +376,7 @@ public:
         return *this;
     }
 
-    constexpr DynModInt &operator/=(const DynModInt &rhs) &
-    {
-        return *this *= rhs.inv();
-    }
+    constexpr DynModInt &operator/=(const DynModInt &rhs) & { return *this *= rhs.inv(); }
 
     friend constexpr DynModInt operator*(DynModInt lhs, const DynModInt &rhs)
     {
@@ -449,15 +410,9 @@ public:
         return is;
     }
 
-    friend constexpr std::ostream &operator<<(std::ostream &os, const DynModInt &a)
-    {
-        return os << a.val();
-    }
+    friend constexpr std::ostream &operator<<(std::ostream &os, const DynModInt &a) { return os << a.val(); }
 
-    friend constexpr bool operator==(const DynModInt &lhs, const DynModInt &rhs)
-    {
-        return lhs.val() == rhs.val();
-    }
+    friend constexpr bool operator==(const DynModInt &lhs, const DynModInt &rhs) { return lhs.val() == rhs.val(); }
 
     friend constexpr std::strong_ordering operator<=>(const DynModInt &lhs, const DynModInt &rhs)
     {
@@ -471,7 +426,7 @@ private:
 
 template <u32 Id>
 Barrett       DynModInt<Id>::bt = 998244353;
-constexpr u32 P                 = 19260817;
+constexpr u32 P                 = 998244353;
 using Z                         = ModInt<P>;
 template <u32 x, u32 P>
 constexpr ModInt<P> CInv = power(ModInt<P>(x), P - 2);
@@ -484,10 +439,7 @@ struct Comb {
 
     Comb() : n{0}, _fac{1}, _invfac{1}, _inv{0} {}
 
-    Comb(int n) : Comb()
-    {
-        init(n);
-    }
+    Comb(int n) : Comb() { init(n); }
 
     void init(int m)
     {
@@ -702,6 +654,12 @@ struct Poly : public vector<MInt<P>> {
         }
     }
 
+    constexpr Poly &resize(int n) override
+    {
+        static_cast<vector<Value>>(this)->resize(n);
+        return *this;
+    }
+
     constexpr Poly shift(int k) const
     {
         if (k >= 0) {
@@ -847,30 +805,15 @@ struct Poly : public vector<MInt<P>> {
         return a;
     }
 
-    constexpr Poly &operator+=(Poly b)
-    {
-        return (*this) = (*this) + b;
-    }
+    constexpr Poly &operator+=(Poly b) { return (*this) = (*this) + b; }
 
-    constexpr Poly &operator-=(Poly b)
-    {
-        return (*this) = (*this) - b;
-    }
+    constexpr Poly &operator-=(Poly b) { return (*this) = (*this) - b; }
 
-    constexpr Poly &operator*=(Poly b)
-    {
-        return (*this) = (*this) * b;
-    }
+    constexpr Poly &operator*=(Poly b) { return (*this) = (*this) * b; }
 
-    constexpr Poly &operator*=(Value b)
-    {
-        return (*this) = (*this) * b;
-    }
+    constexpr Poly &operator*=(Value b) { return (*this) = (*this) * b; }
 
-    constexpr Poly &operator/=(Value b)
-    {
-        return (*this) = (*this) / b;
-    }
+    constexpr Poly &operator/=(Value b) { return (*this) = (*this) / b; }
 
     constexpr Poly deriv() const
     {
@@ -893,6 +836,10 @@ struct Poly : public vector<MInt<P>> {
         return res;
     }
 
+    /* 多项式求逆(inv)
+     * n为f最高次
+     * Q(2n) = 2Q(n) - P(n) \cdot Q^2(n)
+     */
     constexpr Poly inv(int m) const
     {
         Poly x{(*this)[0].inv()};
@@ -904,11 +851,16 @@ struct Poly : public vector<MInt<P>> {
         return x.trunc(m);
     }
 
-    constexpr Poly log(int m) const
-    {
-        return (deriv() * inv(m)).integr().trunc(m);
-    }
+    /* 多项式求ln
+     * G(x) = ln(F(x)) => G'(x) = F'(x) / F(x) => G = int{F'/F}
+     */
+    constexpr Poly log(int m) const { return (deriv() * inv(m)).integr().trunc(m); }
 
+    /* 多项式求exp
+     * exp(x) = 1 + x + x^2/2! ... x^n / n!
+     * F_{n} = exp(A) (mod x^n)
+     * F_{2n} = F_n \cdot (1 - ln(F_n) + A) (mod x^{2n})
+     */
     constexpr Poly exp(int m) const
     {
         Poly x{1};
@@ -920,6 +872,9 @@ struct Poly : public vector<MInt<P>> {
         return x.trunc(m);
     }
 
+    /* 多项式快速幂
+     * G = F^k => lnG = k lnF => G = exp(k * lnF)
+     */
     constexpr Poly pow(int k, int m) const
     {
         int i = 0;
@@ -1002,51 +957,6 @@ using PolyZ = Poly<P>;
 // floor(p / i) * i + p % i == 0 (mod p)
 // inv[i] == -inv[p % i] * floor(p / i)
 
-void solve()
-{
-    int n, m;
-    cin >> n >> m;
-    vector<int> vi(n);
-    vector<int> cnt(m + 1);
-    vector<Z>   invvec(m + 1);
-    invvec[1] = 1;
-    for (int i = 2; i <= m; i++) {
-        invvec[i] = -invvec[P % i] * (P / i);
-    }
-    for (int i = 0; i < n; i++) {
-        cin >> vi[i];
-        if (vi[i] <= m) cnt[vi[i]]++;
-    }
-    PolyZ poly(m + 1);
-    for (int i = 1; i <= m; i++) {
-        for (int j = 1, val = i; val <= m; j++, val += i) {
-            poly[val] += cnt[i] * invvec[j];
-        }
-    }
-    auto fx  = poly.exp(m + 1);
-    Z    ans = 0;
-    for (int i = 1; i <= m; i++) {
-        ans += fx[i];
-    }
-    cout << ans << '\n';
-}
-
-signed main(signed argc, char **argv)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-#ifdef BATCH
-    freopen(argv[1], "r", stdin);
-    freopen(argv[2], "w", stdout);
-#endif
-    int t = 1;
-    while (t--) {
-        solve();
-    }
-    return 0;
-}
-
 /* stuff you should look for
  * int overflow, array bounds
  * special cases (n=1?)
@@ -1054,3 +964,38 @@ signed main(signed argc, char **argv)
  * WRITE STUFF DOWN
  * DON'T GET STUCK ON ONE APPROACH
  */
+
+// asr
+// using myfloat = double;
+
+// myfloat simpson(myfloat l, myfloat r, auto &&f)
+// {
+//     myfloat mid = (l + r) / 2;
+//     return (r - l) * (f(l) + myfloat(4) * f(mid) + f(r)) / 6;  // 辛普森公式
+// }
+
+// myfloat asr(myfloat l, myfloat r, myfloat eps, myfloat ans, int step, auto &&f)
+// {
+//     myfloat mid = (l + r) / 2;
+//     myfloat fl = simpson(l, mid, f), fr = simpson(mid, r, f);
+//     if (abs(fl + fr - ans) <= 15 * eps && step < 0) return fl + fr + (fl + fr - ans) / 15;  // 足够相似的话就直接返回
+//     return asr(l, mid, eps / 2, fl, step - 1, f) + asr(mid, r, eps / 2, fr, step - 1, f);   // 否则分割成两段递归求解
+// }
+
+// myfloat calc(myfloat l, myfloat r, myfloat eps, auto &&f) { return asr(l, r, eps, simpson(l, r, f), 2, f); }
+
+// Z lagrange(int x, Z ptr[], int n)
+// {
+//     if (x <= n) {
+//         return ptr[x];
+//     }
+//     Z wi = 1;
+//     for (int j = 1; j <= n; j++) {
+//         wi *= Z(x - j);
+//     }
+//     Z ans = 0;
+//     for (int i = 1; i <= n; i++) {
+//         ans += ptr[i] * wi / (x - i) * comb.invfac(i - 1) * comb.invfac(n - i) * ((n - i) & 1 ? -1 : 1);
+//     }
+//     return ans;
+// }

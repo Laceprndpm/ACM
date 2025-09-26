@@ -224,8 +224,6 @@ signed main(signed argc, char** argv)
     freopen(argv[1], "r", stdin);
     freopen(argv[2], "w", stdout);
 #endif
-    srand(time(0));
-
     int t;
     cin >> t;
     while (t--) {

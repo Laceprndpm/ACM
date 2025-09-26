@@ -131,10 +131,7 @@ void smart_print(std::ostream &os, const T &val, int indent = 0)
 #define RED   "\033[31m"
 #define RESET "\033[0m"
 
-void flush()
-{
-    std::cerr.flush();
-}
+void flush() { std::cerr.flush(); }
 
 template <class T>
 void dbg_wt(const T &val)
@@ -144,10 +141,7 @@ void dbg_wt(const T &val)
     std::cerr << RESET;
 }
 
-void print()
-{
-    dbg_wt('\n');
-}
+void print() { dbg_wt('\n'); }
 
 template <class Head, class... Tail>
 void print(Head &&head, Tail &&...tail)
@@ -178,10 +172,7 @@ struct SegmentTree {
 
     SegmentTree() : n(0) {}
 
-    SegmentTree(int n_, Info v_ = Info())
-    {
-        init(n_, v_);
-    }
+    SegmentTree(int n_, Info v_ = Info()) { init(n_, v_); }
 
     template <class T>
     SegmentTree(vector<T> init_)
@@ -189,10 +180,7 @@ struct SegmentTree {
         init(init_);
     }
 
-    void init(int n_, Info v_ = Info())
-    {
-        init(vector(n_, v_));
-    }
+    void init(int n_, Info v_ = Info()) { init(vector(n_, v_)); }
 
     template <class T>
     void init(vector<T> init_)
@@ -212,10 +200,7 @@ struct SegmentTree {
         build(1, 0, n);
     }
 
-    void pull(int p)
-    {
-        info[p] = info[2 * p] + info[2 * p + 1];
-    }
+    void pull(int p) { info[p] = info[2 * p] + info[2 * p + 1]; }
 
     void modify(int p, int l, int r, int x, const Info &v)
     {
@@ -232,10 +217,7 @@ struct SegmentTree {
         pull(p);
     }
 
-    void modify(int p, const Info &v)
-    {
-        modify(1, 0, n, p, v);
-    }
+    void modify(int p, const Info &v) { modify(1, 0, n, p, v); }
 
     Info rangeQuery(int p, int l, int r, int x, int y)
     {
@@ -249,10 +231,7 @@ struct SegmentTree {
         return rangeQuery(2 * p, l, m, x, y) + rangeQuery(2 * p + 1, m, r, x, y);
     }
 
-    Info rangeQuery(int l, int r)
-    {
-        return rangeQuery(1, 0, n, l, r);
-    }
+    Info rangeQuery(int l, int r) { return rangeQuery(1, 0, n, l, r); }
 
     template <class F>
     int findFirst(int p, int l, int r, int x, int y, F &&pred)
@@ -311,10 +290,7 @@ struct Info {
     i64 x[4][4];
     int len;
 
-    Info()
-    {
-        len = 0;
-    }
+    Info() { len = 0; }
 
     Info(int _x) : Info()
     {
@@ -347,13 +323,13 @@ Info operator+(const Info &a, const Info &b)
                     // right
                     auto &ax = a.x[i][j];
                     auto &bx = b.x[x][y];
-                    if (__builtin_expect(a.len == j && b.len == x, 0)) {
+                    if (a.len == j && b.len == x) {
                         if (i + x >= 3) continue;
                         c.x[i + x][i + x] = max(c.x[i + x][i + x], ax + bx);
-                    } else if (__builtin_expect(a.len == j, 0)) {
+                    } else if (a.len == j) {
                         if (i + x >= 3) continue;
                         c.x[i + x][y] = max(c.x[i + x][y], ax + bx);
-                    } else if (__builtin_expect(b.len == x, 0)) {
+                    } else if (b.len == x) {
                         if (j + x >= 3) continue;
                         c.x[i][j + x] = max(c.x[i][j + x], ax + bx);
                     } else {
@@ -371,22 +347,17 @@ void solve()
 {
     int n, q;
     cin >> n >> q;
-    vector<int> arr(n + 4);
+    vector<int> arr(n);
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
-    for (int i = 0; i < 4; i++) {
-        arr[n + i] = arr[i];
-    }
     SegmentTree<Info> seg   = arr;
     auto              query = [&]() -> i64 {
-        i64 mx = 0;
-        for (int i = 0; i < 4; i++) {
-            auto res = seg.rangeQuery(i, n + i);
-            for (int j = 0; j <= 3; j++) {
-                for (int k = 0; k <= 3 - j; k++) {
-                    mx = max(mx, res.x[j][k]);
-                }
+        i64  mx  = 0;
+        auto res = seg.rangeQuery(0, n);
+        for (int j = 0; j <= 3; j++) {
+            for (int k = 0; k <= 3 - j; k++) {
+                mx = max(mx, res.x[j][k]);
             }
         }
         return mx;

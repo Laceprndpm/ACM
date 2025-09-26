@@ -1,2 +1,2 @@
 CompileFlags:
-  Add: [-std=c++23, -DCLANGD_MODE]
+  Add: [-std=c++23, -DCLANGD_MODE, -Wimplicit-fallthrough]

@@ -80,10 +80,7 @@ void smart_print(std::ostream& os, const T& val, int indent = 0)
 #define RED   "\033[31m"
 #define RESET "\033[0m"
 
-void flush()
-{
-    std::cerr.flush();
-}
+void flush() { std::cerr.flush(); }
 
 template <class T>
 void dbg_wt(const T& val)
@@ -93,10 +90,7 @@ void dbg_wt(const T& val)
     std::cerr << RESET;
 }
 
-void print()
-{
-    dbg_wt('\n');
-}
+void print() { dbg_wt('\n'); }
 
 template <class Head, class... Tail>
 void print(Head&& head, Tail&&... tail)
@@ -167,7 +161,6 @@ void solve()
         }
     }
     // end manacher
-
     vector<int> cloest_left(n, INF);
     int         last = -INF;
     for (int i = 0; i < n; i++) {
@@ -176,21 +169,7 @@ void solve()
             last = i;
         }
     }
-    // last = INF;
-    // for (int i = n - 1; i >= 0; i--) {
-    //     if (i + 1 < n && t[i] == '(' && t[i + 1] == ')') {
-    //         last = i;
-    //     }
-    //     cloest_left[i] = min(cloest_left[i], last - i);
-    // }
     vector<int> cloest_right(n, INF);
-    // last = -INF;
-    // for (int i = 0; i < n; i++) {
-    //     if (i - 1 > 0 && t[i] == ')' && t[i - 1] == '(') {
-    //         last = i;
-    //     }
-    //     cloest_right[i] = min(cloest_right[i], i - last);
-    // }
     last = INF;
     for (int i = n - 1; i >= 0; i--) {
         cloest_right[i] = min(cloest_right[i], last - i);
@@ -203,9 +182,6 @@ void solve()
         atleast[i] = min(cloest_left[i], cloest_right[i]);
     }
     i64 ans = 0;
-    dbg(t);
-    dbg(r);
-    dbg(atleast);
     for (int i = 0; i < n; i++) {
         int big_r   = r[i];
         int small_r = atleast[i];

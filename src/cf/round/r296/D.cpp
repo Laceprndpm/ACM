@@ -81,10 +81,7 @@ void smart_print(std::ostream &os, const T &val, int indent = 0)
 #define RED   "\033[31m"
 #define RESET "\033[0m"
 
-void flush()
-{
-    std::cerr.flush();
-}
+void flush() { std::cerr.flush(); }
 
 template <class T>
 void dbg_wt(const T &val)
@@ -94,10 +91,7 @@ void dbg_wt(const T &val)
     std::cerr << RESET;
 }
 
-void print()
-{
-    dbg_wt('\n');
-}
+void print() { dbg_wt('\n'); }
 
 template <class Head, class... Tail>
 void print(Head &&head, Tail &&...tail)
@@ -201,15 +195,9 @@ public:
         x = v;
     }
 
-    constexpr static U mod()
-    {
-        return P;
-    }
+    constexpr static U mod() { return P; }
 
-    constexpr U val() const
-    {
-        return x;
-    }
+    constexpr U val() const { return x; }
 
     constexpr ModIntBase operator-() const
     {
@@ -218,10 +206,7 @@ public:
         return res;
     }
 
-    constexpr ModIntBase inv() const
-    {
-        return power(*this, mod() - 2);
-    }
+    constexpr ModIntBase inv() const { return power(*this, mod() - 2); }
 
     constexpr ModIntBase &operator*=(const ModIntBase &rhs) &
     {
@@ -247,10 +232,7 @@ public:
         return *this;
     }
 
-    constexpr ModIntBase &operator/=(const ModIntBase &rhs) &
-    {
-        return *this *= rhs.inv();
-    }
+    constexpr ModIntBase &operator/=(const ModIntBase &rhs) & { return *this *= rhs.inv(); }
 
     friend constexpr ModIntBase operator*(ModIntBase lhs, const ModIntBase &rhs)
     {
@@ -284,15 +266,9 @@ public:
         return is;
     }
 
-    friend constexpr std::ostream &operator<<(std::ostream &os, const ModIntBase &a)
-    {
-        return os << a.val();
-    }
+    friend constexpr std::ostream &operator<<(std::ostream &os, const ModIntBase &a) { return os << a.val(); }
 
-    friend constexpr bool operator==(const ModIntBase &lhs, const ModIntBase &rhs)
-    {
-        return lhs.val() == rhs.val();
-    }
+    friend constexpr bool operator==(const ModIntBase &lhs, const ModIntBase &rhs) { return lhs.val() == rhs.val(); }
 
     friend constexpr std::strong_ordering operator<=>(const ModIntBase &lhs, const ModIntBase &rhs)
     {
@@ -312,10 +288,7 @@ struct Barrett {
 public:
     Barrett(u32 m_) : m(m_), im((u64)(-1) / m_ + 1) {}
 
-    constexpr u32 mod() const
-    {
-        return m;
-    }
+    constexpr u32 mod() const { return m; }
 
     constexpr u32 mul(u32 a, u32 b) const
     {
@@ -356,20 +329,11 @@ public:
         x = v;
     }
 
-    constexpr static void setMod(u32 m)
-    {
-        bt = m;
-    }
+    constexpr static void setMod(u32 m) { bt = m; }
 
-    static u32 mod()
-    {
-        return bt.mod();
-    }
+    static u32 mod() { return bt.mod(); }
 
-    constexpr u32 val() const
-    {
-        return x;
-    }
+    constexpr u32 val() const { return x; }
 
     constexpr DynModInt operator-() const
     {
@@ -409,10 +373,7 @@ public:
         return *this;
     }
 
-    constexpr DynModInt &operator/=(const DynModInt &rhs) &
-    {
-        return *this *= rhs.inv();
-    }
+    constexpr DynModInt &operator/=(const DynModInt &rhs) & { return *this *= rhs.inv(); }
 
     friend constexpr DynModInt operator*(DynModInt lhs, const DynModInt &rhs)
     {
@@ -446,15 +407,9 @@ public:
         return is;
     }
 
-    friend constexpr std::ostream &operator<<(std::ostream &os, const DynModInt &a)
-    {
-        return os << a.val();
-    }
+    friend constexpr std::ostream &operator<<(std::ostream &os, const DynModInt &a) { return os << a.val(); }
 
-    friend constexpr bool operator==(const DynModInt &lhs, const DynModInt &rhs)
-    {
-        return lhs.val() == rhs.val();
-    }
+    friend constexpr bool operator==(const DynModInt &lhs, const DynModInt &rhs) { return lhs.val() == rhs.val(); }
 
     friend constexpr std::strong_ordering operator<=>(const DynModInt &lhs, const DynModInt &rhs)
     {
@@ -479,10 +434,7 @@ struct Comb {
 
     Comb() : n{0}, _fac{1}, _invfac{1}, _inv{0} {}
 
-    Comb(int n) : Comb()
-    {
-        init(n);
-    }
+    Comb(int n) : Comb() { init(n); }
 
     void init(int m)
     {
@@ -734,7 +686,7 @@ void solve()
                 svec[i] = 1;
             }
         }
-        reverse(svec.begin() + 1, svec.begin() + 1 + slen);
+        reverse(svec.begin(), svec.begin() + 1 + slen);
         vector<Z> tvec(8e5 + 50);
         for (int i = 1; i <= tlen; i++) {
             if (t[i] == c) {
@@ -743,9 +695,9 @@ void solve()
         }
         convolution(svec.data(), tvec.data(), slen + tlen + 1);
         tvec = {};
-        for (int i = 1; i <= slen; i++) {
-            int j = slen + 2 - i;
-            ans[i] += svec[j].val();
+        for (int j = 0; j < slen; j++) {
+            int i = slen - j;
+            ans[j] += svec[i].val();
         }
     };
     vector<char> cvec = {'A', 'T', 'C', 'G'};
@@ -753,7 +705,7 @@ void solve()
         work(cvec[i]);
     }
     int anscnt = 0;
-    for (int i = 1; i <= slen; i++) {
+    for (int i = 0; i < slen; i++) {
         if (ans[i] == tlen) {
             anscnt++;
         }

@@ -4,27 +4,18 @@
 struct Tag {
     i64 x;
 
-    void apply(const Tag &t) &
-    {
-        x = x & t.x;
-    }
+    void apply(const Tag &t) & { x = x & t.x; }
 };
 
 struct Info {
-    i64 x;
+    i64 l_val;
 
-    void apply(const Tag &t, i64 c) &
-    {
-        x = x & t.x;
-    }
+    void apply(const Tag &t, i64 c) & { x = x & t.x; }
 };
 
 // Removed operator= function as it should be a member function
 
-Info operator+(const Info &a, const Info &b)
-{
-    return {a.x & b.x};
-}
+Info operator+(const Info &a, const Info &b) { return {a.x & b.x}; }
 
 struct LazySegmentTree {
     int          n;
@@ -35,10 +26,7 @@ struct LazySegmentTree {
 
     LazySegmentTree() : n(0) {}
 
-    LazySegmentTree(int _n, Info _v = Info())
-    {
-        init(_n, _v);
-    }
+    LazySegmentTree(int _n, Info _v = Info()) { init(_n, _v); }
 
     template <class T>
     LazySegmentTree(vector<T> _init)
@@ -46,10 +34,7 @@ struct LazySegmentTree {
         init(_init);
     }
 
-    void init(int _n, Info _v = Info())
-    {
-        init(vector(_n, _v));
-    }
+    void init(int _n, Info _v = Info()) { init(vector(_n, _v)); }
 
     template <class T>
     void init(vector<T> _init)
@@ -74,10 +59,7 @@ struct LazySegmentTree {
         build(1, 1, n);
     }
 
-    void pull(int p)
-    {
-        info[p] = info[2 * p] + info[2 * p + 1];
-    }
+    void pull(int p) { info[p] = info[2 * p] + info[2 * p + 1]; }
 
     void apply(int p, const Tag &v)
     {
@@ -108,10 +90,7 @@ struct LazySegmentTree {
         pull(p);
     }
 
-    void modify(int p, const Info &v)
-    {
-        modify(1, 1, n, p, v);
-    }
+    void modify(int p, const Info &v) { modify(1, 1, n, p, v); }
 
     Info rangeQuery(int p, int l, int r, int x, int y)
     {
@@ -150,8 +129,5 @@ struct LazySegmentTree {
         pull(p);
     }
 
-    void rangeApply(int l, int r, const Tag &v)
-    {
-        return rangeApply(1, 1, n, l, r, v);
-    }
+    void rangeApply(int l, int r, const Tag &v) { return rangeApply(1, 1, n, l, r, v); }
 };

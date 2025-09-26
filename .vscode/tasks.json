@@ -20,7 +20,10 @@
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}.test",
                 "-std=c++23",
-                "-Wall"
+                "-Wall",
+                "-Wextra",
+                "-Wconversion",
+                "-Wimplicit-fallthrough"
             ],
             "options": {
                 "cwd": "${fileDirname}"
