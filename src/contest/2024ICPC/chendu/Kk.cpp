@@ -2,18 +2,11 @@
 #include <cassert>
 #include <deque>
 #include <iostream>
-#include <numeric>
 #include <queue>
+#include <set>
 #include <utility>
 #include <vector>
-#ifndef CLANGD_MODE
-#ifndef DEBUG
-#define NDEBUG
-#undef assert
-#define assert(x) [[assume(x)]]
-#include <bits/stdc++.h>
-#endif
-#endif
+
 using namespace std;
 using ll   = long long;
 using u8   = uint8_t;
@@ -125,55 +118,6 @@ void print(Head&& head, Tail&&... tail)
 #else
 #define dbg(...)
 #endif
-#pragma GCC optimize(3)
-#pragma GCC target("avx")
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize("inline")
-#pragma GCC optimize("-fgcse")
-#pragma GCC optimize("-fgcse-lm")
-#pragma GCC optimize("-fipa-sra")
-#pragma GCC optimize("-ftree-pre")
-#pragma GCC optimize("-ftree-vrp")
-#pragma GCC optimize("-fpeephole2")
-#pragma GCC optimize("-ffast-math")
-#pragma GCC optimize("-fsched-spec")
-#pragma GCC optimize("unroll-loops")
-#pragma GCC optimize("-falign-jumps")
-#pragma GCC optimize("-falign-loops")
-#pragma GCC optimize("-falign-labels")
-#pragma GCC optimize("-fdevirtualize")
-#pragma GCC optimize("-fcaller-saves")
-#pragma GCC optimize("-fcrossjumping")
-#pragma GCC optimize("-fthread-jumps")
-#pragma GCC optimize("-funroll-loops")
-#pragma GCC optimize("-fwhole-program")
-#pragma GCC optimize("-freorder-blocks")
-#pragma GCC optimize("-fschedule-insns")
-#pragma GCC optimize("inline-functions")
-#pragma GCC optimize("-ftree-tail-merge")
-#pragma GCC optimize("-fschedule-insns2")
-#pragma GCC optimize("-fstrict-aliasing")
-#pragma GCC optimize("-fstrict-overflow")
-#pragma GCC optimize("-falign-functions")
-#pragma GCC optimize("-fcse-skip-blocks")
-#pragma GCC optimize("-fcse-follow-jumps")
-#pragma GCC optimize("-fsched-interblock")
-#pragma GCC optimize("-fpartial-inlining")
-#pragma GCC optimize("no-stack-protector")
-#pragma GCC optimize("-freorder-functions")
-#pragma GCC optimize("-findirect-inlining")
-#pragma GCC optimize("-fhoist-adjacent-loads")
-#pragma GCC optimize("-frerun-cse-after-loop")
-#pragma GCC optimize("inline-small-functions")
-#pragma GCC optimize("-finline-small-functions")
-#pragma GCC optimize("-ftree-switch-conversion")
-#pragma GCC optimize("-foptimize-sibling-calls")
-#pragma GCC optimize("-fexpensive-optimizations")
-#pragma GCC optimize("-funsafe-loop-optimizations")
-#pragma GCC optimize("inline-functions-called-once")
-#pragma GCC optimize("-fdelete-null-pointer-checks")
-#pragma GCC optimize(2)
-
 struct MCFGraph {
     struct Edge {
         int v, c, f;
@@ -249,6 +193,7 @@ struct MCFGraph {
 
     void addEdge(int u, int v, int c, int f)
     {
+        // dbg(u, v, c, f);
         g[u].push_back(e.size());
         e.emplace_back(v, c, f);
         g[v].push_back(e.size());
@@ -260,6 +205,22 @@ struct MCFGraph {
         int flow = 0;
         i64 cost = 0;
         h.assign(n, 0);
+
+        // init with spfa
+        do {
+            bool result = spfa(s, t);
+            for (int i = 0; i < n; ++i) h[i] += dis[i];
+            int aug = std::numeric_limits<int>::max();
+            for (int i = t; i != s; i = e[pre[i] ^ 1].v) aug = std::min(aug, e[pre[i]].c);
+            for (int i = t; i != s; i = e[pre[i] ^ 1].v) {
+                e[pre[i]].c -= aug;
+                e[pre[i] ^ 1].c += aug;
+            }
+            flow += aug;
+            cost += i64(aug) * h[t];
+            if (!result) return std::make_pair(flow, cost);
+        } while (0);
+        // end
 
         while (dijkstra(s, t)) {
             for (int i = 0; i < n; ++i) h[i] += dis[i];
@@ -303,80 +264,136 @@ struct Prime {
             }
         }
     }
-} prime(1e5);
+} prime(31700);
+
+// #pragma GCC   optimize(3)
+// #pragma GCC   target("avx")
+// #pragma GCC   optimize("Ofast")
+#pragma GCC optimize("inline")
+// #pragma GCC   optimize("-fgcse")
+// #pragma GCC   optimize("-fgcse-lm")
+// #pragma GCC   optimize("-fipa-sra")
+// #pragma GCC   optimize("-ftree-pre")
+// #pragma GCC   optimize("-ftree-vrp")
+// #pragma GCC   optimize("-fpeephole2")
+// #pragma GCC   optimize("-ffast-math")
+// #pragma GCC   optimize("-fsched-spec")
+#pragma GCC optimize("unroll-loops")
+// #pragma GCC   optimize("-falign-jumps")
+// #pragma GCC   optimize("-falign-loops")
+// #pragma GCC   optimize("-falign-labels")
+// #pragma GCC   optimize("-fdevirtualize")
+// #pragma GCC   optimize("-fcaller-saves")
+// #pragma GCC   optimize("-fcrossjumping")
+// #pragma GCC   optimize("-fthread-jumps")
+// #pragma GCC   optimize("-funroll-loops")
+// #pragma GCC   optimize("-fwhole-program")
+// #pragma GCC   optimize("-freorder-blocks")
+// #pragma GCC   optimize("-fschedule-insns")
+#pragma GCC optimize("inline-functions")
+// #pragma GCC   optimize("-ftree-tail-merge")
+// #pragma GCC   optimize("-fschedule-insns2")
+// #pragma GCC   optimize("-fstrict-aliasing")
+// #pragma GCC   optimize("-fstrict-overflow")
+// #pragma GCC   optimize("-falign-functions")
+// #pragma GCC   optimize("-fcse-skip-blocks")
+// #pragma GCC   optimize("-fcse-follow-jumps")
+// #pragma GCC   optimize("-fsched-interblock")
+// #pragma GCC   optimize("-fpartial-inlining")
+// #pragma GCC   optimize("no-stack-protector")
+// #pragma GCC   optimize("-freorder-functions")
+// #pragma GCC   optimize("-findirect-inlining")
+// #pragma GCC   optimize("-fhoist-adjacent-loads")
+// #pragma GCC   optimize("-frerun-cse-after-loop")
+#pragma GCC optimize("inline-small-functions")
+#pragma GCC optimize("-finline-small-functions")
+
+// #pragma GCC   optimize("-ftree-switch-conversion")
+// #pragma GCC   optimize("-foptimize-sibling-calls")
+// #pragma GCC   optimize("-fexpensive-optimizations")
+// #pragma GCC   optimize("-funsafe-loop-optimizations")
+// #pragma GCC   optimize("inline-functions-called-once")
+// #pragma GCC   optimize("-fdelete-null-pointer-checks")
+// #pragma GCC   optimize(2)
 
 void solve()
 {
-    int n;
+    constexpr int offset = 3;
+    int           n;
     cin >> n;
-    vector<int> arr(n + 1);
-    for (int i = 1; i <= n; i++) {
-        cin >> arr[i];
+    vector<int> arr(n);
+    for (int& i : arr) {
+        cin >> i;
     }
-    vector<int>                    farr(n + 1);
-    vector<vector<pair<int, int>>> factors(n + 1);
-    auto                           check = [&](int x) {
-        assert(x < 1e5);
-        int cnt = 0;
-        while (x != 1) {
-            x /= prime.minp[x];
-            cnt++;
-        }
-        return cnt;
-    };
-    for (int i = 1; i <= n; i++) {
-        int va  = arr[i];
-        int cnt = 0;
-        for (int d = 2; d * d <= va; d++) {
-            while (va % d == 0) {
-                va /= d;
-                cnt++;
+    vector<int> point{1};
+    deque<int>  todo(all(arr));
+    set<int>    visted;
+    while (!todo.empty()) {
+        const int ival = todo.front();
+        todo.pop_front();
+        if (visted.count(ival)) continue;
+        visted.ins(ival);
+        point.pb(ival);
+        int cur = ival;
+        for (int factor : prime.primes) {
+            if (cur % factor == 0) {
+                point.pb(ival / factor);
+                todo.pb(ival / factor);
+            }
+            while (cur % factor == 0) {
+                cur /= factor;
+            }
+            if (factor * factor > cur) {
+                break;
             }
         }
-        if (va != 1) {
-            cnt++;
+        if (cur != 1) {
+            point.pb(ival / cur);
+            todo.pb(ival / cur);
         }
-        farr[i] = cnt;
     }
-    for (int i = 1; i <= n; i++) {
-        const int va = arr[i];
-        for (int d = 1; d * d <= va; d++) {
-            if (va % d == 0) {
-                int cnt1 = check(d);
-                int cnt2 = farr[i] - cnt1;
-                factors[i].pb({cnt1, d});
-                factors[i].pb({cnt2, va / d});
+    sort(all(point));
+    point.erase(unique(all(point)), point.end());
+    int num = int(point.size());
+    dbg(num);
+    MCFGraph               mcf(num + offset);
+    vector<pair<int, int>> edges;
+    for (int i = 1; i < num; i++) {
+        const int curval = point[i];
+        int       cur    = point[i];
+        for (int factor : prime.primes) {
+            if (cur % factor == 0) {
+                int v2 = lower_bound(all(point), curval / factor) - point.begin() + offset;
+                assert(point[v2 - offset] == curval / factor);
+                edges.pb({i + offset, v2});
+                while (cur % factor == 0) {
+                    cur /= factor;
+                }
+                if (factor * factor > cur) {
+                    break;
+                }
             }
         }
-        nth_element(factors[i].begin(), factors[i].begin() + min(sz(factors[i]), n), factors[i].end());
-    }
-    // 0为源，1-n为点，n+1后的都是其他的，最后一个为汇
-    vector<int> candidate;
-    for (int i = 1; i <= n; i++) {
-        for (int j = 0; j < min(int(factors[i].size()), n); j++) {
-            candidate.pb(factors[i][j].se);
+        if (cur != 1) {
+            int v2 = lower_bound(all(point), curval / cur) - point.begin() + offset;
+            if (v2 != i + offset) edges.pb({i + offset, v2});
         }
+        edges.pb({i + offset, offset});
     }
-    sor(candidate);
-    candidate.erase(unique(all(candidate)), candidate.end());
-    int      level2   = n + 1;
-    int      start    = 0;
-    int      terminal = level2 + candidate.size();
-    MCFGraph mcf(terminal + 1);
-    for (int i = 1; i <= n; i++) {
-        mcf.addEdge(0, i, 1, 0);
+    int s1 = 0, s2 = 1, t = 2;
+    mcf.addEdge(s1, s2, n, 0);
+    for (auto [u, v] : edges) {
+        mcf.addEdge(u, v, INF, -1);
     }
-    for (int i = 1; i <= n; i++) {
-        for (int j = 0; j < min(int(factors[i].size()), n); j++) {
-            int v = lower_bound(all(candidate), factors[i][j].se) - candidate.begin() + level2;
-            mcf.addEdge(i, v, 1, (factors[i][j].fi));
-        }
+    for (int ival : arr) {
+        int nxt = lower_bound(all(point), ival) - point.begin() + offset;
+        mcf.addEdge(s2, nxt, 1, 0);
     }
-    for (int i = 0; i < int(candidate.size()); i++) {
-        mcf.addEdge(level2 + i, terminal, 1, 0);
+    for (int i = 0; i < num; i++) {
+        mcf.addEdge(i + offset, t, 1, 0);
     }
-    auto [flow, cost] = mcf.flow(start, terminal);
-    cout << accumulate(all(farr), 0ll) - cost << '\n';
+    auto [flow, cost] = mcf.flow(s1, t);
+    cout << -cost << '\n';
 }
 
 signed main(signed argc, char** argv)

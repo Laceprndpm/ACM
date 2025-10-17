@@ -23,7 +23,7 @@
                 "-Wall",
                 "-Wextra",
                 "-Wconversion",
-                "-Wimplicit-fallthrough"
+                "-Wimplicit-fallthrough",
             ],
             "options": {
                 "cwd": "${fileDirname}"

@@ -1,11 +1,17 @@
 #include <bits/stdc++.h>
 
-#include <algorithm>
 #include <cassert>
-#include <cstring>
 #include <functional>
 #include <iostream>
 #include <vector>
+#ifndef CLANGD_MODE
+#ifndef DEBUG
+#define NDEBUG
+#undef assert
+#define assert(x) [[assume(x)]]
+#include <bits/stdc++.h>
+#endif
+#endif
 using namespace std;
 using ll   = long long;
 using u8   = uint8_t;
@@ -117,9 +123,22 @@ void print(Head &&head, Tail &&...tail)
 #else
 #define dbg(...)
 #endif
+template <int T>
+struct Poly;
 
 template <class T>
 constexpr T power(T a, u64 b, T res = 1)
+{
+    for (; b != 0; b /= 2, a *= a) {
+        if (b & 1) {
+            res *= a;
+        }
+    }
+    return res;
+}
+
+template <int T>
+constexpr Poly<T> power(Poly<T> a, u64 b, Poly<T> res = {1})
 {
     for (; b != 0; b /= 2, a *= a) {
         if (b & 1) {
@@ -655,9 +674,9 @@ struct Poly : public vector<MInt<P>> {
         }
     }
 
-    constexpr Poly &resize(int n) override
+    constexpr Poly &resize(int n)
     {
-        static_cast<vector<Value>>(this)->resize(n);
+        vector<Value>::resize(n);
         return *this;
     }
 
@@ -714,40 +733,6 @@ struct Poly : public vector<MInt<P>> {
         return Poly(res);
     }
 
-    constexpr friend Poly operator*(Poly a, Poly b)
-    {
-        if (a.size() == 0 || b.size() == 0) {
-            return Poly();
-        }
-        if (a.size() < b.size()) {
-            swap(a, b);
-        }
-        int n = 1, tot = a.size() + b.size() - 1;
-        while (n < tot) {
-            n *= 2;
-        }
-        if (((P - 1) & (n - 1)) != 0 || b.size() < 128) {
-            Poly c(a.size() + b.size() - 1);
-            for (int i = 0; i < a.size(); i++) {
-                for (int j = 0; j < b.size(); j++) {
-                    c[i + j] += a[i] * b[j];
-                }
-            }
-            return c;
-        }
-        a.resize(n);
-        b.resize(n);
-        dft(a);
-        dft(b);
-        for (int i = 0; i < n; ++i) {
-            a[i] *= b[i];
-        }
-        idft(a);
-        a.resize(tot);
-        return a;
-    }
-
-    // 三模数NTT
     // constexpr friend Poly operator*(Poly a, Poly b)
     // {
     //     if (a.size() == 0 || b.size() == 0) {
@@ -760,27 +745,61 @@ struct Poly : public vector<MInt<P>> {
     //     while (n < tot) {
     //         n *= 2;
     //     }
-    //     // if (((P - 1) & (n - 1)) != 0 || b.size() < 128) {
-    //     //     Poly c(a.size() + b.size() - 1);
-    //     //     for (int i = 0; i < a.size(); i++) {
-    //     //         for (int j = 0; j < b.size(); j++) {
-    //     //             c[i + j] += a[i] * b[j];
-    //     //         }
-    //     //     }
-    //     //     return c;
-    //     // }
+    //     if (((P - 1) & (n - 1)) != 0 || b.size() < 128) {
+    //         Poly c(a.size() + b.size() - 1);
+    //         for (int i = 0; i < a.size(); i++) {
+    //             for (int j = 0; j < b.size(); j++) {
+    //                 c[i + j] += a[i] * b[j];
+    //             }
+    //         }
+    //         return c;
+    //     }
     //     a.resize(n);
     //     b.resize(n);
-    //     // dft(a);
-    //     // dft(b);
-    //     // for (int i = 0; i < n; ++i) {
-    //     //     a[i] *= b[i];
-    //     // }
-    //     // idft(a);
-    //     auto res = convolution(a, b);
-    //     res.resize(tot);
-    //     return Poly{res};
+    //     dft(a);
+    //     dft(b);
+    //     for (int i = 0; i < n; ++i) {
+    //         a[i] *= b[i];
+    //     }
+    //     idft(a);
+    //     a.resize(tot);
+    //     return a;
     // }
+
+    // 三模数NTT
+    constexpr friend Poly operator*(Poly a, Poly b)
+    {
+        if (a.size() == 0 || b.size() == 0) {
+            return Poly();
+        }
+        if (a.size() < b.size()) {
+            swap(a, b);
+        }
+        int n = 1, tot = a.size() + b.size() - 1;
+        while (n < tot) {
+            n *= 2;
+        }
+        // if (((P - 1) & (n - 1)) != 0 || b.size() < 128) {
+        //     Poly c(a.size() + b.size() - 1);
+        //     for (int i = 0; i < a.size(); i++) {
+        //         for (int j = 0; j < b.size(); j++) {
+        //             c[i + j] += a[i] * b[j];
+        //         }
+        //     }
+        //     return c;
+        // }
+        a.resize(n);
+        b.resize(n);
+        // dft(a);
+        // dft(b);
+        // for (int i = 0; i < n; ++i) {
+        //     a[i] *= b[i];
+        // }
+        // idft(a);
+        auto res = convolution(a, b);
+        res.resize(tot);
+        return Poly{res};
+    }
 
     constexpr friend Poly operator*(Value a, Poly b)
     {
@@ -952,11 +971,36 @@ struct Poly : public vector<MInt<P>> {
     }
 };
 
-using PolyZ = Poly<P>;
+using PolyZ = Poly<2>;
 
-// floor(p / i) * i + p % i == p
-// floor(p / i) * i + p % i == 0 (mod p)
-// inv[i] == -inv[p % i] * floor(p / i)
+void solve()
+{
+    int n, k;
+    cin >> n >> k;
+    PolyZ base = {1, 1};
+    auto  res  = power(base, n - 1);
+    for (int i = 0; i < n; i++) {
+        cout << res[i].val() * k << ' ';
+    }
+    cout << '\n';
+}
+
+signed main(signed argc, char **argv)
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+#ifdef BATCH
+    freopen(argv[1], "r", stdin);
+    freopen(argv[2], "w", stdout);
+#endif
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}
 
 /* stuff you should look for
  * int overflow, array bounds
@@ -965,38 +1009,3 @@ using PolyZ = Poly<P>;
  * WRITE STUFF DOWN
  * DON'T GET STUCK ON ONE APPROACH
  */
-
-// asr
-// using myfloat = double;
-
-// myfloat simpson(myfloat l, myfloat r, auto &&f)
-// {
-//     myfloat mid = (l + r) / 2;
-//     return (r - l) * (f(l) + myfloat(4) * f(mid) + f(r)) / 6;  // 辛普森公式
-// }
-
-// myfloat asr(myfloat l, myfloat r, myfloat eps, myfloat ans, int step, auto &&f)
-// {
-//     myfloat mid = (l + r) / 2;
-//     myfloat fl = simpson(l, mid, f), fr = simpson(mid, r, f);
-//     if (abs(fl + fr - ans) <= 15 * eps && step < 0) return fl + fr + (fl + fr - ans) / 15;  // 足够相似的话就直接返回
-//     return asr(l, mid, eps / 2, fl, step - 1, f) + asr(mid, r, eps / 2, fr, step - 1, f);   // 否则分割成两段递归求解
-// }
-
-// myfloat calc(myfloat l, myfloat r, myfloat eps, auto &&f) { return asr(l, r, eps, simpson(l, r, f), 2, f); }
-
-// Z lagrange(int x, Z ptr[], int n)
-// {
-//     if (x <= n) {
-//         return ptr[x];
-//     }
-//     Z wi = 1;
-//     for (int j = 1; j <= n; j++) {
-//         wi *= Z(x - j);
-//     }
-//     Z ans = 0;
-//     for (int i = 1; i <= n; i++) {
-//         ans += ptr[i] * wi / (x - i) * comb.invfac(i - 1) * comb.invfac(n - i) * ((n - i) & 1 ? -1 : 1);
-//     }
-//     return ans;
-// }

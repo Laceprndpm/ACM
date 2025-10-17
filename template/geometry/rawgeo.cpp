@@ -1,6 +1,4 @@
 #include <bits/stdc++.h>
-
-namespace Geometry {
 using std::abs, std::max, std::min, std::swap;
 using std::numeric_limits;
 using std::pair, std::make_pair;
@@ -8,115 +6,72 @@ using std::set, std::multiset;
 using std::tuple, std::make_tuple;
 using std::vector, std::deque;
 
-// 全局数据类型
-using GEO_T = long double;
+using T = long double;  // 全局数据类型
 
-constexpr GEO_T GEO_eps = 1e-8;
-constexpr GEO_T GEO_INF = numeric_limits<GEO_T>::max();
-constexpr GEO_T GEO_PI  = 3.1415926535897932384l;
+constexpr T eps = 1e-8;
+constexpr T INF = numeric_limits<T>::max();
+constexpr T PI  = 3.1415926535897932384l;
 
 // 点与向量
-struct Point {
-    GEO_T x, y;
 
-    bool operator==(const Point &a) const
-    {
-        return (abs(x - a.x) <= GEO_eps && abs(y - a.y) <= GEO_eps);
-    }
+struct Point {
+    T x, y;
+
+    bool operator==(const Point &a) const { return (abs(x - a.x) <= eps && abs(y - a.y) <= eps); }
 
     bool operator<(const Point &a) const
     {
-        if (abs(x - a.x) <= GEO_eps) return y < a.y - GEO_eps;
-        return x < a.x - GEO_eps;
+        if (abs(x - a.x) <= eps) return y < a.y - eps;
+        return x < a.x - eps;
     }
 
-    bool operator>(const Point &a) const
-    {
-        return !(*this < a || *this == a);
-    }
+    bool operator>(const Point &a) const { return !(*this < a || *this == a); }
 
-    Point operator+(const Point &a) const
-    {
-        return {x + a.x, y + a.y};
-    }
+    Point operator+(const Point &a) const { return {x + a.x, y + a.y}; }
 
-    Point operator-(const Point &a) const
-    {
-        return {x - a.x, y - a.y};
-    }
+    Point operator-(const Point &a) const { return {x - a.x, y - a.y}; }
 
-    Point operator-() const
-    {
-        return {-x, -y};
-    }
+    Point operator-() const { return {-x, -y}; }
 
-    Point operator*(const GEO_T k) const
-    {
-        return {k * x, k * y};
-    }
+    Point operator*(const T k) const { return {k * x, k * y}; }
 
-    Point operator/(const GEO_T k) const
-    {
-        return {x / k, y / k};
-    }
+    Point operator/(const T k) const { return {x / k, y / k}; }
 
-    GEO_T operator*(const Point &a) const
-    {
-        return x * a.x + y * a.y;
-    }  // 点积
+    T operator*(const Point &a) const { return x * a.x + y * a.y; }  // 点积
 
-    GEO_T operator^(const Point &a) const
-    {
-        return x * a.y - y * a.x;
-    }  // 叉积，注意优先级
+    T operator^(const Point &a) const { return x * a.y - y * a.x; }  // 叉积，注意优先级
 
     int toleft(const Point &a) const
     {
         const auto t = (*this) ^ a;
-        return (t > GEO_eps) - (t < -GEO_eps);
+        return (t > eps) - (t < -eps);
     }  // to-left 测试
 
-    GEO_T len2() const
-    {
-        return (*this) * (*this);
-    }  // 向量长度的平方
+    T len2() const { return (*this) * (*this); }  // 向量长度的平方
 
-    GEO_T dis2(const Point &a) const
-    {
-        return (a - (*this)).len2();
-    }  // 两点距离的平方
+    T dis2(const Point &a) const { return (a - (*this)).len2(); }  // 两点距离的平方
 
-    int quad() const  // 象限判断 0:原点 1:x轴正 2:第一象限 3:y轴正 4:第二象限
-                      // 5:x轴负 6:第三象限 7:y轴负 8:第四象限
+    int quad() const  // 象限判断 0:原点 1:x轴正 2:第一象限 3:y轴正 4:第二象限 5:x轴负 6:第三象限 7:y轴负 8:第四象限
     {
-        if (abs(x) <= GEO_eps && abs(y) <= GEO_eps) return 0;
-        if (abs(y) <= GEO_eps) return x > GEO_eps ? 1 : 5;
-        if (abs(x) <= GEO_eps) return y > GEO_eps ? 3 : 7;
-        return y > GEO_eps ? (x > GEO_eps ? 2 : 4) : (x > GEO_eps ? 8 : 6);
+        if (abs(x) <= eps && abs(y) <= eps) return 0;
+        if (abs(y) <= eps) return x > eps ? 1 : 5;
+        if (abs(x) <= eps) return y > eps ? 3 : 7;
+        return y > eps ? (x > eps ? 2 : 4) : (x > eps ? 8 : 6);
     }
 
     // 必须用浮点数
-    GEO_T len() const
-    {
-        return sqrtl(len2());
-    }  // 向量长度
+    T len() const { return sqrtl(len2()); }  // 向量长度
 
-    GEO_T dis(const Point &a) const
-    {
-        return sqrtl(dis2(a));
-    }  // 两点距离
+    T dis(const Point &a) const { return sqrtl(dis2(a)); }  // 两点距离
 
-    GEO_T ang(const Point &a) const
-    {
-        return acosl(max(-1.0l, min(1.0l, ((*this) * a) / (len() * a.len()))));
-    }  // 向量夹角
+    T ang(const Point &a) const { return acosl(max(-1.0l, min(1.0l, ((*this) * a) / (len() * a.len())))); }  // 向量夹角
 
-    Point rot(const GEO_T rad) const
+    Point rot(const T rad) const
     {
         return {x * cos(rad) - y * sin(rad), x * sin(rad) + y * cos(rad)};
     }  // 逆时针旋转（给定角度）
 
-    Point rot(const GEO_T cosr, const GEO_T sinr) const
+    Point rot(const T cosr, const T sinr) const
     {
         return {x * cosr - y * sinr, x * sinr + y * cosr};
     }  // 逆时针旋转（给定角度的正弦与余弦）
@@ -130,7 +85,7 @@ struct Argcmp {
         if (qa != qb) return qa < qb;
         const auto t = a ^ b;
         // if (abs(t)<=eps) return a*a<b*b-eps;  // 不同长度的向量需要分开
-        return t > GEO_eps;
+        return t > eps;
     }
 };
 
@@ -138,47 +93,29 @@ struct Argcmp {
 struct Line {
     Point p, v;  // p 为直线上一点，v 为方向向量
 
-    bool operator==(const Line &a) const
-    {
-        return v.toleft(a.v) == 0 && v.toleft(p - a.p) == 0;
-    }
+    bool operator==(const Line &a) const { return v.toleft(a.v) == 0 && v.toleft(p - a.p) == 0; }
 
-    int toleft(const Point &a) const
-    {
-        return v.toleft(a - p);
-    }  // to-left 测试
+    int toleft(const Point &a) const { return v.toleft(a - p); }  // to-left 测试
 
     bool operator<(const Line &a) const  // 半平面交算法定义的排序
     {
-        if (abs(v ^ a.v) <= GEO_eps && v * a.v >= -GEO_eps) return toleft(a.p) == -1;
+        if (abs(v ^ a.v) <= eps && v * a.v >= -eps) return toleft(a.p) == -1;
         return Argcmp()(v, a.v);
     }
 
     // 必须用浮点数
-    Point inter(const Line &a) const
-    {
-        return p + v * ((a.v ^ (p - a.p)) / (v ^ a.v));
-    }  // 直线交点
+    Point inter(const Line &a) const { return p + v * ((a.v ^ (p - a.p)) / (v ^ a.v)); }  // 直线交点
 
-    GEO_T dis(const Point &a) const
-    {
-        return abs(v ^ (a - p)) / v.len();
-    }  // 点到直线距离
+    T dis(const Point &a) const { return abs(v ^ (a - p)) / v.len(); }  // 点到直线距离
 
-    Point proj(const Point &a) const
-    {
-        return p + v * ((v * (a - p)) / (v * v));
-    }  // 点在直线上的投影
+    Point proj(const Point &a) const { return p + v * ((v * (a - p)) / (v * v)); }  // 点在直线上的投影
 };
 
 // 线段
 struct Segment {
     Point a, b;
 
-    bool operator<(const Segment &s) const
-    {
-        return make_pair(a, b) < make_pair(s.a, s.b);
-    }
+    bool operator<(const Segment &s) const { return make_pair(a, b) < make_pair(s.a, s.b); }
 
     // 判定性函数建议在整数域使用
 
@@ -187,7 +124,7 @@ struct Segment {
     int is_on(const Point &p) const
     {
         if (p == a || p == b) return -1;
-        return (p - a).toleft(p - b) == 0 && (p - a) * (p - b) < -GEO_eps;
+        return (p - a).toleft(p - b) == 0 && (p - a) * (p - b) < -eps;
     }
 
     // 判断线段直线是否相交
@@ -208,15 +145,15 @@ struct Segment {
     }
 
     // 点到线段距离（必须用浮点数）
-    GEO_T dis(const Point &p) const
+    T dis(const Point &p) const
     {
-        if ((p - a) * (b - a) < -GEO_eps || (p - b) * (a - b) < -GEO_eps) return min(p.dis(a), p.dis(b));
+        if ((p - a) * (b - a) < -eps || (p - b) * (a - b) < -eps) return min(p.dis(a), p.dis(b));
         const Line l{a, b - a};
         return l.dis(p);
     }
 
     // 两线段间距离（必须用浮点数）
-    GEO_T dis(const Segment &s) const
+    T dis(const Segment &s) const
     {
         if (is_inter(s)) return 0;
         return min({dis(s.a), dis(s.b), s.dis(a), s.dis(b)});
@@ -227,15 +164,9 @@ struct Segment {
 struct Polygon {
     vector<Point> p;  // 以逆时针顺序存储
 
-    size_t nxt(const size_t i) const
-    {
-        return i == p.size() - 1 ? 0 : i + 1;
-    }
+    size_t nxt(const size_t i) const { return i == p.size() - 1 ? 0 : i + 1; }
 
-    size_t pre(const size_t i) const
-    {
-        return i == 0 ? p.size() - 1 : i - 1;
-    }
+    size_t pre(const size_t i) const { return i == 0 ? p.size() - 1 : i - 1; }
 
     // 回转数
     // 返回值第一项表示点是否在多边形边上
@@ -245,30 +176,30 @@ struct Polygon {
         int cnt = 0;
         for (size_t i = 0; i < p.size(); i++) {
             const Point u = p[i], v = p[nxt(i)];
-            if (abs((a - u) ^ (a - v)) <= GEO_eps && (a - u) * (a - v) <= GEO_eps) return {true, 0};
-            if (abs(u.y - v.y) <= GEO_eps) continue;
+            if (abs((a - u) ^ (a - v)) <= eps && (a - u) * (a - v) <= eps) return {true, 0};
+            if (abs(u.y - v.y) <= eps) continue;
             const Line uv = {u, v - u};
-            if (u.y < v.y - GEO_eps && uv.toleft(a) <= 0) continue;
-            if (u.y > v.y + GEO_eps && uv.toleft(a) >= 0) continue;
-            if (u.y < a.y - GEO_eps && v.y >= a.y - GEO_eps) cnt++;
-            if (u.y >= a.y - GEO_eps && v.y < a.y - GEO_eps) cnt--;
+            if (u.y < v.y - eps && uv.toleft(a) <= 0) continue;
+            if (u.y > v.y + eps && uv.toleft(a) >= 0) continue;
+            if (u.y < a.y - eps && v.y >= a.y - eps) cnt++;
+            if (u.y >= a.y - eps && v.y < a.y - eps) cnt--;
         }
         return {false, cnt};
     }
 
     // 多边形面积的两倍
     // 可用于判断点的存储顺序是顺时针或逆时针
-    GEO_T area() const
+    T area() const
     {
-        GEO_T sum = 0;
+        T sum = 0;
         for (size_t i = 0; i < p.size(); i++) sum += p[i] ^ p[nxt(i)];
         return sum;
     }
 
     // 多边形的周长
-    GEO_T circ() const
+    T circ() const
     {
-        GEO_T sum = 0;
+        T sum = 0;
         for (size_t i = 0; i < p.size(); i++) sum += p[i].dis(p[nxt(i)]);
         return sum;
     }
@@ -283,9 +214,7 @@ struct Convex : Polygon {
         vector<Segment> e1(p.size()), e2(c.p.size()), edge(p.size() + c.p.size());
         vector<Point>   res;
         res.reserve(p.size() + c.p.size());
-        const auto cmp = [](const Segment &u, const Segment &v) {
-            return Argcmp()(u.b - u.a, v.b - v.a);
-        };
+        const auto cmp = [](const Segment &u, const Segment &v) { return Argcmp()(u.b - u.a, v.b - v.a); };
         for (size_t i = 0; i < p.size(); i++) e1[i] = {p[i], p[this->nxt(i)]};
         for (size_t i = 0; i < c.p.size(); i++) e2[i] = {c.p[i], c.p[c.nxt(i)]};
         rotate(e1.begin(), min_element(e1.begin(), e1.end(), cmp), e1.end());
@@ -293,7 +222,7 @@ struct Convex : Polygon {
         merge(e1.begin(), e1.end(), e2.begin(), e2.end(), edge.begin(), cmp);
         const auto check = [](const vector<Point> &res, const Point &u) {
             const auto back1 = res.back(), back2 = *prev(res.end(), 2);
-            return (back1 - back2).toleft(u - back1) == 0 && (back1 - back2) * (u - back1) >= -GEO_eps;
+            return (back1 - back2).toleft(u - back1) == 0 && (back1 - back2) * (u - back1) >= -eps;
         };
         auto u = e1[0].a + e2[0].a;
         for (const auto &v : edge) {
@@ -307,15 +236,13 @@ struct Convex : Polygon {
 
     // 旋转卡壳
     // 例：凸多边形的直径的平方
-    GEO_T rotcaliper() const
+    T rotcaliper() const
     {
         const auto &p = this->p;
         if (p.size() == 1) return 0;
         if (p.size() == 2) return p[0].dis2(p[1]);
-        const auto area = [](const Point &u, const Point &v, const Point &w) {
-            return (w - u) ^ (w - v);
-        };
-        GEO_T ans = 0;
+        const auto area = [](const Point &u, const Point &v, const Point &w) { return (w - u) ^ (w - v); };
+        T          ans  = 0;
         for (size_t i = 0, j = 1; i < p.size(); i++) {
             const auto nxti = this->nxt(i);
             ans             = max({ans, p[j].dis2(p[i]), p[j].dis2(p[nxti])});
@@ -337,10 +264,8 @@ struct Convex : Polygon {
         if (p.size() == 2) return Segment{p[0], p[1]}.is_on(a) ? -1 : 0;
         if (a == p[0]) return -1;
         if ((p[1] - p[0]).toleft(a - p[0]) == -1 || (p.back() - p[0]).toleft(a - p[0]) == 1) return 0;
-        const auto cmp = [&](const Point &u, const Point &v) {
-            return (u - p[0]).toleft(v - p[0]) == 1;
-        };
-        const size_t i = lower_bound(p.begin() + 1, p.end(), a, cmp) - p.begin();
+        const auto   cmp = [&](const Point &u, const Point &v) { return (u - p[0]).toleft(v - p[0]) == 1; };
+        const size_t i   = lower_bound(p.begin() + 1, p.end(), a, cmp) - p.begin();
         if (i == 1) return Segment{p[0], p[i]}.is_on(a) ? -1 : 0;
         if (i == p.size() - 1 && Segment{p[0], p[i]}.is_on(a)) return -1;
         if (Segment{p[i - 1], p[i]}.is_on(a)) return -1;
@@ -350,16 +275,13 @@ struct Convex : Polygon {
     // 凸多边形关于某一方向的极点
     // 复杂度 O(logn)
     // 参考资料：https://codeforces.com/blog/entry/48868
-    // dir:接受Point，返回Point，返回下标，过该点作dir射线，其右侧无其他点
     template <typename F>
     size_t extreme(const F &dir) const
     {
-        const auto &p     = this->p;
-        const auto  check = [&](const size_t i) {
-            return dir(p[i]).toleft(p[this->nxt(i)] - p[i]) >= 0;
-        };
-        const auto dir0   = dir(p[0]);
-        const auto check0 = check(0);
+        const auto &p      = this->p;
+        const auto  check  = [&](const size_t i) { return dir(p[i]).toleft(p[this->nxt(i)] - p[i]) >= 0; };
+        const auto  dir0   = dir(p[0]);
+        const auto  check0 = check(0);
         if (!check0 && check(p.size() - 1)) return 0;
         const auto cmp = [&](const Point &v) {
             const size_t vi = &v - p.data();
@@ -377,12 +299,8 @@ struct Convex : Polygon {
     // 必须保证点在多边形外
     pair<size_t, size_t> tangent(const Point &a) const
     {
-        const size_t i = extreme([&](const Point &u) {
-            return u - a;
-        });
-        const size_t j = extreme([&](const Point &u) {
-            return a - u;
-        });
+        const size_t i = extreme([&](const Point &u) { return u - a; });
+        const size_t j = extreme([&](const Point &u) { return a - u; });
         return {i, j};
     }
 
@@ -390,12 +308,8 @@ struct Convex : Polygon {
     // 复杂度 O(logn)
     pair<size_t, size_t> tangent(const Line &a) const
     {
-        const size_t i = extreme([&](...) {
-            return a.v;
-        });
-        const size_t j = extreme([&](...) {
-            return -a.v;
-        });
+        const size_t i = extreme([&](...) { return a.v; });
+        const size_t j = extreme([&](...) { return -a.v; });
         return {i, j};
     }
 };
@@ -403,38 +317,29 @@ struct Convex : Polygon {
 // 圆
 struct Circle {
     Point c;
-    GEO_T r;  // 一般来说必须用浮点数
+    T     r;  // 一般来说必须用浮点数
 
-    bool operator==(const Circle &a) const
-    {
-        return c == a.c && abs(r - a.r) <= GEO_eps;
-    }
+    bool operator==(const Circle &a) const { return c == a.c && abs(r - a.r) <= eps; }
 
-    GEO_T circ() const
-    {
-        return 2 * GEO_PI * r;
-    }  // 周长
+    T circ() const { return 2 * PI * r; }  // 周长
 
-    GEO_T area() const
-    {
-        return GEO_PI * r * r;
-    }  // 面积
+    T area() const { return PI * r * r; }  // 面积
 
     // 点与圆的关系
     // -1 圆上 | 0 圆外 | 1 圆内
     int is_in(const Point &p) const
     {
-        const GEO_T d = p.dis(c);
-        return abs(d - r) <= GEO_eps ? -1 : d < r - GEO_eps;
+        const T d = p.dis(c);
+        return abs(d - r) <= eps ? -1 : d < r - eps;
     }
 
     // 直线与圆关系
     // 0 相离 | 1 相切 | 2 相交
     int relation(const Line &l) const
     {
-        const GEO_T d = l.dis(c);
-        if (d > r + GEO_eps) return 0;
-        if (abs(d - r) <= GEO_eps) return 1;
+        const T d = l.dis(c);
+        if (d > r + eps) return 0;
+        if (abs(d - r) <= eps) return 1;
         return 2;
     }
 
@@ -443,54 +348,54 @@ struct Circle {
     int relation(const Circle &a) const
     {
         if (*this == a) return -1;
-        const GEO_T d = c.dis(a.c);
-        if (d > r + a.r + GEO_eps) return 0;
-        if (abs(d - r - a.r) <= GEO_eps) return 1;
-        if (abs(d - abs(r - a.r)) <= GEO_eps) return 3;
-        if (d < abs(r - a.r) - GEO_eps) return 4;
+        const T d = c.dis(a.c);
+        if (d > r + a.r + eps) return 0;
+        if (abs(d - r - a.r) <= eps) return 1;
+        if (abs(d - abs(r - a.r)) <= eps) return 3;
+        if (d < abs(r - a.r) - eps) return 4;
         return 2;
     }
 
     // 直线与圆的交点
     vector<Point> inter(const Line &l) const
     {
-        const GEO_T d = l.dis(c);
+        const T     d = l.dis(c);
         const Point p = l.proj(c);
         const int   t = relation(l);
         if (t == 0) return vector<Point>();
         if (t == 1) return vector<Point>{p};
-        const GEO_T k = sqrt(r * r - d * d);
+        const T k = sqrt(r * r - d * d);
         return vector<Point>{p - (l.v / l.v.len()) * k, p + (l.v / l.v.len()) * k};
     }
 
     // 圆与圆交点
     vector<Point> inter(const Circle &a) const
     {
-        const GEO_T d = c.dis(a.c);
-        const int   t = relation(a);
+        const T   d = c.dis(a.c);
+        const int t = relation(a);
         if (t == -1 || t == 0 || t == 4) return vector<Point>();
         Point e = a.c - c;
         e       = e / e.len() * r;
         if (t == 1 || t == 3) {
-            if (r * r + d * d - a.r * a.r >= -GEO_eps) return vector<Point>{c + e};
+            if (r * r + d * d - a.r * a.r >= -eps) return vector<Point>{c + e};
             return vector<Point>{c - e};
         }
-        const GEO_T costh = (r * r + d * d - a.r * a.r) / (2 * r * d), sinth = sqrt(1 - costh * costh);
+        const T costh = (r * r + d * d - a.r * a.r) / (2 * r * d), sinth = sqrt(1 - costh * costh);
         return vector<Point>{c + e.rot(costh, -sinth), c + e.rot(costh, sinth)};
     }
 
     // 圆与圆交面积
-    GEO_T inter_area(const Circle &a) const
+    T inter_area(const Circle &a) const
     {
-        const GEO_T d = c.dis(a.c);
-        const int   t = relation(a);
+        const T   d = c.dis(a.c);
+        const int t = relation(a);
         if (t == -1) return area();
         if (t < 2) return 0;
         if (t > 2) return min(area(), a.area());
-        const GEO_T costh1 = (r * r + d * d - a.r * a.r) / (2 * r * d),
-                    costh2 = (a.r * a.r + d * d - r * r) / (2 * a.r * d);
-        const GEO_T sinth1 = sqrt(1 - costh1 * costh1), sinth2 = sqrt(1 - costh2 * costh2);
-        const GEO_T th1 = acos(costh1), th2 = acos(costh2);
+        const T costh1 = (r * r + d * d - a.r * a.r) / (2 * r * d),
+                costh2 = (a.r * a.r + d * d - r * r) / (2 * a.r * d);
+        const T sinth1 = sqrt(1 - costh1 * costh1), sinth2 = sqrt(1 - costh2 * costh2);
+        const T th1 = acos(costh1), th2 = acos(costh2);
         return r * r * (th1 - costh1 * sinth1) + a.r * a.r * (th2 - costh2 * sinth2);
     }
 
@@ -505,7 +410,7 @@ struct Circle {
         }
         Point e           = a - c;
         e                 = e / e.len() * r;
-        const GEO_T costh = r / c.dis(a), sinth = sqrt(1 - costh * costh);
+        const T     costh = r / c.dis(a), sinth = sqrt(1 - costh * costh);
         const Point t1 = c + e.rot(costh, -sinth), t2 = c + e.rot(costh, sinth);
         return vector<Line>{{a, t1 - a}, {a, t2 - a}};
     }
@@ -520,17 +425,17 @@ struct Circle {
             const Point p = inter(a)[0], v = {-(a.c - c).y, (a.c - c).x};
             lines.push_back({p, v});
         }
-        const GEO_T d = c.dis(a.c);
+        const T     d = c.dis(a.c);
         const Point e = (a.c - c) / (a.c - c).len();
         if (t <= 2) {
-            const GEO_T costh = (r - a.r) / d, sinth = sqrt(1 - costh * costh);
+            const T     costh = (r - a.r) / d, sinth = sqrt(1 - costh * costh);
             const Point d1 = e.rot(costh, -sinth), d2 = e.rot(costh, sinth);
             const Point u1 = c + d1 * r, u2 = c + d2 * r, v1 = a.c + d1 * a.r, v2 = a.c + d2 * a.r;
             lines.push_back({u1, v1 - u1});
             lines.push_back({u2, v2 - u2});
         }
         if (t == 0) {
-            const GEO_T costh = (r + a.r) / d, sinth = sqrt(1 - costh * costh);
+            const T     costh = (r + a.r) / d, sinth = sqrt(1 - costh * costh);
             const Point d1 = e.rot(costh, -sinth), d2 = e.rot(costh, sinth);
             const Point u1 = c + d1 * r, u2 = c + d2 * r, v1 = a.c - d1 * a.r, v2 = a.c - d2 * a.r;
             lines.push_back({u1, v1 - u1});
@@ -543,17 +448,11 @@ struct Circle {
     // auto result = circle.inverse(line);
     // if (std::holds_alternative<Circle>(result))
     // Circle c = std::get<Circle>(result);
-    //
-    // 1.圆 [O] 外的点的反演点在圆 [O] 内，反之亦然；圆[O] 上的点的反演点为其自身。
-    // 2.不过点 [O] 的圆 [A] ，其反演图形也是不过点 [O] 的圆。
-    // 3.过点 [O] 的圆 [A] ，其反演图形是不过点 [O] 的直线。
-    // 4.两个图形相切且存在不为点 [O] 的切点，则他们的反演图形也相切
-    //
     std::variant<Circle, Line> inverse(const Line &l) const
     {
         if (l.toleft(c) == 0) return l;
         const Point v = l.toleft(c) == 1 ? Point{l.v.y, -l.v.x} : Point{-l.v.y, l.v.x};
-        const GEO_T d = r * r / l.dis(c);
+        const T     d = r * r / l.dis(c);
         const Point p = c + v / v.len() * d;
         return Circle{(c + p) / 2, d / 2};
     }
@@ -562,19 +461,19 @@ struct Circle {
     {
         const Point v = a.c - c;
         if (a.is_in(c) == -1) {
-            const GEO_T d = r * r / (a.r + a.r);
+            const T     d = r * r / (a.r + a.r);
             const Point p = c + v / v.len() * d;
             return Line{p, {-v.y, v.x}};
         }
         if (c == a.c) return Circle{c, r * r / a.r};
-        const GEO_T d1 = r * r / (c.dis(a.c) - a.r), d2 = r * r / (c.dis(a.c) + a.r);
+        const T     d1 = r * r / (c.dis(a.c) - a.r), d2 = r * r / (c.dis(a.c) + a.r);
         const Point p = c + v / v.len() * d1, q = c + v / v.len() * d2;
         return Circle{(p + q) / 2, p.dis(q) / 2};
     }
 };
 
 // 圆与多边形面积交
-GEO_T area_inter(const Circle &circ, const Polygon &poly)
+T area_inter(const Circle &circ, const Polygon &poly)
 {
     const auto cal = [](const Circle &circ, const Point &a, const Point &b) {
         if ((a - circ.c).toleft(b - circ.c) == 0) return 0.0l;
@@ -584,34 +483,34 @@ GEO_T area_inter(const Circle &circ, const Polygon &poly)
         if (ina && !inb) {
             const auto  t   = circ.inter(ab);
             const Point p   = t.size() == 1 ? t[0] : t[1];
-            const GEO_T ans = ((a - circ.c) ^ (p - circ.c)) / 2;
-            const GEO_T th  = (p - circ.c).ang(b - circ.c);
-            const GEO_T d   = circ.r * circ.r * th / 2;
+            const T     ans = ((a - circ.c) ^ (p - circ.c)) / 2;
+            const T     th  = (p - circ.c).ang(b - circ.c);
+            const T     d   = circ.r * circ.r * th / 2;
             if ((a - circ.c).toleft(b - circ.c) == 1) return ans + d;
             return ans - d;
         }
         if (!ina && inb) {
             const Point p   = circ.inter(ab)[0];
-            const GEO_T ans = ((p - circ.c) ^ (b - circ.c)) / 2;
-            const GEO_T th  = (a - circ.c).ang(p - circ.c);
-            const GEO_T d   = circ.r * circ.r * th / 2;
+            const T     ans = ((p - circ.c) ^ (b - circ.c)) / 2;
+            const T     th  = (a - circ.c).ang(p - circ.c);
+            const T     d   = circ.r * circ.r * th / 2;
             if ((a - circ.c).toleft(b - circ.c) == 1) return ans + d;
             return ans - d;
         }
         const auto p = circ.inter(ab);
-        if (p.size() == 2 && Segment{a, b}.dis(circ.c) <= circ.r + GEO_eps) {
-            const GEO_T ans = ((p[0] - circ.c) ^ (p[1] - circ.c)) / 2;
-            const GEO_T th1 = (a - circ.c).ang(p[0] - circ.c), th2 = (b - circ.c).ang(p[1] - circ.c);
-            const GEO_T d1 = circ.r * circ.r * th1 / 2, d2 = circ.r * circ.r * th2 / 2;
+        if (p.size() == 2 && Segment{a, b}.dis(circ.c) <= circ.r + eps) {
+            const T ans = ((p[0] - circ.c) ^ (p[1] - circ.c)) / 2;
+            const T th1 = (a - circ.c).ang(p[0] - circ.c), th2 = (b - circ.c).ang(p[1] - circ.c);
+            const T d1 = circ.r * circ.r * th1 / 2, d2 = circ.r * circ.r * th2 / 2;
             if ((a - circ.c).toleft(b - circ.c) == 1) return ans + d1 + d2;
             return ans - d1 - d2;
         }
-        const GEO_T th = (a - circ.c).ang(b - circ.c);
+        const T th = (a - circ.c).ang(b - circ.c);
         if ((a - circ.c).toleft(b - circ.c) == 1) return circ.r * circ.r * th / 2;
         return -circ.r * circ.r * th / 2;
     };
 
-    GEO_T ans = 0;
+    T ans = 0;
     for (size_t i = 0; i < poly.p.size(); i++) {
         const Point a = poly.p[i], b = poly.p[poly.nxt(i)];
         ans += cal(circ, a, b);
@@ -648,17 +547,14 @@ Convex convexhull(vector<Point> p)
 // 半平面交
 // 排序增量法，复杂度 O(nlogn)
 // 输入与返回值都是用直线表示的半平面集合
-vector<Line> halfinter(vector<Line> l, const GEO_T lim = 1e9)
+vector<Line> halfinter(vector<Line> l, const T lim = 1e9)
 {
-    const auto check = [](const Line &a, const Line &b, const Line &c) {
-        return a.toleft(b.inter(c)) < 0;
-    };
+    const auto check = [](const Line &a, const Line &b, const Line &c) { return a.toleft(b.inter(c)) < 0; };
     // 无精度误差的方法，但注意取值范围会扩大到三次方
     /*const auto check=[](const Line &a,const Line &b,const Line &c)
     {
-        const Point
-    p=a.v*(b.v^c.v),q=b.p*(b.v^c.v)+b.v*(c.v^(b.p-c.p))-a.p*(b.v^c.v); return
-    p.toleft(q)<0;
+        const Point p=a.v*(b.v^c.v),q=b.p*(b.v^c.v)+b.v*(c.v^(b.p-c.p))-a.p*(b.v^c.v);
+        return p.toleft(q)<0;
     };*/
     l.push_back({{-lim, 0}, {0, -1}});
     l.push_back({{0, -lim}, {1, 0}});
@@ -667,7 +563,7 @@ vector<Line> halfinter(vector<Line> l, const GEO_T lim = 1e9)
     sort(l.begin(), l.end());
     deque<Line> q;
     for (size_t i = 0; i < l.size(); i++) {
-        if (i > 0 && l[i - 1].v.toleft(l[i].v) == 0 && l[i - 1].v * l[i].v > GEO_eps) continue;
+        if (i > 0 && l[i - 1].v.toleft(l[i].v) == 0 && l[i - 1].v * l[i].v > eps) continue;
         while (q.size() > 1 && check(l[i], q.back(), q[q.size() - 2])) q.pop_back();
         while (q.size() > 1 && check(l[i], q[0], q[1])) q.pop_front();
         if (!q.empty() && q.back().v.toleft(l[i].v) <= 0) return vector<Line>();
@@ -681,12 +577,12 @@ vector<Line> halfinter(vector<Line> l, const GEO_T lim = 1e9)
 // 点集形成的最小最大三角形
 // 极角序扫描线，复杂度 O(n^2logn)
 // 最大三角形问题可以使用凸包与旋转卡壳做到 O(n^2)
-pair<GEO_T, GEO_T> minmax_triangle(const vector<Point> &vec)
+pair<T, T> minmax_triangle(const vector<Point> &vec)
 {
     if (vec.size() <= 2) return {0, 0};
     vector<pair<int, int>> evt;
     evt.reserve(vec.size() * vec.size());
-    GEO_T maxans = 0, minans = GEO_INF;
+    T maxans = 0, minans = INF;
     for (size_t i = 0; i < vec.size(); i++) {
         for (size_t j = 0; j < vec.size(); j++) {
             if (i == j) continue;
@@ -702,9 +598,7 @@ pair<GEO_T, GEO_T> minmax_triangle(const vector<Point> &vec)
     });
     vector<size_t> vx(vec.size()), pos(vec.size());
     for (size_t i = 0; i < vec.size(); i++) vx[i] = i;
-    sort(vx.begin(), vx.end(), [&](int x, int y) {
-        return vec[x] < vec[y];
-    });
+    sort(vx.begin(), vx.end(), [&](int x, int y) { return vec[x] < vec[y]; });
     for (size_t i = 0; i < vx.size(); i++) pos[vx[i]] = i;
     for (auto [u, v] : evt) {
         const size_t i = pos[u], j = pos[v];
@@ -721,20 +615,20 @@ pair<GEO_T, GEO_T> minmax_triangle(const vector<Point> &vec)
 
 // 平面最近点对
 // 扫描线，复杂度 O(nlogn)
-GEO_T closest_pair(vector<Point> points)
+T closest_pair(vector<Point> points)
 {
     sort(points.begin(), points.end());
     const auto cmpy = [](const Point &a, const Point &b) {
-        if (abs(a.y - b.y) <= GEO_eps) return a.x < b.x - GEO_eps;
-        return a.y < b.y - GEO_eps;
+        if (abs(a.y - b.y) <= eps) return a.x < b.x - eps;
+        return a.y < b.y - eps;
     };
     multiset<Point, decltype(cmpy)> s{cmpy};
-    GEO_T                           ans = GEO_INF;
+    T                               ans = INF;
     for (size_t i = 0, l = 0; i < points.size(); i++) {
-        const GEO_T sqans = sqrtl(ans) + 1;
+        const T sqans = sqrtl(ans) + 1;
         while (l < i && points[i].x - points[l].x >= sqans) s.erase(s.find(points[l++]));
-        for (auto it = s.lower_bound(Point{-GEO_INF, points[i].y - sqans});
-             it != s.end() && it->y - points[i].y <= sqans; it++) {
+        for (auto it = s.lower_bound(Point{-INF, points[i].y - sqans}); it != s.end() && it->y - points[i].y <= sqans;
+             it++) {
             ans = min(ans, points[i].dis2(*it));
         }
         s.insert(points[i]);
@@ -747,25 +641,25 @@ GEO_T closest_pair(vector<Point> points)
 bool segs_inter(const vector<Segment> &segs)
 {
     if (segs.empty()) return false;
-    using seq_t       = tuple<GEO_T, int, Segment>;  // x坐标 出入点 线段
+    using seq_t       = tuple<T, int, Segment>;  // x坐标 出入点 线段
     const auto seqcmp = [](const seq_t &u, const seq_t &v) {
         const auto [u0, u1, u2] = u;
         const auto [v0, v1, v2] = v;
-        if (abs(u0 - v0) <= GEO_eps) return make_pair(u1, u2) < make_pair(v1, v2);
-        return u0 < v0 - GEO_eps;
+        if (abs(u0 - v0) <= eps) return make_pair(u1, u2) < make_pair(v1, v2);
+        return u0 < v0 - eps;
     };
     vector<seq_t> seq;
     for (auto seg : segs) {
-        if (seg.a.x > seg.b.x + GEO_eps) swap(seg.a, seg.b);
+        if (seg.a.x > seg.b.x + eps) swap(seg.a, seg.b);
         seq.push_back({seg.a.x, 0, seg});
         seq.push_back({seg.b.x, 1, seg});
     }
     sort(seq.begin(), seq.end(), seqcmp);
-    GEO_T x_now;
-    auto  cmp = [&](const Segment &u, const Segment &v) {
-        if (abs(u.a.x - u.b.x) <= GEO_eps || abs(v.a.x - v.b.x) <= GEO_eps) return u.a.y < v.a.y - GEO_eps;
+    T    x_now;
+    auto cmp = [&](const Segment &u, const Segment &v) {
+        if (abs(u.a.x - u.b.x) <= eps || abs(v.a.x - v.b.x) <= eps) return u.a.y < v.a.y - eps;
         return ((x_now - u.a.x) * (u.b.y - u.a.y) + u.a.y * (u.b.x - u.a.x)) * (v.b.x - v.a.x)
-               < ((x_now - v.a.x) * (v.b.y - v.a.y) + v.a.y * (v.b.x - v.a.x)) * (u.b.x - u.a.x) - GEO_eps;
+               < ((x_now - v.a.x) * (v.b.y - v.a.y) + v.a.y * (v.b.x - v.a.x)) * (u.b.x - u.a.x) - eps;
     };
     multiset<Segment, decltype(cmp)> s{cmp};
     for (const auto [x, o, seg] : seq) {
@@ -786,13 +680,11 @@ bool segs_inter(const vector<Segment> &segs)
 // 多边形面积并
 // 轮廓积分，复杂度 O(n^2logn)，n为边数
 // ans[i] 表示被至少覆盖了 i+1 次的区域的面积
-vector<GEO_T> area_union(const vector<Polygon> &polys)
+vector<T> area_union(const vector<Polygon> &polys)
 {
     const size_t                       siz = polys.size();
     vector<vector<pair<Point, Point>>> segs(siz);
-    const auto                         check = [](const Point &u, const Segment &e) {
-        return !((u < e.a && u < e.b) || (u > e.a && u > e.b));
-    };
+    const auto check = [](const Point &u, const Segment &e) { return !((u < e.a && u < e.b) || (u > e.a && u > e.b)); };
 
     auto cut_edge = [&](const Segment &e, const size_t i) {
         const Line               le{e.a, e.b - e.a};
@@ -835,9 +727,9 @@ vector<GEO_T> area_union(const vector<Polygon> &polys)
             cut_edge(ei, i);
         }
     }
-    vector<GEO_T> ans(siz);
+    vector<T> ans(siz);
     for (size_t i = 0; i < siz; i++) {
-        GEO_T sum = 0;
+        T sum = 0;
         sort(segs[i].begin(), segs[i].end());
         int cnt = 0;
         for (size_t j = 0; j < segs[i].size(); j++) {
@@ -854,37 +746,37 @@ vector<GEO_T> area_union(const vector<Polygon> &polys)
 // 圆面积并
 // 轮廓积分，复杂度 O(n^2logn)
 // ans[i] 表示被至少覆盖了 i+1 次的区域的面积
-vector<GEO_T> area_union(const vector<Circle> &circs)
+vector<T> area_union(const vector<Circle> &circs)
 {
     const size_t siz = circs.size();
-    using arc_t      = tuple<Point, GEO_T, GEO_T, GEO_T>;
+    using arc_t      = tuple<Point, T, T, T>;
     vector<vector<arc_t>> arcs(siz);
     const auto            eq = [](const arc_t &u, const arc_t &v) {
         const auto [u1, u2, u3, u4] = u;
         const auto [v1, v2, v3, v4] = v;
-        return u1 == v1 && abs(u2 - v2) <= GEO_eps && abs(u3 - v3) <= GEO_eps && abs(u4 - v4) <= GEO_eps;
+        return u1 == v1 && abs(u2 - v2) <= eps && abs(u3 - v3) <= eps && abs(u4 - v4) <= eps;
     };
 
     auto cut_circ = [&](const Circle &ci, const size_t i) {
-        vector<pair<GEO_T, int>> evt;
-        evt.push_back({-GEO_PI, 0});
-        evt.push_back({GEO_PI, 0});
+        vector<pair<T, int>> evt;
+        evt.push_back({-PI, 0});
+        evt.push_back({PI, 0});
         int init = 0;
         for (size_t j = 0; j < circs.size(); j++) {
             if (i == j) continue;
             const Circle &cj = circs[j];
-            if (ci.r < cj.r - GEO_eps && ci.relation(cj) >= 3) init++;
+            if (ci.r < cj.r - eps && ci.relation(cj) >= 3) init++;
             const auto inters = ci.inter(cj);
             if (inters.size() == 1) evt.push_back({atan2l((inters[0] - ci.c).y, (inters[0] - ci.c).x), 0});
             if (inters.size() == 2) {
                 const Point dl = inters[0] - ci.c, dr = inters[1] - ci.c;
-                GEO_T       argl = atan2l(dl.y, dl.x), argr = atan2l(dr.y, dr.x);
-                if (abs(argl + GEO_PI) <= GEO_eps) argl = GEO_PI;
-                if (abs(argr + GEO_PI) <= GEO_eps) argr = GEO_PI;
-                if (argl > argr + GEO_eps) {
+                T           argl = atan2l(dl.y, dl.x), argr = atan2l(dr.y, dr.x);
+                if (abs(argl + PI) <= eps) argl = PI;
+                if (abs(argr + PI) <= eps) argr = PI;
+                if (argl > argr + eps) {
                     evt.push_back({argl, 1});
-                    evt.push_back({GEO_PI, -1});
-                    evt.push_back({-GEO_PI, 1});
+                    evt.push_back({PI, -1});
+                    evt.push_back({-PI, 1});
                     evt.push_back({argr, -1});
                 } else {
                     evt.push_back({argl, 1});
@@ -896,15 +788,15 @@ vector<GEO_T> area_union(const vector<Circle> &circs)
         int sum = init;
         for (size_t i = 0; i < evt.size(); i++) {
             sum += evt[i].second;
-            if (abs(evt[i].first - evt[i + 1].first) > GEO_eps)
+            if (abs(evt[i].first - evt[i + 1].first) > eps)
                 arcs[sum].push_back({ci.c, ci.r, evt[i].first, evt[i + 1].first});
-            if (abs(evt[i + 1].first - GEO_PI) <= GEO_eps) break;
+            if (abs(evt[i + 1].first - PI) <= eps) break;
         }
     };
 
     const auto oint = [](const arc_t &arc) {
         const auto [cc, cr, l, r] = arc;
-        if (abs(r - l - GEO_PI - GEO_PI) <= GEO_eps) return 2.0l * GEO_PI * cr * cr;
+        if (abs(r - l - PI - PI) <= eps) return 2.0l * PI * cr * cr;
         return cr * cr * (r - l) + cc.x * cr * (sin(r) - sin(l)) - cc.y * cr * (cos(r) - cos(l));
     };
 
@@ -912,9 +804,9 @@ vector<GEO_T> area_union(const vector<Circle> &circs)
         const auto &ci = circs[i];
         cut_circ(ci, i);
     }
-    vector<GEO_T> ans(siz);
+    vector<T> ans(siz);
     for (size_t i = 0; i < siz; i++) {
-        GEO_T sum = 0;
+        T sum = 0;
         sort(arcs[i].begin(), arcs[i].end());
         int cnt = 0;
         for (size_t j = 0; j < arcs[i].size(); j++) {
@@ -927,4 +819,3 @@ vector<GEO_T> area_union(const vector<Circle> &circs)
     }
     return ans;
 }
-}  // namespace Geometry

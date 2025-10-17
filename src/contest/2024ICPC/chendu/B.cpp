@@ -1,10 +1,5 @@
-#include <algorithm>
-#include <cassert>
-#include <deque>
+#include <cstring>
 #include <iostream>
-#include <numeric>
-#include <queue>
-#include <utility>
 #include <vector>
 #ifndef CLANGD_MODE
 #ifndef DEBUG
@@ -125,6 +120,12 @@ void print(Head&& head, Tail&&... tail)
 #else
 #define dbg(...)
 #endif
+constexpr int N = 150;
+constexpr int P = 1e9 + 7;
+
+u64 dp[2][N + 2][N + 2][3];
+int pre[N + 2][N + 2][N + 2];
+
 #pragma GCC optimize(3)
 #pragma GCC target("avx")
 #pragma GCC optimize("Ofast")
@@ -174,209 +175,100 @@ void print(Head&& head, Tail&&... tail)
 #pragma GCC optimize("-fdelete-null-pointer-checks")
 #pragma GCC optimize(2)
 
-struct MCFGraph {
-    struct Edge {
-        int v, c, f;
+int n, m;
+int numq;
+int inner[N + 1][N + 1][N + 1];
 
-        Edge(int v, int c, int f) : v(v), c(c), f(f) {}
-    };
+void build_prefix()
+{
+    for (int i = 0; i <= N; i++) {
+        for (int j = 0; j <= N; j++) {
+            int k = numq - i - j;
+            if (k < 0) continue;
+            inner[i][j][k] = (ll(dp[0][i][j][0]) + dp[0][i][j][1] + dp[0][i][j][2]) % P;
+        }
+    }
+    for (int a = 0; a <= N; ++a)
+        for (int b = 0; b <= N; ++b)
+            for (int c = 0; c <= N; ++c) {
+                ll res = inner[a][b][c];
+                if (a > 0) res += pre[a - 1][b][c];
+                if (b > 0) res += pre[a][b - 1][c];
+                if (c > 0) res += pre[a][b][c - 1];
+                if (a > 0 && b > 0) res -= pre[a - 1][b - 1][c];
+                if (a > 0 && c > 0) res -= pre[a - 1][b][c - 1];
+                if (b > 0 && c > 0) res -= pre[a][b - 1][c - 1];
+                if (a > 0 && b > 0 && c > 0) res += pre[a - 1][b - 1][c - 1];
+                pre[a][b][c] = ((res % P) + P) % P; 
+            }
+}
 
-    const int                     n;
-    std::vector<Edge>             e;
-    std::vector<std::vector<int>> g;
-    std::vector<i64>              h, dis;
-    std::vector<int>              pre;
-
-    bool spfa(int s, int t)
-    {
-        dis.assign(n, std::numeric_limits<i64>::max());
-        pre.assign(n, -1);
-        std::deque<int>   que;
-        std::vector<bool> inq(n, false);
-        dis[s] = 0;
-        inq[s] = true;
-        que.emplace_back(s);
-        while (!que.empty()) {
-            int u  = que.front();
-            i64 d  = dis[u];
-            inq[u] = false;
-            que.pop_front();
-            for (int i : g[u]) {
-                int v = e[i].v;
-                int c = e[i].c;
-                int f = e[i].f;
-                if (c > 0 && dis[v] > d + f) {
-                    dis[v] = d + f;
-                    pre[v] = i;
-                    if (!inq[v]) {
-                        que.emplace_back(v);
-                        inq[v] = 1;
+void solve()
+{
+    // 4 * 300 * 300 * 300 * 300 = 4e8 可能刚刚好？
+    cin >> n >> m;
+    string s;
+    cin >> s;
+    s = ' ' + s;
+    if (s[1] == '?') dp[0][0][0][0] = dp[0][0][0][1] = dp[0][0][0][2] = 500000004;
+    if (s[1] == 'a') {
+        dp[0][0][0][1] = 1;
+    }
+    if (s[1] == 'b') {
+        dp[0][0][0][2] = 1;
+    }
+    if (s[1] == 'c') {
+        dp[0][0][0][0] = 1;
+    }
+    for (int si = 1; si <= n; si++) {
+        if (s[si] == '?') {
+            for (int i = 0; i <= N; i++) {
+                for (int j = 0; j <= N; j++) {
+                    dp[1][i + 1][j][0] = (ll(dp[1][i + 1][j][0]) + dp[0][i][j][1] + dp[0][i][j][2]);
+                    dp[1][i][j + 1][1] = (ll(dp[1][i][j + 1][1]) + dp[0][i][j][0] + dp[0][i][j][2]);
+                    dp[1][i][j][2]     = (ll(dp[1][i][j][2]) + dp[0][i][j][0] + dp[0][i][j][1]);
+                }
+            }
+        } else {
+            if (s[si] == 'a') {
+                for (int i = 0; i <= N; i++) {
+                    for (int j = 0; j <= N; j++) {
+                        dp[1][i][j][0] = (dp[0][i][j][1] + dp[0][i][j][2]);
+                    }
+                }
+            } else if (s[si] == 'b') {
+                for (int i = 0; i <= N; i++) {
+                    for (int j = 0; j <= N; j++) {
+                        dp[1][i][j][1] = (dp[0][i][j][0] + dp[0][i][j][2]);
+                    }
+                }
+            } else {
+                for (int i = 0; i <= N; i++) {
+                    for (int j = 0; j <= N; j++) {
+                        dp[1][i][j][2] = (dp[0][i][j][0] + dp[0][i][j][1]);
                     }
                 }
             }
         }
-        return dis[t] != std::numeric_limits<i64>::max();
-    }
-
-    bool dijkstra(int s, int t)
-    {
-        dis.assign(n, std::numeric_limits<i64>::max());
-        pre.assign(n, -1);
-        std::priority_queue<std::pair<i64, int>, std::vector<std::pair<i64, int>>, std::greater<std::pair<i64, int>>>
-            que;
-        dis[s] = 0;
-        que.emplace(0, s);
-        while (!que.empty()) {
-            i64 d = que.top().first;
-            int u = que.top().second;
-            que.pop();
-            if (dis[u] < d) continue;
-            for (int i : g[u]) {
-                int v = e[i].v;
-                int c = e[i].c;
-                int f = e[i].f;
-                if (c > 0 && dis[v] > d + h[u] - h[v] + f) {
-                    dis[v] = d + h[u] - h[v] + f;
-                    pre[v] = i;
-                    que.emplace(dis[v], v);
+        swap(dp[0], dp[1]);
+        memset(dp[1], 0, sizeof dp[1]);
+        if ((si & 0b1111) == 0)
+            for (int i = 0; i <= N; i++) {
+                for (int j = 0; j <= N; j++) {
+                    for (int c = 0; c < 3; c++) dp[0][i][j][c] %= P;
                 }
             }
-        }
-        return dis[t] != std::numeric_limits<i64>::max();
     }
-
-    MCFGraph(int n) : n(n), g(n) {}
-
-    void addEdge(int u, int v, int c, int f)
-    {
-        g[u].push_back(e.size());
-        e.emplace_back(v, c, f);
-        g[v].push_back(e.size());
-        e.emplace_back(u, 0, -f);
+    numq = count(all(s), '?');
+    build_prefix();
+    while (m--) {
+        int a, b, c;
+        cin >> a >> b >> c;
+        a = min(a, 150);
+        b = min(b, 150);
+        c = min(c, 150);
+        cout << pre[a][b][c] << '\n';
     }
-
-    std::pair<int, i64> flow(int s, int t)
-    {
-        int flow = 0;
-        i64 cost = 0;
-        h.assign(n, 0);
-
-        while (dijkstra(s, t)) {
-            for (int i = 0; i < n; ++i) h[i] += dis[i];
-            int aug = std::numeric_limits<int>::max();
-            for (int i = t; i != s; i = e[pre[i] ^ 1].v) aug = std::min(aug, e[pre[i]].c);
-            for (int i = t; i != s; i = e[pre[i] ^ 1].v) {
-                e[pre[i]].c -= aug;
-                e[pre[i] ^ 1].c += aug;
-            }
-            flow += aug;
-            cost += i64(aug) * h[t];
-        }
-        return std::make_pair(flow, cost);
-    }
-};
-
-struct Prime {
-    vector<int> minp, primes;
-
-    Prime(int n) { sieve(n); }
-
-    void sieve(int n)
-    {
-        minp.assign(n + 1, 0);
-        primes.clear();
-
-        for (int i = 2; i <= n; i++) {
-            if (minp[i] == 0) {
-                minp[i] = i;
-                primes.push_back(i);
-            }
-
-            for (auto p : primes) {
-                if (i * p > n) {
-                    break;
-                }
-                minp[i * p] = p;
-                if (p == minp[i]) {
-                    break;
-                }
-            }
-        }
-    }
-} prime(1e5);
-
-void solve()
-{
-    int n;
-    cin >> n;
-    vector<int> arr(n + 1);
-    for (int i = 1; i <= n; i++) {
-        cin >> arr[i];
-    }
-    vector<int>                    farr(n + 1);
-    vector<vector<pair<int, int>>> factors(n + 1);
-    auto                           check = [&](int x) {
-        assert(x < 1e5);
-        int cnt = 0;
-        while (x != 1) {
-            x /= prime.minp[x];
-            cnt++;
-        }
-        return cnt;
-    };
-    for (int i = 1; i <= n; i++) {
-        int va  = arr[i];
-        int cnt = 0;
-        for (int d = 2; d * d <= va; d++) {
-            while (va % d == 0) {
-                va /= d;
-                cnt++;
-            }
-        }
-        if (va != 1) {
-            cnt++;
-        }
-        farr[i] = cnt;
-    }
-    for (int i = 1; i <= n; i++) {
-        const int va = arr[i];
-        for (int d = 1; d * d <= va; d++) {
-            if (va % d == 0) {
-                int cnt1 = check(d);
-                int cnt2 = farr[i] - cnt1;
-                factors[i].pb({cnt1, d});
-                factors[i].pb({cnt2, va / d});
-            }
-        }
-        nth_element(factors[i].begin(), factors[i].begin() + min(sz(factors[i]), n), factors[i].end());
-    }
-    // 0为源，1-n为点，n+1后的都是其他的，最后一个为汇
-    vector<int> candidate;
-    for (int i = 1; i <= n; i++) {
-        for (int j = 0; j < min(int(factors[i].size()), n); j++) {
-            candidate.pb(factors[i][j].se);
-        }
-    }
-    sor(candidate);
-    candidate.erase(unique(all(candidate)), candidate.end());
-    int      level2   = n + 1;
-    int      start    = 0;
-    int      terminal = level2 + candidate.size();
-    MCFGraph mcf(terminal + 1);
-    for (int i = 1; i <= n; i++) {
-        mcf.addEdge(0, i, 1, 0);
-    }
-    for (int i = 1; i <= n; i++) {
-        for (int j = 0; j < min(int(factors[i].size()), n); j++) {
-            int v = lower_bound(all(candidate), factors[i][j].se) - candidate.begin() + level2;
-            mcf.addEdge(i, v, 1, (factors[i][j].fi));
-        }
-    }
-    for (int i = 0; i < int(candidate.size()); i++) {
-        mcf.addEdge(level2 + i, terminal, 1, 0);
-    }
-    auto [flow, cost] = mcf.flow(start, terminal);
-    cout << accumulate(all(farr), 0ll) - cost << '\n';
 }
 
 signed main(signed argc, char** argv)

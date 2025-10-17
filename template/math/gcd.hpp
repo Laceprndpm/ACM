@@ -1,3 +1,14 @@
+i64 exgcd(i64 a, i64 b, i64 &x, i64 &y)
+{
+    if (!b) {
+        x = 1, y = 0;
+        return a;
+    }
+    i64 g = exgcd(b, a % b, y, x);
+    y -= a / b * x;
+    return g;
+}
+
 tuple<i64, i64, i64> exgcd(i64 a, i64 b)  // 找到a*x + b*y = r
 {
     if (b == 0) {

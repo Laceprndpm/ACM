@@ -2,6 +2,7 @@
  * @brief 并查集
  * 0-index
  */
+
 struct DSU {
     int              component;
     std::vector<int> f, siz;

@@ -5,6 +5,9 @@ struct Basis {
 
     u64 basis_arr[MN + 1];
     u64 tmp[MN + 1];
+    int rk;
+
+    Basis() : rk(0) { init(); }
 
     void init()
     {
@@ -12,10 +15,7 @@ struct Basis {
         flag = 0;
     }
 
-    void retreat(int idx)
-    {
-        basis_arr[idx] = 0;
-    }
+    void retreat(int idx) { basis_arr[idx] = 0; }
 
     int insert(u64 x)
     {
@@ -23,6 +23,7 @@ struct Basis {
             if (x & (1ull << i)) {
                 if (!basis_arr[i]) {
                     basis_arr[i] = x;
+                    rk++;
                     return i;
                 } else {
                     x ^= basis_arr[i];
@@ -46,8 +47,7 @@ struct Basis {
 
     u64 qmax(u64 res = 0)
     {
-        for (int i = MN; i >= 0; i--)
-            res = max<u64>(res, res ^ basis_arr[i]);
+        for (int i = MN; i >= 0; i--) res = max<u64>(res, res ^ basis_arr[i]);
         return res;
     }
 
