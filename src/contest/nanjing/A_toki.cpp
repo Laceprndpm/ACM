@@ -14,8 +14,7 @@ void Tokisaki()
     cin >> n >> m;
     vector<vector<char>> g(n + 1, vector<char>(m + 1));  // 存图
     for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++)
-            cin >> g[i][j];
+        for (int j = 1; j <= m; j++) cin >> g[i][j];
     }
     vector<pair<int, int>>    path;  // 存连通块
     map<pair<int, int>, bool> vis;   // 当前点是否被访问
@@ -82,7 +81,6 @@ int main()
     cin.tie(nullptr);
     int t;
     cin >> t;
-    while (t--)
-        Tokisaki();
+    while (t--) Tokisaki();
     return 0;
 }

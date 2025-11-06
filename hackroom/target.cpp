@@ -1,65 +1,55 @@
 #include <bits/stdc++.h>
-#define int     i64 /* R.I.P */
-#define all(x)  std::begin(x), std::end(x)
-#define rall(x) std::rbegin(x), std::rend(x)
-using i64 = long long;
+using namespace std;
 using u64 = unsigned long long;
-using ld  = long double;
+#define pb     push_back
+#define bg(x)  begin(x)
+#define all(x) bg(x), end(x)
 
-void solve()
-{
-    int n;
-    std::cin >> n;
-    std::string s;
-    std::cin >> s;
+/**
+ * @brief 并查集
+ * 0-index
+ */
 
-    if (n <= 3 || s == std::string(s[0], n)) {
-        std::cout << 0 << "\n";
-        return;
+struct DSU {
+    int              component;
+    std::vector<int> f, siz;
+
+    DSU() {}
+
+    DSU(int n) : component(n) { init(n); }
+
+    void init(int n)
+    {
+        f.resize(n);
+        std::iota(f.begin(), f.end(), 0);
+        siz.assign(n, 1);
     }
 
-    auto work = [&](char c) -> i64 {
-        std::vector<int> pos;
-        for (int i = 0; i < n; i++) {
-            if (s[i] == c) {
-                pos.push_back(i);
-            }
+    int find(int x)
+    {
+        while (x != f[x]) {
+            x = f[x] = f[f[x]];
         }
+        return x;
+    }
 
-        auto calc = [&](int x) -> i64 {
-            i64 res = 0;
-            for (int i = 0; i < pos.size(); i++) {
-                // std::cerr << pos[i] << "<->" << x + i << "]\n";
-                res += std::abs(pos[i] - (x + i));
-            }
-            return res;
-        };
+    bool same(int x, int y) { return find(x) == find(y); }
 
-        int l = 0, r = n - pos.size();
-        i64 ans = 1e18;
-        ans     = std::min(ans, calc(l));
-        ans     = std::min(ans, calc(r));
-        while (l <= r) {
-            int lm = (l + l + r) / 3;
-            int rm = (l + r + r) / 3;
-
-            i64 lc = calc(lm);
-            i64 rc = calc(rm);
-
-            ans = std::min(ans, lc);
-            ans = std::min(ans, rc);
-            if (lc < rc) {
-                r = rm - 1;
-            } else {
-                l = lm + 1;
-            }
+    bool merge(int x, int y)
+    {
+        x = find(x);
+        y = find(y);
+        if (x == y) {
+            return false;
         }
+        siz[x] += siz[y];
+        f[y] = x;
+        component--;
+        return true;
+    }
 
-        return ans;
-    };
-
-    std::cout << std::min(work('a'), work('b')) << "\n";
-}
+    int size(int x) { return siz[find(x)]; }
+};
 
 signed main(signed argc, char** argv)
 {
@@ -67,9 +57,58 @@ signed main(signed argc, char** argv)
     freopen(argv[1], "r", stdin);
     freopen(argv[2], "w", stdout);
 #endif
-    std::cin.tie(0)->sync_with_stdio(false);
-    int t = 1;
-    std::cin >> t;
-    while (t--) solve();
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    int n, m, q;
+    u64 V;
+    cin >> n >> m >> q >> V;
+    DSU                          basic(n + 1);
+    vector<tuple<int, int, u64>> edges(m);
+    for (int i = 0; i < m; i++) {
+        int u, v;
+        u64 w;
+        cin >> u >> v >> w;
+        edges[i] = {u, v, w};
+        basic.merge(u, v);
+    }
+    vector<pair<int, int>> querys(q);
+    vector<int>            ans(q);
+    for (int j = 0, u, v; j < q; j++) {
+        cin >> u >> v;
+        querys[j] = {u, v};
+    }
+    for (int i = 60; i >= 0; i--) {
+        DSU cur(n + 1);
+        for (auto [u, v, w] : edges) {
+            if (!(w & (1uLL << i)) || ((w & V) >> (i + 1)) != (V >> (i + 1))) continue;
+            if (basic.same(u, v)) {
+                cur.merge(u, v);
+            }
+        }
+        if (V & (1uLL << i)) {
+            basic = std::move(cur);
+        } else {
+            for (int j = 0; j < q; j++) {
+                auto [u, v] = querys[j];
+                if (cur.same(u, v)) {
+                    ans[j] = 1;
+                }
+            }
+        }
+    }
+    for (int j = 0; j < q; j++) {
+        auto [u, v] = querys[j];
+        if (basic.same(u, v)) {
+            ans[j] = 1;
+        }
+    }
+    for (int i = 0; i < q; i++) {
+        if (ans[i]) {
+            cout << "Yes\n";
+        } else {
+            cout << "No\n";
+        }
+    }
     return 0;
 }

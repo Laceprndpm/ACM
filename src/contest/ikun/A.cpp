@@ -71,9 +71,7 @@ void solve()
         lastsum  = cur.sum;
     }
     cout << "Yes\n";
-    sort(save.begin() + 1, save.begin() + 1 + n, [](const node& a, const node& b) {
-        return a.idx < b.idx;
-    });
+    sort(save.begin() + 1, save.begin() + 1 + n, [](const node& a, const node& b) { return a.idx < b.idx; });
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= m; j++) {
             cout << save[i].arr[j] << ' ';

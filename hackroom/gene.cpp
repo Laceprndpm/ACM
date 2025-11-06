@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 
 #include <algorithm>
+#include <cstdio>
 #include <vector>
 using namespace std;
 using LL     = long long;
@@ -45,12 +46,20 @@ signed main(int argc, char** argv)
 #endif
     // freopen("test.in", "w", stdout);
     int t = 1;
-    cout << t << '\n';
     while (t--) {
-        int n = rdInt(1, 20);
-        cout << n << '\n';
-        for (int i = 0; i < n; i++) {
-            cout << char(rdInt(0, 2) + 'a');
+        int n = rdInt(1, 10);
+        int m = rdInt(1, 10);
+        int q = 1;
+        i64 v = rdInt(1, 1ll << 2);
+        printf("%d %d %d %lld\n", n, m, q, v);
+        for (int i = 0; i < m; i++) {
+            int u = rdInt(0, n) + 1, v = rdInt(0, n) + 1;
+            i64 w = rdInt(0, 1ll << 2);
+            printf("%d %d %lld\n", u, v, w);
+        }
+        for (int i = 0; i < q; i++) {
+            int u = rdInt(0, n) + 1, v = rdInt(0, n) + 1;
+            printf("%d %d\n", u, v);
         }
         cout << '\n';
     }

@@ -45,7 +45,7 @@ struct Point {
     {
         const auto t = (*this) ^ a;
         return (t > eps) - (t < -eps);
-    }  // to-left 测试
+    }  // to-left 测试，返回1,0,-1
 
     T len2() const { return (*this) * (*this); }  // 向量长度的平方
 
@@ -95,7 +95,7 @@ struct Line {
 
     bool operator==(const Line &a) const { return v.toleft(a.v) == 0 && v.toleft(p - a.p) == 0; }
 
-    int toleft(const Point &a) const { return v.toleft(a - p); }  // to-left 测试
+    int toleft(const Point &a) const { return v.toleft(a - p); }  // to-left 测试, 返回1,0,-1
 
     bool operator<(const Line &a) const  // 半平面交算法定义的排序
     {

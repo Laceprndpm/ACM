@@ -16,10 +16,7 @@ struct My_Bitset {
         if (N) dat.back() >>= (64 * len(dat) - N);
     }
 
-    int size()
-    {
-        return N;
-    }
+    int size() { return N; }
 
     void resize(int size)
     {
@@ -51,10 +48,7 @@ struct My_Bitset {
     public:
         Proxy(vc<u64> &d, int i) : dat(d), index(i) {}
 
-        operator bool() const
-        {
-            return (dat[index >> 6] >> (index & 63)) & 1;
-        }
+        operator bool() const { return (dat[index >> 6] >> (index & 63)) & 1; }
 
         Proxy &operator=(u64 value)
         {
@@ -73,10 +67,7 @@ struct My_Bitset {
         int      index;
     };
 
-    Proxy operator[](int i)
-    {
-        return Proxy(dat, i);
-    }
+    Proxy operator[](int i) { return Proxy(dat, i); }
 
     bool operator==(const T &p)
     {
@@ -106,20 +97,11 @@ struct My_Bitset {
         return *this;
     }
 
-    T operator&(const T &p) const
-    {
-        return T(*this) &= p;
-    }
+    T operator&(const T &p) const { return T(*this) &= p; }
 
-    T operator|(const T &p) const
-    {
-        return T(*this) |= p;
-    }
+    T operator|(const T &p) const { return T(*this) |= p; }
 
-    T operator^(const T &p) const
-    {
-        return T(*this) ^= p;
-    }
+    T operator^(const T &p) const { return T(*this) ^= p; }
 
     T operator~() const
     {
@@ -209,23 +191,14 @@ struct My_Bitset {
         int lo = 64 - hi;
         int s  = L >> 6;
         if (hi == 0) {
-            FOR(i, n)
-            {
-                p.dat[i] ^= dat[s + i];
-            }
+            FOR(i, n) { p.dat[i] ^= dat[s + i]; }
         } else {
-            FOR(i, n)
-            {
-                p.dat[i] ^= (dat[s + i] >> hi) ^ (dat[s + i + 1] << lo);
-            }
+            FOR(i, n) { p.dat[i] ^= (dat[s + i] >> hi) ^ (dat[s + i + 1] << lo); }
         }
         return p;
     }
 
-    My_Bitset slice(int L, int R)
-    {
-        return range(L, R);
-    }
+    My_Bitset slice(int L, int R) { return range(L, R); }
 
     int count_range(int L, int R)
     {
@@ -293,10 +266,7 @@ struct My_Bitset {
     void xor_suffix(int i, My_Bitset &p)
     {
         assert(N == p.N && 0 <= i && i < N);
-        FOR(k, i / 64, len(dat))
-        {
-            dat[k] ^= p.dat[k];
-        }
+        FOR(k, i / 64, len(dat)) { dat[k] ^= p.dat[k]; }
     }
 
     // [L,R) に p を and
@@ -356,10 +326,7 @@ struct My_Bitset {
     void or_suffix(int i, My_Bitset &p)
     {
         assert(N == p.N && 0 <= i && i < N);
-        FOR(k, i / 64, len(dat))
-        {
-            dat[k] |= p.dat[k];
-        }
+        FOR(k, i / 64, len(dat)) { dat[k] |= p.dat[k]; }
     }
 
     // [L,R) を 1 に変更
@@ -399,20 +366,11 @@ struct My_Bitset {
     }
 
     // bitset に仕様を合わせる
-    void set(int i)
-    {
-        (*this)[i] = 1;
-    }
+    void set(int i) { (*this)[i] = 1; }
 
-    void reset(int i)
-    {
-        (*this)[i] = 0;
-    }
+    void reset(int i) { (*this)[i] = 0; }
 
-    void flip(int i)
-    {
-        (*this)[i].flip();
-    }
+    void flip(int i) { (*this)[i].flip(); }
 
     void set()
     {
@@ -420,17 +378,11 @@ struct My_Bitset {
         resize(N);
     }
 
-    void reset()
-    {
-        fill(all(dat), 0);
-    }
+    void reset() { fill(all(dat), 0); }
 
     void flip()
     {
-        FOR(i, len(dat) - 1)
-        {
-            dat[i] = u64(-1) ^ dat[i];
-        }
+        FOR(i, len(dat) - 1) { dat[i] = u64(-1) ^ dat[i]; }
         int i = len(dat) - 1;
         FOR(k, 64)
         {
@@ -480,15 +432,9 @@ struct My_Bitset {
         return true;
     }
 
-    int _Find_first()
-    {
-        return next(0);
-    }
+    int _Find_first() { return next(0); }
 
-    int _Find_next(int p)
-    {
-        return next(p + 1);
-    }
+    int _Find_next(int p) { return next(p + 1); }
 
     template <typename F>
     void enumerate(int L, int R, F f)
@@ -526,104 +472,3 @@ struct My_Bitset {
 };
 
 string My_Bitset::TO_STR[256];  // END: ds/my_bitset.hpp
-
-// struct My_Bitset {
-//     int         N;
-//     vector<u64> dat;
-//     using T = My_Bitset;
-
-//     My_Bitset(int N = 0, int x = 0) : N(N)
-//     {
-//         assert(x == 0 || x == 1);
-//         u64 v = (x == 0 ? 0 : -1);
-//         dat.assign((N + 63) >> 6, v);
-//         if (N) dat.back() >>= (64 * len(dat) - N);
-//     }
-
-//     static T from_string(string &S)
-//     {
-//         int N = len(S);
-//         T   ANS(N);
-//         for (int i = 0; i < N; i++) ANS[i] = (S[i] == '1');
-//         return ANS;
-//     }
-
-//     int size()
-//     {
-//         return N;
-//     }
-
-//     // thanks to chatgpt!
-//     class Proxy {
-//     public:
-//         Proxy(vector<u64> &d, int i) : dat(d), index(i) {}
-
-//         operator bool() const
-//         {
-//             return (dat[index >> 6] >> (index & 63)) & 1;
-//         }
-
-//         Proxy &operator=(u64 value)
-//         {
-//             dat[index >> 6] &= ~(u64(1) << (index & 63));
-//             dat[index >> 6] |= (value & 1) << (index & 63);
-//             return *this;
-//         }
-
-//         void flip()
-//         {
-//             dat[index >> 6] ^= (u64(1) << (index & 63));  // XOR to flip the bit
-//         }
-
-//     private:
-//         vector<u64> &dat;
-//         int          index;
-//     };
-
-//     Proxy operator[](int i)
-//     {
-//         return Proxy(dat, i);
-//     }
-
-//     My_Bitset range(int L, int R)
-//     {
-//         assert(L <= R);
-//         My_Bitset p(R - L);
-//         int       rm = (R - L) & 63;
-//         for (i64 _ = 0; _ < rm; _++) {
-//             p[R - L - 1] = bool((*this)[R - 1]);
-//             --R;
-//         }
-//         int n  = (R - L) >> 6;
-//         int hi = L & 63;
-//         int lo = 64 - hi;
-//         int s  = L >> 6;
-//         if (hi == 0) {
-//             for (i64 i = 0; i < n; i++) {
-//                 p.dat[i] ^= dat[s + i];
-//             }
-//         } else {
-//             for (i64 i = 0; i < n; i++) {
-//                 p.dat[i] ^= (dat[s + i] >> hi) ^ (dat[s + i + 1] << lo);
-//             }
-//         }
-//         return p;
-//     }
-
-//     T &operator^=(const T &p)
-//     {
-//         assert(N == p.N);
-//         for (int i = 0; i < len(dat); i++) dat[i] ^= p.dat[i];
-//         return *this;
-//     }
-
-//     void flip(int i)
-//     {
-//         (*this)[i].flip();
-//     }
-
-//     T operator^(const T &p) const
-//     {
-//         return T(*this) ^= p;
-//     }
-// };

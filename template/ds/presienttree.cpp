@@ -1,3 +1,4 @@
+#include <vector>
 template <class T>
 class PresidentTree {
     using NodeIndex = int;
