@@ -19,13 +19,9 @@ void solve()
         bd[i] = '#' + bd[i] + '#';
     }
     bd[0] = bd[n + 1] = string(m + 2, '#');
-    deque<i64>                  que;
-    function<i64(i64 x, i64 y)> zip = [&](i64 x, i64 y) -> i64 {
-        return x * (m + 2) + y;
-    };
-    function<pair<i64, i64>(i64)> unzip = [&](i64 x) -> pair<i64, i64> {
-        return {x / (m + 2), x % (m + 2)};
-    };
+    deque<i64>                    que;
+    function<i64(i64 x, i64 y)>   zip   = [&](i64 x, i64 y) -> i64 { return x * (m + 2) + y; };
+    function<pair<i64, i64>(i64)> unzip = [&](i64 x) -> pair<i64, i64> { return {x / (m + 2), x % (m + 2)}; };
     for (int i = 0; i < n + 2; i++) {
         for (int j = 0; j < m + 2; j++) {
             if (bd[i][j] == 'L') {

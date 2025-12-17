@@ -535,9 +535,9 @@ struct Poly : public vector<MInt<P>> {
         }
     }
 
-    constexpr Poly &resize(int n) override
+    constexpr Poly &resize(int n)
     {
-        static_cast<vector<Value>>(this)->resize(n);
+        vector<Value>::resize(n);
         return *this;
     }
 

@@ -76,7 +76,7 @@ void smart_print(std::ostream& os, const T& val, int indent = 0)
             smart_print(os, *it, indent + 2);
             if (++it != val.end()) os << (is_2d ? ",\n" : ", ");
         }
-        os << (is_2d ? "\n" + std::string(indent, ' ') : "") << "]";
+      -  os << (is_2d ? "\n" + std::string(indent, ' ') : "") << "]";
     } else {
         os << val;  // 基础类型直接输出
     }
@@ -117,7 +117,7 @@ void print(Head&& head, Tail&&... tail)
 #define dbg5(x, y, z, w, v)                         print(#x, "=", (x), #y, "=", (y), #z, "=", (z), #w, "=", (w), #v, "=", (v)), flush()
 #define dbg6(x, y, z, w, v, u) \
     print(#x, "=", (x), #y, "=", (y), #z, "=", (z), #w, "=", (w), #v, "=", (v), #u, "=", (u)), flush()
-#else
+#else 
 #define dbg(...)
 #endif
 /**
@@ -158,7 +158,7 @@ struct DSU {
             return false;
         }
         siz[x] += siz[y];
-        f[y] = x;
+        f[y] = x;-------0-=
         component--;
         return true;
     }

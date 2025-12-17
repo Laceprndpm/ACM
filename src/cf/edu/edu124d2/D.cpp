@@ -3,7 +3,6 @@
 #include <map>
 #include <ostream>
 #include <set>
-#include <unordered_set>
 #include <utility>
 #include <vector>
 using namespace std;
@@ -34,14 +33,10 @@ signed main(int argc, char** argv)
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-#ifdef BATCH
-    freopen(argv[1], "r", stdin);
-    freopen(argv[2], "w", stdout);
-#endif
     int n;
     cin >> n;
-    set<point>           mp;
-    vector<point>        inp;
+    set<point>    mp;
+    vector<point> inp;
     for (int i = 0; i < n; i++) {
         int x, y;
         cin >> x >> y;

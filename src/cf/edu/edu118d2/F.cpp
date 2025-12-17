@@ -1,14 +1,49 @@
 #include <cassert>
+#include <deque>
 #include <functional>
 #include <iostream>
-#include <istream>
-#include <utility>
 #include <vector>
-using i64  = long long;
-using u64  = unsigned long long;
-using u32  = unsigned;
-using u128 = unsigned __int128;
 using namespace std;
+using ll   = long long;
+using u8   = uint8_t;
+using u16  = uint16_t;
+using u32  = uint32_t;
+using i64  = long long;
+using u64  = uint64_t;
+using i128 = __int128;
+using u128 = unsigned __int128;
+using f128 = __float128;
+
+// vectors
+#define sz(x)   int(size(x))
+#define bg(x)   begin(x)
+#define all(x)  bg(x), end(x)
+#define rall(x) rbegin(x), rend(x)
+#define sor(x)  sort(all(x))
+#define rsz     resize
+#define ins     insert
+#define pb      push_back
+#define eb      emplace_back
+#define ft      front()
+#define bk      back()
+#define mt      make_tuple
+#define fi      first
+#define se      second
+
+// https://trap.jp/post/1224/
+#define FOR1(a)                       for (i64 _ = 0; _ < i64(a); ++_)
+#define FOR2(i, a)                    for (i64 i = 0; i < i64(a); ++i)
+#define FOR3(i, a, b)                 for (i64 i = a; i < i64(b); ++i)
+#define FOR4(i, a, b, c)              for (i64 i = a; i < i64(b); i += (c))
+#define FOR1_R(a)                     for (i64 i = (a) - 1; i >= i64(0); --i)
+#define FOR2_R(i, a)                  for (i64 i = (a) - 1; i >= i64(0); --i)
+#define FOR3_R(i, a, b)               for (i64 i = (b) - 1; i >= i64(a); --i)
+#define overload4(a, b, c, d, e, ...) e
+#define overload3(a, b, c, d, ...)    d
+#define FOR(...)                      overload4(__VA_ARGS__, FOR4, FOR3, FOR2, FOR1)(__VA_ARGS__)
+#define FOR_R(...)                    overload3(__VA_ARGS__, FOR3_R, FOR2_R, FOR1_R)(__VA_ARGS__)
+
+constexpr int INF = 1e9;
 
 template <class T>
 constexpr T power(T a, u64 b, T res = 1)
@@ -91,15 +126,9 @@ public:
         x = v;
     }
 
-    constexpr static U mod()
-    {
-        return P;
-    }
+    constexpr static U mod() { return P; }
 
-    constexpr U val() const
-    {
-        return x;
-    }
+    constexpr U val() const { return x; }
 
     constexpr ModIntBase operator-() const
     {
@@ -108,10 +137,7 @@ public:
         return res;
     }
 
-    constexpr ModIntBase inv() const
-    {
-        return power(*this, mod() - 2);
-    }
+    constexpr ModIntBase inv() const { return power(*this, mod() - 2); }
 
     constexpr ModIntBase &operator*=(const ModIntBase &rhs) &
     {
@@ -137,10 +163,7 @@ public:
         return *this;
     }
 
-    constexpr ModIntBase &operator/=(const ModIntBase &rhs) &
-    {
-        return *this *= rhs.inv();
-    }
+    constexpr ModIntBase &operator/=(const ModIntBase &rhs) & { return *this *= rhs.inv(); }
 
     friend constexpr ModIntBase operator*(ModIntBase lhs, const ModIntBase &rhs)
     {
@@ -174,15 +197,9 @@ public:
         return is;
     }
 
-    friend constexpr std::ostream &operator<<(std::ostream &os, const ModIntBase &a)
-    {
-        return os << a.val();
-    }
+    friend constexpr std::ostream &operator<<(std::ostream &os, const ModIntBase &a) { return os << a.val(); }
 
-    friend constexpr bool operator==(const ModIntBase &lhs, const ModIntBase &rhs)
-    {
-        return lhs.val() == rhs.val();
-    }
+    friend constexpr bool operator==(const ModIntBase &lhs, const ModIntBase &rhs) { return lhs.val() == rhs.val(); }
 
     friend constexpr std::strong_ordering operator<=>(const ModIntBase &lhs, const ModIntBase &rhs)
     {
@@ -202,10 +219,7 @@ struct Barrett {
 public:
     Barrett(u32 m_) : m(m_), im((u64)(-1) / m_ + 1) {}
 
-    constexpr u32 mod() const
-    {
-        return m;
-    }
+    constexpr u32 mod() const { return m; }
 
     constexpr u32 mul(u32 a, u32 b) const
     {
@@ -246,20 +260,11 @@ public:
         x = v;
     }
 
-    constexpr static void setMod(u32 m)
-    {
-        bt = m;
-    }
+    constexpr static void setMod(u32 m) { bt = m; }
 
-    static u32 mod()
-    {
-        return bt.mod();
-    }
+    static u32 mod() { return bt.mod(); }
 
-    constexpr u32 val() const
-    {
-        return x;
-    }
+    constexpr u32 val() const { return x; }
 
     constexpr DynModInt operator-() const
     {
@@ -299,10 +304,7 @@ public:
         return *this;
     }
 
-    constexpr DynModInt &operator/=(const DynModInt &rhs) &
-    {
-        return *this *= rhs.inv();
-    }
+    constexpr DynModInt &operator/=(const DynModInt &rhs) & { return *this *= rhs.inv(); }
 
     friend constexpr DynModInt operator*(DynModInt lhs, const DynModInt &rhs)
     {
@@ -336,15 +338,9 @@ public:
         return is;
     }
 
-    friend constexpr std::ostream &operator<<(std::ostream &os, const DynModInt &a)
-    {
-        return os << a.val();
-    }
+    friend constexpr std::ostream &operator<<(std::ostream &os, const DynModInt &a) { return os << a.val(); }
 
-    friend constexpr bool operator==(const DynModInt &lhs, const DynModInt &rhs)
-    {
-        return lhs.val() == rhs.val();
-    }
+    friend constexpr bool operator==(const DynModInt &lhs, const DynModInt &rhs) { return lhs.val() == rhs.val(); }
 
     friend constexpr std::strong_ordering operator<=>(const DynModInt &lhs, const DynModInt &rhs)
     {
@@ -357,9 +353,11 @@ private:
 };
 
 template <u32 Id>
-Barrett DynModInt<Id>::bt = 998244353;
-
-using Z = ModInt<998244353>;
+Barrett       DynModInt<Id>::bt = 998244353;
+constexpr u32 P                 = 998244353;
+using Z                         = ModInt<P>;
+template <u32 x, u32 P>
+constexpr ModInt<P> CInv = power(ModInt<P>(x), P - 2);
 
 struct Comb {
     int            n;
@@ -369,10 +367,7 @@ struct Comb {
 
     Comb() : n{0}, _fac{1}, _invfac{1}, _inv{0} {}
 
-    Comb(int n) : Comb()
-    {
-        init(n);
-    }
+    Comb(int n) : Comb() { init(n); }
 
     void init(int m)
     {
@@ -417,15 +412,18 @@ struct Comb {
     }
 } comb;
 
-Z g = 3;
+template <u32 P>
+using MInt = ModInt<P>;
 
 /*
  * 进行 FFT 和 IFFT 前的反置变换
  * 位置 i 和 i 的二进制反转后的位置互换
  * len 必须为 2 的幂
  */
-void change(Z y[], int len)
+template <u32 P>
+void change(vector<ModInt<P>> &y)
 {
+    const int len = y.size();
     // 一开始 i 是 0...01，而 j 是 10...0，在二进制下相反对称。
     // 之后 i 逐渐加一，而 j 依然维持着和 i 相反对称，一直到 i = 1...11。
     for (int i = 1, j = len / 2, k; i < len - 1; i++) {
@@ -443,24 +441,50 @@ void change(Z y[], int len)
     }
 }
 
-void ntt(Z y[], int len, int on)
+template <u32 P>
+struct ntt_traits {
+    static constexpr u32 g = 0;
+};
+
+template <>
+struct ntt_traits<469762049> {
+    static constexpr u32 g = 3;
+};
+
+template <>
+struct ntt_traits<998244353> {
+    static constexpr u32 g = 3;
+};
+
+template <>
+struct ntt_traits<1004535809> {
+    static constexpr u32 g = 3;
+};
+
+template <u32 P>
+void ntt(vector<ModInt<P>> &y, int on)
 {
+    assert(ntt_traits<P>::g);
+    constexpr MInt<P> g   = ntt_traits<P>::g;
+    const int         len = y.size();
+    assert((len == (len & -len)) && len);
     // 位逆序置换
-    change(y, len);
+    change(y);
     // 模拟合并过程，一开始，从长度为一合并到长度为二，一直合并到长度为 len。
     for (int h = 2; h <= len; h <<= 1) {
         // wn：当前单位复根的间隔：w^1_h
-        Z wn = power(g, (Z::mod() - 1) / h);
+        assert(((P - 1) & (h - 1)) == 0);
+        ModInt<P> wn = power(g, (P - 1) / h);
         if (on == -1) wn = wn.inv();
         // 合并，共 len / h 次。
         for (int j = 0; j < len; j += h) {
             // 计算当前单位复根，一开始是 1 = w^0_n，之后是以 wn 为间隔递增： w^1_n
             // ...
-            Z w(1);
+            ModInt<P> w(1);
             for (int k = j; k < j + h / 2; k++) {
                 // 左侧部分和右侧是子问题的解
-                Z u = y[k];
-                Z t = w * y[k + h / 2];
+                ModInt<P> u = y[k];
+                ModInt<P> t = w * y[k + h / 2];
                 // 这就是把两部分分治的结果加起来
                 y[k]         = u + t;
                 y[k + h / 2] = u - t;
@@ -472,78 +496,363 @@ void ntt(Z y[], int len, int on)
         }
     }
     // 如果是 IDFT，它的逆矩阵的每一个元素不只是原元素取倒数，还要除以长度 len。
+    ModInt<P> iv = ModInt<P>(len).inv();
     if (on == -1) {
         for (int i = 0; i < len; i++) {
-            y[i] /= len;
+            y[i] = y[i] * iv;
         }
     }
 }
 
-signed main(int argc, char **argv)
-
+template <u32 P>
+void dft(vector<MInt<P>> &vec)
 {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-#ifdef BATCH
-    freopen(argv[1], "r", stdin);
-    freopen(argv[2], "w", stdout);
-#endif
+    ntt(vec, 1);
+}
+
+template <u32 P>
+void idft(vector<MInt<P>> &vec)
+{
+    ntt(vec, -1);
+}
+
+template <int P = 998244353>
+struct Poly : public vector<MInt<P>> {
+    using Value = MInt<P>;
+
+    Poly() : vector<Value>() {}
+
+    explicit constexpr Poly(int n) : vector<Value>(n) {}
+
+    explicit constexpr Poly(const vector<Value> &a) : vector<Value>(a) {}
+
+    constexpr Poly(const initializer_list<Value> &a) : vector<Value>(a) {}
+
+    template <class InputIt, class = _RequireInputIter<InputIt>>
+    explicit constexpr Poly(InputIt first, InputIt last) : vector<Value>(first, last)
+    {
+    }
+
+    template <class F>
+    explicit constexpr Poly(int n, F f) : vector<Value>(n)
+    {
+        for (int i = 0; i < n; i++) {
+            (*this)[i] = f(i);
+        }
+    }
+
+    constexpr Poly &resize(int n)
+    {
+        vector<Value>::resize(n);
+        return *this;
+    }
+
+    constexpr Poly shift(int k) const
+    {
+        if (k >= 0) {
+            auto b = *this;
+            b.insert(b.begin(), k, 0);
+            return b;
+        } else if (this->size() <= -k) {
+            return Poly();
+        } else {
+            return Poly(this->begin() + (-k), this->end());
+        }
+    }
+
+    constexpr Poly trunc(int k) const
+    {
+        Poly f = *this;
+        f.resize(k);
+        return f;
+    }
+
+    constexpr friend Poly operator+(const Poly &a, const Poly &b)
+    {
+        Poly res(max(a.size(), b.size()));
+        for (int i = 0; i < a.size(); i++) {
+            res[i] += a[i];
+        }
+        for (int i = 0; i < b.size(); i++) {
+            res[i] += b[i];
+        }
+        return res;
+    }
+
+    constexpr friend Poly operator-(const Poly &a, const Poly &b)
+    {
+        Poly res(max(a.size(), b.size()));
+        for (int i = 0; i < a.size(); i++) {
+            res[i] += a[i];
+        }
+        for (int i = 0; i < b.size(); i++) {
+            res[i] -= b[i];
+        }
+        return res;
+    }
+
+    constexpr friend Poly operator-(const Poly &a)
+    {
+        vector<Value> res(a.size());
+        for (int i = 0; i < int(res.size()); i++) {
+            res[i] = -a[i];
+        }
+        return Poly(res);
+    }
+
+    constexpr friend Poly operator*(Poly a, Poly b)
+    {
+        if (a.size() == 0 || b.size() == 0) {
+            return Poly();
+        }
+        if (a.size() < b.size()) {
+            swap(a, b);
+        }
+        int n = 1, tot = a.size() + b.size() - 1;
+        while (n < tot) {
+            n *= 2;
+        }
+        if (((P - 1) & (n - 1)) != 0 || b.size() < 128) {
+            Poly c(a.size() + b.size() - 1);
+            for (int i = 0; i < a.size(); i++) {
+                for (int j = 0; j < b.size(); j++) {
+                    c[i + j] += a[i] * b[j];
+                }
+            }
+            return c;
+        }
+        a.resize(n);
+        b.resize(n);
+        dft(a);
+        dft(b);
+        for (int i = 0; i < n; ++i) {
+            a[i] *= b[i];
+        }
+        idft(a);
+        a.resize(tot);
+        return a;
+    }
+
+    constexpr friend Poly operator*(Value a, Poly b)
+    {
+        for (int i = 0; i < int(b.size()); i++) {
+            b[i] *= a;
+        }
+        return b;
+    }
+
+    constexpr friend Poly operator*(Poly a, Value b)
+    {
+        for (int i = 0; i < int(a.size()); i++) {
+            a[i] *= b;
+        }
+        return a;
+    }
+
+    constexpr friend Poly operator/(Poly a, Value b)
+    {
+        for (int i = 0; i < int(a.size()); i++) {
+            a[i] /= b;
+        }
+        return a;
+    }
+
+    constexpr Poly &operator+=(Poly b) { return (*this) = (*this) + b; }
+
+    constexpr Poly &operator-=(Poly b) { return (*this) = (*this) - b; }
+
+    constexpr Poly &operator*=(Poly b) { return (*this) = (*this) * b; }
+
+    constexpr Poly &operator*=(Value b) { return (*this) = (*this) * b; }
+
+    constexpr Poly &operator/=(Value b) { return (*this) = (*this) / b; }
+
+    constexpr Poly deriv() const
+    {
+        if (this->empty()) {
+            return Poly();
+        }
+        Poly res(this->size() - 1);
+        for (int i = 0; i < this->size() - 1; ++i) {
+            res[i] = (i + 1) * (*this)[i + 1];
+        }
+        return res;
+    }
+
+    constexpr Poly integr() const
+    {
+        Poly res(this->size() + 1);
+        for (int i = 0; i < this->size(); ++i) {
+            res[i + 1] = (*this)[i] / (i + 1);
+        }
+        return res;
+    }
+
+    /* 多项式求逆(inv)
+     * n为f最高次
+     * Q(2n) = 2Q(n) - P(n) \cdot Q^2(n)
+     */
+    constexpr Poly inv(int m) const
+    {
+        Poly x{(*this)[0].inv()};
+        int  k = 1;
+        while (k < m) {
+            k *= 2;
+            x = (x * (Poly{2} - trunc(k) * x)).trunc(k);
+        }
+        return x.trunc(m);
+    }
+
+    /* 多项式求ln
+     * G(x) = ln(F(x)) => G'(x) = F'(x) / F(x) => G = int{F'/F}
+     */
+    constexpr Poly log(int m) const { return (deriv() * inv(m)).integr().trunc(m); }
+
+    /* 多项式求exp
+     * exp(x) = 1 + x + x^2/2! ... x^n / n!
+     * F_{n} = exp(A) (mod x^n)
+     * F_{2n} = F_n \cdot (1 - ln(F_n) + A) (mod x^{2n})
+     */
+    constexpr Poly exp(int m) const
+    {
+        Poly x{1};
+        int  k = 1;
+        while (k < m) {
+            k *= 2;
+            x = (x * (Poly{1} - x.log(k) + trunc(k))).trunc(k);
+        }
+        return x.trunc(m);
+    }
+
+    /* 多项式快速幂
+     * G = F^k => lnG = k lnF => G = exp(k * lnF)
+     */
+    constexpr Poly pow(int k, int m) const
+    {
+        int i = 0;
+        while (i < this->size() && (*this)[i] == 0) {
+            i++;
+        }
+        if (i == this->size() || 1LL * i * k >= m) {
+            return Poly(m);
+        }
+        Value v = (*this)[i];
+        auto  f = shift(-i) * v.inv();
+        return (f.log(m - i * k) * k).exp(m - i * k).shift(i * k) * power(v, k);
+    }
+
+    constexpr Poly sqrt(int m) const
+    {
+        Poly x{1};
+        int  k = 1;
+        while (k < m) {
+            k *= 2;
+            x = (x + (trunc(k) * x.inv(k)).trunc(k)) * CInv<2, P>;
+        }
+        return x.trunc(m);
+    }
+
+    constexpr Poly mulT(Poly b) const
+    {
+        if (b.size() == 0) {
+            return Poly();
+        }
+        int n = b.size();
+        reverse(b.begin(), b.end());
+        return ((*this) * b).shift(-(n - 1));
+    }
+
+    // 多项式求值
+    constexpr vector<Value> eval(vector<Value> x) const
+    {
+        if (this->size() == 0) {
+            return vector<Value>(x.size(), 0);
+        }
+        const int     n = max(x.size(), this->size());
+        vector<Poly>  q(4 * n);
+        vector<Value> ans(x.size());
+        x.resize(n);
+        function<void(int, int, int)> build = [&](int p, int l, int r) {
+            if (r - l == 1) {
+                q[p] = Poly{1, -x[l]};
+            } else {
+                int m = (l + r) / 2;
+                build(2 * p, l, m);
+                build(2 * p + 1, m, r);
+                q[p] = q[2 * p] * q[2 * p + 1];
+            }
+        };
+        build(1, 0, n);
+        function<void(int, int, int, const Poly &)> work = [&](int p, int l, int r, const Poly &num) {
+            if (r - l == 1) {
+                if (l < int(ans.size())) {
+                    ans[l] = num[0];
+                }
+            } else {
+                int  m   = (l + r) / 2;
+                Poly tmp = num.mulT(q[2 * p + 1]);
+                tmp.resize(m - l);
+                work(2 * p, l, m, tmp);
+                tmp = num.mulT(q[2 * p]);
+                tmp.resize(r - m);
+                work(2 * p + 1, m, r, tmp);
+            }
+        };
+        work(1, 0, n, mulT(q[1].inv(n)));
+        return ans;
+    }
+};
+
+using PolyZ = Poly<P>;
+
+// floor(p / i) * i + p % i == p
+// floor(p / i) * i + p % i == 0 (mod p)
+// inv[i] == -inv[p % i] * floor(p / i)
+void solve()
+{
     int n;
     cin >> n;
-    vector<vector<int>> graph(n + 1);
+    vector<vector<int>> adj(n + 1);
     for (int i = 0; i < n - 1; i++) {
         int u, v;
         cin >> u >> v;
-        graph[u].push_back(v);
-        graph[v].push_back(u);
+        adj[u].pb(v);
+        adj[v].pb(u);
     }
-    vector<int>              cnt_son(n + 1);
-    function<void(int, int)> dfs = [&](int u, int fa) -> void {
-        for (int adj : graph[u]) {
-            if (adj == fa) continue;
-            cnt_son[u]++;
-            dfs(adj, u);
+    vector<int>  sons(n + 1);
+    deque<PolyZ> dadntt;
+    auto         dfs = [&](this auto &&self, int u, int fa) -> void {
+        for (int v : adj[u]) {
+            if (v == fa) continue;
+            self(v, u);
+            sons[u]++;
         }
+        dadntt.pb({1, sons[u]});
     };
-    dfs(1, 1);
-    vector<vector<Z>> cur, nxt;
-    for (int i = 1; i <= n; i++) {
-        if (cnt_son[i] != 0) {
-            cur.push_back({1, cnt_son[i]});
-        }
+    dfs(1, 0);
+    while (dadntt.size() > 1) {
+        auto a = std::move(dadntt.front());
+        dadntt.pop_front();
+        auto b = std::move(dadntt.front());
+        dadntt.pop_front();
+        auto c = a * b;
+        dadntt.pb(std::move(c));
     }
-    i64                                           len = 4;
-    function<vector<Z>(vector<Z> &, vector<Z> &)> mul = [&](vector<Z> &a, vector<Z> &b) -> vector<Z> {
-        a.resize(len, 0);
-        b.resize(len, 0);
-        ntt(a.data(), len, 1);
-        ntt(b.data(), len, 1);
-        vector<Z> res(len);
-        for (int i = 0; i < len; i++) {
-            res[i] = a[i] * b[i];
-        }
-        ntt(res.data(), len, -1);
-        return res;
-    };
-    while (cur.size() > 1) {
-        for (int i = 0; i < cur.size() - 1; i += 2) {
-            auto res = mul(cur[i], cur[i + 1]);
-            nxt.push_back(res);
-        }
-        if (cur.size() % 2 == 1) {
-            nxt.push_back(cur.back());
-        }
-
-        len <<= 1;
-        swap(cur, nxt);
-        nxt.clear();
-    }
-    Z ans = 0;
-    cur[0].resize(n);
+    Z    ans = 0;
+    auto cur = dadntt.front();
+    cur.resize(n);
     for (int i = 0; i < n; i++) {
-        ans += ((i % 2 == 1) ? -1 : 1) * comb.fac(n - i) * cur[0][i];
+        ans += ((i % 2 == 1) ? -1 : 1) * comb.fac(n - i) * cur[i];
     }
     cout << ans << '\n';
-    return 0;
 }
+
+signed main() { solve(); }
+
+/* stuff you should look for
+ * int overflow, array bounds
+ * special cases (n=1?)
+ * do smth instead of nothing and stay organized
+ * WRITE STUFF DOWN
+ * DON'T GET STUCK ON ONE APPROACH
+ */
