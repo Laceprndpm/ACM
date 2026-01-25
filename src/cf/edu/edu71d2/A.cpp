@@ -1,6 +1,5 @@
 #include <iostream>
 #include <utility>
-#include <vector>
 using namespace std;
 using ll   = long long;
 using u8   = uint8_t;
@@ -45,53 +44,20 @@ constexpr int INF = 1e9;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    if (n == 1) {
-        cout << "No\n";
-        return;
+    int b, p, f;
+    cin >> b >> p >> f;
+    int h, c;
+    cin >> h >> c;
+    if (h > c) {
+        swap(h, c), swap(p, f);
     }
-    vector<vector<int>> adj(n + 1);
-    for (int i = 0; i < n - 1; i++) {
-        int u, v;
-        cin >> u >> v;
-        adj[u].pb(v);
-        adj[v].pb(u);
-    }
-    int  update[3] = {};
-    auto dfs       = [&](this auto&& self, int u, int fa) -> pair<int, bool> {
-        int leaves = 0;
-        if (sz(adj[u]) == 1 && u != 1) leaves = 1;
-        bool flag = 0;
-        for (int v : adj[u]) {
-            if (v == fa) continue;
-            auto res = self(v, u);
-            leaves += res.fi;
-            flag |= res.se;
-        }
-        leaves %= 3;
-        if (!flag && leaves != 1) {
-            update[((4 - leaves) % 3)]++;
-            flag = 1;
-        }
-        return {leaves, flag};
-    };
-    auto res = dfs(1, 0);
-
-    if (update[0] < 3 && update[1] < 3) {
-        for (int i = 0; i <= update[1]; i++) {
-            for (int j = 0; j <= update[2]; j++) {
-                if ((i * 1 + j * 2 + res.fi) % 3 == 0) {
-                    cout << "YES\n";
-                    return;
-                }
-            }
-        }
-        cout << "NO\n";
-        return;
-    }
-    cout << "YES\n";
-    return;
+    int num = min(b / 2, f);
+    b -= num * 2;
+    ll ans = 0;
+    ans += num * c;
+    num = min(b / 2, p);
+    ans += num * h;
+    cout << ans << '\n';
 }
 
 signed main(signed argc, char** argv)

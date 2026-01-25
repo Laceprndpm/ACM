@@ -1,4 +1,6 @@
 #include <iostream>
+#include <utility>
+#include <vector>
 using namespace std;
 using ll   = long long;
 using u8   = uint8_t;
@@ -43,18 +45,43 @@ constexpr int INF = 1e9;
 
 void solve()
 {
-    // n = 1010
-    // t = 1111
-    // m最大是log(n)
-    //
-    //
-    int n;
-    cin >> n;
-    if (n == 1) {
-        cout << 0 << '\n';
-        return;
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> board(n + 1, vector<int>(m + 1));
+    auto                boardb = board;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            cin >> board[i][j];
+        }
     }
-    cout << n + ((n & 1) == 0) << '\n';
+    vector<pair<int, int>> ans;
+    for (int i = 1; i <= n - 1; i++) {
+        for (int j = 1; j <= m - 1; j++) {
+            bool ok = 1;
+            for (int s1 = 0; s1 < 2; s1++) {
+                for (int s2 = 0; s2 < 2; s2++) {
+                    if (board[i + s1][j + s2] != 1) {
+                        ok = 0;
+                    }
+                }
+            }
+            if (!ok) continue;
+            ans.pb({i, j});
+            for (int s1 = 0; s1 < 2; s1++) {
+                for (int s2 = 0; s2 < 2; s2++) {
+                    (boardb[i + s1][j + s2] = 1);
+                }
+            }
+        }
+    }
+    if (board == boardb) {
+        cout << ans.size() << '\n';
+        for (auto [x, y] : ans) {
+            cout << x << ' ' << y << '\n';
+        }
+    } else {
+        cout << -1 << '\n';
+    }
 }
 
 signed main(signed argc, char** argv)
@@ -66,8 +93,7 @@ signed main(signed argc, char** argv)
     freopen(argv[1], "r", stdin);
     freopen(argv[2], "w", stdout);
 #endif
-    int t;
-    cin >> t;
+    int t = 1;
     while (t--) {
         solve();
     }
